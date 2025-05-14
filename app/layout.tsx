@@ -27,7 +27,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* Main content wrapper - positioned above the video */}
+        <div className="relative z-0">
+          {children}
+        </div>
       </body>
     </html>
   );
