@@ -10,15 +10,15 @@ function EquipmentModel({ position = [0, 0, 0], rotation = [0, 0, 0], scale = 1 
   // Since we don't have an actual model file uploaded, we'll create a placeholder
   // In a real implementation, you would use useGLTF to load your model
   // const { scene } = useGLTF('/models/equipment.glb');
-  
+
   const meshRef = useRef<THREE.Mesh>(null);
-  
+
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y += 0.005;
     }
   });
-  
+
   return (
     <group position={[position[0], position[1], position[2]]} rotation={[rotation[0], rotation[1], rotation[2]]} scale={scale}>
       {/* Placeholder model - replace with your actual 3D model */}
@@ -57,10 +57,10 @@ export default function HeroScene() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => {
       window.removeEventListener('resize', checkMobile);
     };
@@ -71,36 +71,36 @@ export default function HeroScene() {
       <Canvas shadows dpr={[1, 2]}>
         <PerspectiveCamera makeDefault position={[0, 2, isMobile ? 15 : 10]} fov={40} />
         <ambientLight intensity={0.3} />
-        <spotLight 
-          position={[5, 10, 5]} 
-          angle={0.3} 
-          penumbra={0.8} 
-          intensity={1} 
-          castShadow 
+        <spotLight
+          position={[5, 10, 5]}
+          angle={0.3}
+          penumbra={0.8}
+          intensity={1}
+          castShadow
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
         />
         <directionalLight position={[-5, 5, -5]} intensity={0.5} castShadow />
-        
+
         <Environment preset="city" />
-        
+
         <group position={[0, 0, 0]}>
           <EquipmentModel position={[0, 0, 0]} scale={1.5} />
           <Platform />
         </group>
-        
-        <OrbitControls 
+
+        <OrbitControls
           enableZoom={false}
           enablePan={false}
           minPolarAngle={Math.PI / 3}
           maxPolarAngle={Math.PI / 2}
           rotateSpeed={0.5}
         />
-        
+
         {/* Fog for depth */}
         <fog attach="fog" args={['#f0f0f0', 10, 30]} />
       </Canvas>
-      
+
       {/* Hero content overlay */}
       <div className="absolute inset-0 flex items-center z-10 pointer-events-none">
         <div className="container mx-auto px-6">
@@ -112,14 +112,14 @@ export default function HeroScene() {
               Premium equipment rentals, expert maintenance, and comprehensive training for your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a 
-                href="/services" 
+              <a
+                href="/services"
                 className="bg-navy-blue text-white px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all text-center"
               >
                 Our Services
               </a>
-              <a 
-                href="/contact" 
+              <a
+                href="/contact"
                 className="bg-safety-orange text-white px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all text-center"
               >
                 Get a Quote
