@@ -24,8 +24,8 @@
 }
 
 body {
-    background: var(--background);
-    color: var(--foreground);
+    background: var(--color-background);
+    color: var(--color-foreground);
     font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
@@ -42,6 +42,14 @@ body {
     background-color: var(--color-safety-orange);
 }
 
+@utility bg-white {
+    background-color: var(--color-white);
+}
+
+@utility bg-light-gray {
+    background-color: var(--color-light-gray);
+}
+
 @utility text-navy-blue {
     color: var(--color-navy-blue);
 }
@@ -52,4 +60,45 @@ body {
 
 @utility text-safety-orange {
     color: var(--color-safety-orange);
+}
+
+@utility text-white {
+    color: var(--color-white);
+}
+
+/* Color classes in the format used in components */
+@utility bg-color-navy-blue {
+    background-color: var(--color-navy-blue);
+}
+
+@utility bg-color-charcoal-gray {
+    background-color: var(--color-charcoal-gray);
+}
+
+@utility bg-color-safety-orange {
+    background-color: var(--color-safety-orange);
+}
+
+@utility bg-color-white {
+    background-color: var(--color-white);
+}
+
+@utility bg-color-light-gray {
+    background-color: var(--color-light-gray);
+}
+
+@utility text-color-navy-blue {
+    color: var(--color-navy-blue);
+}
+
+@utility text-color-charcoal-gray {
+    color: var(--color-charcoal-gray);
+}
+
+@utility text-color-safety-orange {
+    color: var(--color-safety-orange);
+}
+
+@utility text-color-white {
+    color: var(--color-white);
 }
