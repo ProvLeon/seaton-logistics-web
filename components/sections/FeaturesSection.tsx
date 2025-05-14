@@ -13,26 +13,26 @@ interface FeatureCardProps {
 }
 
 const features = [
-{
-  icon: "/truck-icon.svg",
-  title: "Premium Equipment",
-  description: "Access to a wide range of high-quality equipment for construction, mining, agriculture, and security industries."
-},
-{
-  icon: "/icons/tools.svg",
-  title: "Expert Maintenance",
-  description: "Professional maintenance services to keep your equipment in optimal working condition at all times."
-},
-{
-  icon: "/file.svg",
-  title: "Comprehensive Training",
-  description: "Specialized training programs to ensure safe and efficient operation of all equipment."
-},
-{
-  icon: "/globe.svg",
-  title: "Logistics Solutions",
-  description: "End-to-end logistics services tailored to your specific needs across Ghana and beyond."
-}
+  {
+    icon: "/truck-icon.svg",
+    title: "Premium Equipment",
+    description: "Access to a wide range of high-quality equipment for construction, mining, agriculture, and security industries."
+  },
+  {
+    icon: "/icons/tools.svg",
+    title: "Expert Maintenance",
+    description: "Professional maintenance services to keep your equipment in optimal working condition at all times."
+  },
+  {
+    icon: "/file.svg",
+    title: "Comprehensive Training",
+    description: "Specialized training programs to ensure safe and efficient operation of all equipment."
+  },
+  {
+    icon: "/globe.svg",
+    title: "Logistics Solutions",
+    description: "End-to-end logistics services tailored to your specific needs across Ghana and beyond."
+  }
 ];
 
 const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => {
@@ -72,27 +72,27 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => {
   }, [inView, index]);
 
   return (
-    <div 
+    <div
       ref={ref}
       className="flex flex-col"
     >
-      <div 
+      <div
         ref={cardRef}
         className="bg-gradient-to-br from-color-navy-blue/20 to-color-navy-blue/40 backdrop-blur-sm p-6 md:p-8 rounded-2xl h-full border border-color-white/10 hover:border-color-safety-orange/30 transition-all duration-300 hover:shadow-lg hover:shadow-color-safety-orange/10"
       >
-        <div 
+        <div
           ref={iconRef}
           className="w-16 h-16 rounded-xl bg-color-safety-orange flex items-center justify-center mb-5"
         >
-          <Image 
-            src={icon} 
-            alt={title} 
-            width={32} 
-            height={32} 
+          <Image
+            src={icon}
+            alt={title}
+            width={32}
+            height={32}
             className="text-color-white"
           />
         </div>
-        <h3 className="text-xl md:text-2xl font-bold text-color-white mb-3">{title}</h3>
+        <h3 className="text-xl md:text-2xl font-bold text-color-navy-blue mb-3">{title}</h3>
         <p className="text-color-white/70">{description}</p>
       </div>
     </div>
@@ -129,7 +129,7 @@ export default function FeaturesSection() {
       </div>
       <div className="container mx-auto px-4 relative z-10">
         <div ref={headerRef} className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-color-white mb-5">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-color-navy-blue mb-5">
             Premium <span className="text-color-safety-orange">Logistics</span> Solutions
           </h2>
           <p className="text-color-white/70 text-lg">

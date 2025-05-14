@@ -54,10 +54,10 @@ export default function TestimonialsSection() {
   const goToSlide = (index: number) => {
     if (isAnimating || index === currentIndex) return;
     setIsAnimating(true);
-    
+
     const current = document.querySelector('.testimonial-active');
     const next = document.querySelector(`.testimonial-${index}`);
-    
+
     if (current && next) {
       // Animate current slide out
       anime({
@@ -67,7 +67,7 @@ export default function TestimonialsSection() {
         duration: 300,
         easing: 'easeInQuad',
       });
-      
+
       // Animate next slide in
       anime({
         targets: next,
@@ -104,40 +104,39 @@ export default function TestimonialsSection() {
             What Our <span className="text-color-safety-orange">Clients</span> Say
           </h2>
           <p className="text-color-white/70 text-lg max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what some of our valued clients have to say about their experience working with Seaton Logistics.
+            Don&apos;t just take our word for it. Here&apos;s what some of our valued clients have to say about their experience working with Seaton Logistics.
           </p>
         </div>
-        
+
         <div ref={sliderRef} className="max-w-4xl mx-auto relative">
           {/* Testimonials Slider */}
           <div className="relative h-[400px] md:h-[300px]">
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className={`testimonial-${index} absolute inset-0 p-8 md:p-12 bg-color-white/5 backdrop-blur-sm rounded-3xl border border-color-white/10 transition-opacity duration-300 ${
-                  index === currentIndex ? 'opacity-100 testimonial-active' : 'opacity-0 pointer-events-none'
-                }`}
+                className={`testimonial-${index} absolute inset-0 p-8 md:p-12 bg-color-white/5 backdrop-blur-sm rounded-3xl border border-color-white/10 transition-opacity duration-300 ${index === currentIndex ? 'opacity-100 testimonial-active' : 'opacity-0 pointer-events-none'
+                  }`}
                 style={{ transform: 'translateX(0)' }}
               >
                 <div className="flex flex-col md:flex-row gap-8 h-full">
                   <div className="md:w-1/4 flex flex-col items-center md:items-start">
                     <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-color-safety-orange">
-                      <Image 
-                        src={testimonial.image} 
+                      <Image
+                        src={testimonial.image}
                         alt={testimonial.author}
                         fill
                         className="object-cover"
                       />
                     </div>
                   </div>
-                  
+
                   <div className="md:w-3/4 flex flex-col justify-center">
-                    <div className="text-color-safety-orange mb-4 text-3xl opacity-30">"</div>
-                    <p className="text-lg md:text-xl text-color-white italic mb-6">
+                    <div className="text-color-safety-orange text-6xl opacity-60">&ldquo;</div>
+                    <p className="text-lg md:text-xl text-color-navy-blue italic mb-6">
                       {testimonial.quote}
                     </p>
                     <div>
-                      <h4 className="font-bold text-color-white">{testimonial.author}</h4>
+                      <h4 className="font-bold text-color-navy-blue">{testimonial.author}</h4>
                       <p className="text-color-white/70 text-sm">
                         {testimonial.position}, {testimonial.company}
                       </p>
@@ -147,10 +146,10 @@ export default function TestimonialsSection() {
               </div>
             ))}
           </div>
-          
+
           {/* Navigation Controls */}
           <div className="flex justify-between items-center mt-8">
-            <button 
+            <button
               onClick={prevSlide}
               className="bg-color-white/10 hover:bg-color-safety-orange/20 rounded-full p-3 transition-colors"
               disabled={isAnimating}
@@ -160,23 +159,22 @@ export default function TestimonialsSection() {
                 <path d="M15 18l-6-6 6-6" />
               </svg>
             </button>
-            
+
             <div className="flex gap-3">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    index === currentIndex
-                      ? "bg-color-safety-orange w-8"
-                      : "bg-color-white/30 hover:bg-color-white/50"
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all ${index === currentIndex
+                    ? "bg-color-safety-orange w-8"
+                    : "bg-color-white/30 hover:bg-color-white/50"
+                    }`}
                   onClick={() => goToSlide(index)}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}
             </div>
-            
-            <button 
+
+            <button
               onClick={nextSlide}
               className="bg-color-white/10 hover:bg-color-safety-orange/20 rounded-full p-3 transition-colors"
               disabled={isAnimating}

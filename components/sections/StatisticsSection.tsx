@@ -56,15 +56,15 @@ const StatItem = ({ value, suffix = '', label, index, inView }: StatItemProps) =
         <div className="flex justify-center mb-2">
           <div className="text-5xl md:text-6xl font-bold text-color-white flex items-end">
             <span ref={counterRef}>0</span>
-            <span className="text-color-safety-orange">{suffix}</span>
+            <span className="text-safety-orange">{suffix}</span>
           </div>
         </div>
-        <h3 className="text-lg text-color-white/70">{label}</h3>
+        <h3 className="text-lg text-white/70">{label}</h3>
       </div>
 
       {/* Decorative circle */}
       <div className="absolute -z-10 w-full h-full top-0 left-0 flex items-center justify-center">
-        <div className="w-54 h-42 rounded-2xl border-2 border-text-color-safety-orange opacity-30"></div>
+        <div className="w-54 h-42 rounded-2xl border border-safety-orange opacity-50"></div>
       </div>
     </div>
   );

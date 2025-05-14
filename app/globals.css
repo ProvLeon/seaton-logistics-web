@@ -9,16 +9,37 @@
     --color-light-gray: #f7f7f7;
     --color-background: #ffffff;
     --color-foreground: #171717;
-    
+
+    /* Text Colors for Dark Mode - using Tailwind v4 style */
+    --text-navy-blue: var(--color-navy-blue);
+    --text-white: var(--color-white);
+    --text-charcoal-gray: var(--color-charcoal-gray);
+    --text-safety-orange: var(--color-safety-orange);
+
     /* Fonts */
     --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
 }
 
+:root {
+    color-scheme: light;
+}
+
 .dark {
+    color-scheme: dark;
     --color-background: #0a0a0a;
     --color-foreground: #ededed;
     --color-light-gray: #222222;
+
+    /* In dark mode, we keep the original color values */
+    --color-navy-blue: #003366;
+    --color-charcoal-gray: #333333;
+    --color-safety-orange: #FF6600;
+    --color-white: #FFFFFF;
+
+    /* But override the text colors to use white for better contrast */
+    --text-navy-blue: var(--color-white);
+    --text-charcoal-gray: var(--color-white);
 }
 
 body {
@@ -27,39 +48,15 @@ body {
     font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
-/* Video loading styles */
-.video-loading::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--color-navy-blue);
-    z-index: 100;
-    opacity: 1;
-    transition: opacity 0.5s ease-out;
-}
-
-.video-loading::after {
-    content: '';
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    margin-top: -25px;
-    margin-left: -25px;
-    border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    border-top-color: var(--color-safety-orange);
-    z-index: 101;
-    animation: spin 1s linear infinite;
-}
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Custom utilities */
@@ -121,17 +118,17 @@ body {
 }
 
 @utility text-color-navy-blue {
-    color: var(--color-navy-blue);
+    color: var(--text-navy-blue);
 }
 
 @utility text-color-charcoal-gray {
-    color: var(--color-charcoal-gray);
+    color: var(--text-charcoal-gray);
 }
 
 @utility text-color-safety-orange {
-    color: var(--color-safety-orange);
+    color: var(--text-safety-orange);
 }
 
 @utility text-color-white {
-    color: var(--color-white);
+    color: var(--text-white);
 }

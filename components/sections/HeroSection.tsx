@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import Scene from '../three/Scene';
 import anime from 'animejs/lib/anime.es';
 import BackgroundVideo from '@/components/ui/BackgroundVideo';
+import { Button } from '../ui/Button';
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -146,32 +147,43 @@ export default function HeroSection() {
             ref={ctaRef}
             className="flex flex-wrap justify-center gap-6"
           >
-            <a
-              href="/services"
-              className="bg-color-safety-orange text-color-white px-8 py-4 rounded-full font-medium hover:bg-opacity-90 hover:scale-105 transition-all shadow-lg flex items-center gap-2"
+            <Button
+              variant='primary'
             >
-              <span>Explore Services</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
-            <a
-              href="/contact"
-              className="bg-transparent border-2 border-color-white text-color-white px-8 py-4 rounded-full font-medium hover:bg-color-white/10 hover:scale-105 transition-all flex items-center gap-2"
+
+              <a
+                href="/services"
+                className="flex gap-2 items-center"
+              >
+                <span>Explore Services</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </Button>
+
+            <Button
+              variant='outline'
             >
-              <span>Get a Quote</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="17 8 12 3 7 8" />
-                <line x1="12" y1="3" x2="12" y2="15" />
-              </svg>
-            </a>
+
+              <a
+                href="/contact"
+                className=" flex items-center gap-2"
+              >
+                <span>Get a Quote</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="17 8 12 3 7 8" />
+                  <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+              </a>
+            </Button>
           </div>
         </div>
       </div>
 
       {/* Animated scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-100 cursor-cursor">
+      <div className="hidden md:absolute bottom-10 left-1/2 transform -translate-x-1/2 z-100 cursor-cursor">
         <div className="flex flex-col items-center gap-2">
           <span className="text-color-white/70 text-sm font-medium">Scroll to explore</span>
           <div className="w-6 h-10 border-2 border-color-white/50 rounded-full flex justify-center pt-2">
