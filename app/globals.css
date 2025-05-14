@@ -3,11 +3,20 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --navy-blue: #003366;
+  --charcoal-gray: #333333;
+  --safety-orange: #FF6600;
+  --white: #FFFFFF;
+  --light-gray: #f7f7f7;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--navy-blue);
+  --color-secondary: var(--charcoal-gray);
+  --color-accent: var(--safety-orange);
+  --color-highlight: var(--white);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -16,11 +25,37 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --light-gray: #222222;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Seaton Logistics custom classes */
+.bg-navy-blue {
+  background-color: var(--navy-blue);
+}
+
+.bg-charcoal-gray {
+  background-color: var(--charcoal-gray);
+}
+
+.bg-safety-orange {
+  background-color: var(--safety-orange);
+}
+
+.text-navy-blue {
+  color: var(--navy-blue);
+}
+
+.text-charcoal-gray {
+  color: var(--charcoal-gray);
+}
+
+.text-safety-orange {
+  color: var(--safety-orange);
 }

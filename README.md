@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Seaton Logistics Website
+
+A modern, professional, and responsive website built for Seaton Logistics using Next.js, Three.js, and React Three Fiber.
+
+## Features
+
+- Modern 3D visualization with Three.js
+- Responsive design for all devices
+- Dynamic interactive components
+- Professional branding that aligns with Seaton Logistics' core values
+- Optimized performance
+
+## Tech Stack
+
+- **Next.js**: React framework for server-rendered applications
+- **Three.js**: JavaScript 3D library
+- **React Three Fiber**: React renderer for Three.js
+- **TailwindCSS**: Utility-first CSS framework
+- **TypeScript**: Static typing for JavaScript
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/app`: Main application components and pages
+- `/app/components`: Reusable components
+- `/app/components/3d`: Three.js related components
+- `/app/components/layout`: Layout components (header, footer)
+- `/app/components/sections`: Page sections
+- `/public`: Static assets
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+This website can be easily deployed to platforms like Vercel or Netlify.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Brand Strategy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This website follows the Seaton Logistics brand strategy which emphasizes:
 
-## Deploy on Vercel
+- **Core Values**: Reliability, Innovation, Safety, Customer-Centricity, Sustainability
+- **Brand Personality**: Professional, trustworthy, innovative, and approachable
+- **Brand Colors**: Deep Navy Blue (#003366), Charcoal Gray (#333333), Safety Orange (#FF6600), White (#FFFFFF)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
+
+## License
+
+This project is private and proprietary to Seaton Logistics.
