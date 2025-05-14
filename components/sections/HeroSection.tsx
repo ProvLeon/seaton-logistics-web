@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import Scene from '../three/Scene';
 import anime from 'animejs/lib/anime.es';
+import BackgroundVideo from '@/components/ui/BackgroundVideo';
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -35,6 +36,8 @@ export default function HeroSection() {
         "-=0.4"
       );
   }, { scope: heroRef });
+
+
 
   /* Anime.JS for floating particles */
   useEffect(() => {
@@ -95,15 +98,14 @@ export default function HeroSection() {
     >
       {/* Video background with 3D model overlay */}
       <div className="absolute inset-0 z-0">
-        <video
-          className="absolute inset-0 object-cover w-full h-full opacity-40"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src="/videos/equipment-demo.mp4" type="video/mp4" />
-        </video>
+        <BackgroundVideo
+          sources={[
+            { src: "/videos/equipment-demo.webm", type: "video/webm", media: "(min-width: 768px)" }
+          ]}
+          poster="/images/logistics-warehouse.jpg"
+          priority={true}
+          fallbackImage="/images/logistics-warehouse.jpg"
+        />
         <div className="absolute inset-0 z-10">
           {/* <Scene
             cameraPosition={[5, 2, 8]}
@@ -127,7 +129,7 @@ export default function HeroSection() {
         <div className="flex flex-col items-center text-center">
           <h1
             ref={headingRef}
-            className="text-4xl md:text-5xl lg:text-7xl font-bold text-color-white mb-6 tracking-tight"
+            className="text-4xl md:text-5xl lg:text-7xl font-bold text-color-charcoal-grey mb-6 tracking-tight"
           >
             Empowering Your
             <span className="text-color-safety-orange mx-4">Success</span>

@@ -22,7 +22,7 @@ const stats = [
 const StatItem = ({ value, suffix = '', label, index, inView }: StatItemProps) => {
   const counterRef = useRef<HTMLSpanElement>(null);
   const itemRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     if (inView && counterRef.current && itemRef.current) {
       // Animate the item container
@@ -34,7 +34,7 @@ const StatItem = ({ value, suffix = '', label, index, inView }: StatItemProps) =
         easing: 'easeOutQuad',
         delay: index * 100
       });
-      
+
       // Animate the counter
       anime({
         targets: counterRef.current,
@@ -46,9 +46,9 @@ const StatItem = ({ value, suffix = '', label, index, inView }: StatItemProps) =
       });
     }
   }, [inView, value, index]);
-  
+
   return (
-    <div 
+    <div
       ref={itemRef}
       className="relative opacity-0"
     >
@@ -61,10 +61,10 @@ const StatItem = ({ value, suffix = '', label, index, inView }: StatItemProps) =
         </div>
         <h3 className="text-lg text-color-white/70">{label}</h3>
       </div>
-      
+
       {/* Decorative circle */}
       <div className="absolute -z-10 w-full h-full top-0 left-0 flex items-center justify-center">
-        <div className="w-32 h-32 rounded-full border border-color-safety-orange/30 opacity-30"></div>
+        <div className="w-54 h-42 rounded-2xl border-2 border-text-color-safety-orange opacity-30"></div>
       </div>
     </div>
   );
@@ -75,9 +75,9 @@ export default function StatisticsSection() {
     triggerOnce: true,
     threshold: 0.2,
   });
-  
+
   const headingRef = useRef<HTMLHeadingElement>(null);
-  
+
   useEffect(() => {
     if (inView && headingRef.current) {
       anime({
@@ -97,16 +97,16 @@ export default function StatisticsSection() {
         <div className="absolute top-10 left-10 w-40 h-40 bg-color-safety-orange/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-60 h-60 bg-color-safety-orange/10 rounded-full blur-3xl"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
-        <h2 
+        <h2
           ref={headingRef}
           className="text-3xl md:text-4xl font-bold text-center text-color-white mb-16 opacity-0"
         >
           Our Impact in <span className="text-color-safety-orange">Numbers</span>
         </h2>
-        
-        <div 
+
+        <div
           ref={ref}
           className="grid grid-cols-2 md:grid-cols-4 gap-6"
         >

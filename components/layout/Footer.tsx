@@ -11,9 +11,9 @@ export default function Footer() {
     triggerOnce: true,
     threshold: 0.1,
   });
-  
+
   const columnsRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     if (inView && columnsRef.current) {
       anime({
@@ -44,28 +44,28 @@ export default function Footer() {
           {/* Logo and About */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <Image 
-                src="/seaton-logo.png" 
-                alt="Seaton Logistics" 
-                width={40} 
-                height={40} 
+              <Image
+                src="/seaton-logo.png"
+                alt="Seaton Logistics"
+                width={40}
+                height={40}
                 className="h-10 w-auto"
               />
-              <div className="font-bold text-xl text-color-white">
-                Seaton <span className="text-color-safety-orange">Logistics</span>
+              <div className="font-bold text-md text-color-white flex flex-col">
+                Seaton <span className="-mt-2">Logistics</span>
               </div>
             </div>
-            <p className="text-color-white/70 text-sm mb-6">
-              Premium equipment rentals, expert maintenance, and comprehensive training 
+            <p className="text-white/70 text-sm mb-6">
+              Premium equipment rentals, expert maintenance, and comprehensive training
               for construction, agriculture, mining, and security industries across Ghana.
             </p>
             <div className="flex space-x-5">
               {socialLinks.map((link, index) => (
-                <a 
+                <a
                   key={index}
-                  href={link.url} 
+                  href={link.url}
                   aria-label={link.label}
-                  className="text-color-white/70 hover:text-color-safety-orange transition-colors duration-300"
+                  className="text-white/70 hover:text-color-safety-orange transition-colors duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -84,9 +84,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <Link 
-                    href={link.url} 
-                    className="text-color-white/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2"
+                  <Link
+                    href={link.url}
+                    className="text-white/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2"
                   >
                     <span>&raquo;</span> {link.label}
                   </Link>
@@ -103,9 +103,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <Link 
-                    href={service.url} 
-                    className="text-color-white/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2"
+                  <Link
+                    href={service.url}
+                    className="text-white/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2"
                   >
                     <span>&raquo;</span> {service.label}
                   </Link>
@@ -119,7 +119,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-6 text-color-white after:content-[''] after:block after:w-10 after:h-1 after:bg-color-safety-orange after:mt-2">
               Contact Us
             </h3>
-            <address className="not-italic space-y-4 text-color-white/70">
+            <address className="not-italic space-y-4 text-white/70">
               {contactInfo.map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <span className="text-color-safety-orange mt-1" dangerouslySetInnerHTML={{ __html: item.icon }} />
@@ -133,12 +133,12 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-color-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-color-white/60 text-sm">
+            <p className="text-white/60 text-sm">
               &copy; {currentYear} Seaton Logistics. All rights reserved.
             </p>
             <div className="flex gap-5 mt-4 md:mt-0">
-              <Link href="/privacy-policy" className="text-color-white/60 text-sm hover:text-color-safety-orange transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="text-color-white/60 text-sm hover:text-color-safety-orange transition-colors">Terms & Conditions</Link>
+              <Link href="/privacy-policy" className="text-white/60 text-sm hover:text-color-safety-orange transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="text-white/60 text-sm hover:text-color-safety-orange transition-colors">Terms & Conditions</Link>
             </div>
           </div>
         </div>

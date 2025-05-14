@@ -15,18 +15,51 @@
     --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-    @theme {
-        --color-background: #0a0a0a;
-        --color-foreground: #ededed;
-        --color-light-gray: #222222;
-    }
+.dark {
+    --color-background: #0a0a0a;
+    --color-foreground: #ededed;
+    --color-light-gray: #222222;
 }
 
 body {
     background: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Video loading styles */
+.video-loading::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-navy-blue);
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.video-loading::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    margin-left: -25px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-top-color: var(--color-safety-orange);
+    z-index: 101;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Custom utilities */
