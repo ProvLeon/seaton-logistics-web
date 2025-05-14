@@ -3,7 +3,6 @@
 import { useRef, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import Scene from '../three/Scene';
 import anime from 'animejs/lib/anime.es';
 import BackgroundVideo from '@/components/ui/BackgroundVideo';
 import { Button } from '../ui/Button';
