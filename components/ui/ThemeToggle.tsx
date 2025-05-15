@@ -14,7 +14,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
 
   if (!mounted) {
     return (
-      <div className={`w-10 h-10 rounded-full flex items-center justify-center bg-color-navy-blue/10 dark:bg-color-white/10 ${className}`}>
+      <div className={`w-10 h-10 rounded-full flex items-center justify-center bg-color-black/10 dark:bg-color-white/10 ${className}`}>
         <div className="w-5 h-5 bg-color-charcoal-gray/20 dark:bg-color-white/20 rounded-full animate-pulse"></div>
       </div>
     );
@@ -31,7 +31,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
   return (
     <button
       onClick={toggleTheme}
-      className={`cursor-pointer w-10 h-10 rounded-full flex items-center justify-center bg-color-navy-blue/10 dark:bg-color-white/10 hover:bg-color-safety-orange/20 transition-colors ${className}`}
+      className={`cursor-pointer w-10 h-10 rounded-full flex items-center justify-center bg-color-black/10 dark:bg-color-white/10 hover:bg-color-safety-orange/20 transition-colors ${className}`}
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
       {theme === 'dark' ? (
@@ -47,7 +47,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
       ) : (
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-color-navy-blue">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-color-black">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       )}

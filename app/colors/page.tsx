@@ -12,7 +12,7 @@ export default function ColorGuidePage() {
       
       <main className="flex-grow container mx-auto px-4 py-16 max-w-6xl">
         <div className="mb-10">
-          <h1 className="text-4xl font-bold mb-4 text-color-navy-blue">Seaton Logistics Brand Colors</h1>
+          <h1 className="text-4xl font-bold mb-4 text-color-black">Seaton Logistics Brand Colors</h1>
           <p className="text-xl text-color-charcoal-gray/80 max-w-3xl">
             This guide provides a comprehensive overview of our brand colors and how to use them
             consistently across our digital products.
@@ -22,7 +22,7 @@ export default function ColorGuidePage() {
         <ColorPalette />
 
         <div className="mt-20 border-t pt-10">
-          <h2 className="text-2xl font-bold mb-6 text-color-navy-blue">Implementation Notes</h2>
+          <h2 className="text-2xl font-bold mb-6 text-color-black">Implementation Notes</h2>
           
           <div className="space-y-6">
             <div>
@@ -31,7 +31,7 @@ export default function ColorGuidePage() {
               <pre className="bg-color-light-gray p-4 rounded overflow-auto">
                 <code>
 {`/* In CSS */
-var(--color-navy-blue)
+var(--color-black)
 var(--color-charcoal-gray)
 var(--color-safety-orange)
 var(--color-white)
@@ -46,20 +46,20 @@ var(--color-light-gray)`}
               <pre className="bg-color-light-gray p-4 rounded overflow-auto">
                 <code>
 {`/* Backgrounds */
-bg-color-navy-blue
+bg-color-black
 bg-color-charcoal-gray
 bg-color-safety-orange
 bg-color-white
 bg-color-light-gray
 
 /* Text colors */
-text-color-navy-blue
+text-color-black
 text-color-charcoal-gray
 text-color-safety-orange
 text-color-white
 
 /* With opacity */
-bg-color-navy-blue/80
+bg-color-black/80
 text-color-charcoal-gray/60`}
                 </code>
               </pre>
@@ -76,10 +76,10 @@ text-color-charcoal-gray/60`}
 const primaryColor = COLORS.safetyOrange;
 
 // With opacity
-const overlayColor = withOpacity(COLORS.navyBlue, 0.8);
+const overlayColor = withOpacity(COLORS.black, 0.8);
 
 // CSS Variables in inline styles
-const style = { backgroundColor: cssVar('navy-blue') };
+const style = { backgroundColor: cssVar('black') };
 
 // Get contrast text color
 const textColor = getContrastText(COLORS.safetyOrange);`}

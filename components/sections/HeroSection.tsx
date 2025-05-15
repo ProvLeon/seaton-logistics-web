@@ -46,7 +46,7 @@ export default function HeroSection() {
     // Create particles
     const particlesContainer = particlesRef.current;
     // Use brand colors
-    const colors = ['var(--color-safety-orange)', 'var(--color-navy-blue)', 'var(--color-white)'];
+    const colors = ['var(--color-safety-orange)', 'var(--color-black)', 'var(--color-white)'];
     const particles = [];
 
     // Create 20 particle elements
@@ -119,7 +119,7 @@ export default function HeroSection() {
       </div>
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-color-charcoal-gray/40 to-color-navy-blue/90 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-color-black/40 to-color-black/90 z-10"></div>
 
       {/* Floating particles */}
       <div ref={particlesRef} className="absolute inset-0 z-20 opacity-60 pointer-events-none"></div>
@@ -129,7 +129,7 @@ export default function HeroSection() {
         <div className="flex flex-col items-center text-center">
           <h1
             ref={headingRef}
-            className="text-4xl md:text-5xl lg:text-7xl font-bold text-color-charcoal-grey mb-6 tracking-tight"
+            className="text-4xl md:text-5xl lg:text-7xl font-bold text-color-white mb-6 tracking-tight"
           >
             Empowering Your
             <span className="text-color-safety-orange mx-4">Success</span>

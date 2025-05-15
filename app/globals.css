@@ -2,7 +2,7 @@
 
 @theme {
     /* Colors */
-    --color-navy-blue: #003366;
+    --color-black: #000000;
     --color-charcoal-gray: #333333;
     --color-safety-orange: #FF6600;
     --color-white: #FFFFFF;
@@ -11,7 +11,7 @@
     --color-foreground: #171717;
 
     /* Text Colors for Dark Mode - using Tailwind v4 style */
-    --text-navy-blue: var(--color-navy-blue);
+    --text-black: var(--color-black);
     --text-white: var(--color-white);
     --text-charcoal-gray: var(--color-charcoal-gray);
     --text-safety-orange: var(--color-safety-orange);
@@ -32,13 +32,13 @@
     --color-light-gray: #222222;
 
     /* In dark mode, we keep the original color values */
-    --color-navy-blue: #003366;
+    --color-black: #000000;
     --color-charcoal-gray: #333333;
     --color-safety-orange: #FF6600;
     --color-white: #FFFFFF;
 
     /* But override the text colors to use white for better contrast */
-    --text-navy-blue: var(--color-white);
+    --text-black: var(--color-white);
     --text-charcoal-gray: var(--color-white);
 }
 
@@ -60,8 +60,8 @@ body {
 }
 
 /* Custom utilities */
-@utility bg-navy-blue {
-    background-color: var(--color-navy-blue);
+@utility bg-black {
+    background-color: var(--color-black);
 }
 
 @utility bg-charcoal-gray {
@@ -80,8 +80,8 @@ body {
     background-color: var(--color-light-gray);
 }
 
-@utility text-navy-blue {
-    color: var(--color-navy-blue);
+@utility text-black {
+    color: var(--color-black);
 }
 
 @utility text-charcoal-gray {
@@ -97,8 +97,8 @@ body {
 }
 
 /* Color classes in the format used in components */
-@utility bg-color-navy-blue {
-    background-color: var(--color-navy-blue);
+@utility bg-color-black {
+    background-color: var(--color-black);
 }
 
 @utility bg-color-charcoal-gray {
@@ -117,8 +117,8 @@ body {
     background-color: var(--color-light-gray);
 }
 
-@utility text-color-navy-blue {
-    color: var(--text-navy-blue);
+@utility text-color-black {
+    color: var(--text-black);
 }
 
 @utility text-color-charcoal-gray {

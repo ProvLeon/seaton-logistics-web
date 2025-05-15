@@ -29,7 +29,7 @@ export default function CallToActionSection() {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-color-navy-blue via-color-navy-blue to-color-safety-orange/30 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-color-black via-color-black to-color-safety-orange/30 z-0"></div>
 
       {/* Animated background circles */}
       <div className="absolute inset-0 z-0 opacity-20">
@@ -44,7 +44,7 @@ export default function CallToActionSection() {
           className="max-w-4xl mx-auto bg-color-white/10 backdrop-blur-sm p-10 md:p-16 rounded-3xl border border-color-white/10"
         >
           <div ref={contentRef} className="text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-color-navy-blue mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-color-white mb-6">
               Ready to Elevate Your Operations?
             </h2>
             <p className="text-color-white/80 text-lg mb-10 max-w-2xl mx-auto">

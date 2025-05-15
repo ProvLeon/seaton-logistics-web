@@ -78,7 +78,7 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => {
     >
       <div
         ref={cardRef}
-        className="bg-gradient-to-br from-color-navy-blue/20 to-color-navy-blue/40 backdrop-blur-sm p-6 md:p-8 rounded-2xl h-full border border-color-white/10 hover:border-color-safety-orange/30 transition-all duration-300 hover:shadow-lg hover:shadow-color-safety-orange/10"
+        className="bg-gradient-to-br from-color-black/20 to-color-black/40 backdrop-blur-sm p-6 md:p-8 rounded-2xl h-full border border-color-white/10 hover:border-color-safety-orange/30 transition-all duration-300 hover:shadow-lg hover:shadow-color-safety-orange/10"
       >
         <div
           ref={iconRef}
@@ -92,7 +92,7 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => {
             className="text-color-white"
           />
         </div>
-        <h3 className="text-xl md:text-2xl font-bold text-color-navy-blue mb-3">{title}</h3>
+        <h3 className="text-xl md:text-2xl font-bold text-color-white mb-3">{title}</h3>
         <p className="text-color-white/70">{description}</p>
       </div>
     </div>
@@ -121,7 +121,7 @@ export default function FeaturesSection() {
   }, [inView]);
 
   return (
-    <section className="py-24 bg-gradient-to-b from-color-navy-blue to-color-charcoal-gray relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-color-black to-color-charcoal-gray relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-color-safety-orange/5 blur-3xl"></div>
@@ -129,7 +129,7 @@ export default function FeaturesSection() {
       </div>
       <div className="container mx-auto px-4 relative z-10">
         <div ref={headerRef} className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-color-navy-blue mb-5">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-color-white mb-5">
             Premium <span className="text-color-safety-orange">Logistics</span> Solutions
           </h2>
           <p className="text-color-white/70 text-lg">

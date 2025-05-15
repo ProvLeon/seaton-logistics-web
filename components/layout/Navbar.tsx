@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { animate } from 'framer-motion';
 import Image from 'next/image';
 import ThemeToggle from '@/components/ui/ThemeToggle';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from '@/components/providers/ThemeProvider';
+import { Button, LinkButton } from '../ui/Button';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -25,6 +26,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const isHomePage = pathname === '/';
   const { theme } = useTheme();
+  const router = useRouter();
 
   const isLinkActive = (path: string) => {
     if (path === '/') {
@@ -111,10 +113,10 @@ export default function Navbar() {
     <header
       className={`fixed w-full top-0 left-0 z-50 transition-all duration-500
       ${isScrolled
-          ? 'py-3 bg-color-white/95 dark:bg-color-charcoal-gray/95 shadow-md backdrop-blur-sm'
+          ? 'py-3 bg-color-white/95 dark:bg-color-black/95 shadow-md backdrop-blur-sm'
           : isHomePage
             ? 'py-5 bg-transparent'
-            : 'py-5 bg-color-white/80 dark:bg-color-charcoal-gray/80 backdrop-blur-sm'}`}
+            : 'py-5 bg-color-white/80 dark:bg-color-black/80 backdrop-blur-sm'}`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
@@ -128,7 +130,7 @@ export default function Navbar() {
                 className="object-contain"
               />
             </div>
-            <div className={`font-bold text-xl flex flex-col text-color-navy-blue`}>
+            <div className={`font-bold text-xl flex flex-col text-color-black`}>
               Seaton <span className="-mt-3">Logistics</span>
             </div>
           </Link>
@@ -161,12 +163,11 @@ export default function Navbar() {
               <ThemeToggle className="mr-2" />
 
               {/* CTA Button */}
-              <a
-                href="/contact"
-                className="px-6 py-2 bg-color-safety-orange text-color-white rounded-full hover:bg-opacity-90 transition-all font-medium"
+              <LinkButton
+                href='/contact'
               >
                 Get a Quote
-              </a>
+              </LinkButton>
             </div>
           </nav>
 
@@ -178,29 +179,29 @@ export default function Navbar() {
           >
             <span
               className={`block h-0.5 w-6 transition-transform duration-300
-            ${isScrolled
-                  ? theme === 'dark' ? 'bg-color-white' : 'bg-color-navy-blue'
+              ${isScrolled
+                  ? theme === 'dark' ? 'bg-color-white' : 'bg-color-black'
                   : isHomePage
                     ? 'bg-color-white'
-                    : theme === 'dark' ? 'bg-color-white' : 'bg-color-navy-blue'}
+                    : theme === 'dark' ? 'bg-color-white' : 'bg-color-black'}
             ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
             />
             <span
               className={`block h-0.5 transition-opacity duration-300
             ${isScrolled
-                  ? theme === 'dark' ? 'bg-color-white' : 'bg-color-navy-blue'
+                  ? theme === 'dark' ? 'bg-color-white' : 'bg-color-black'
                   : isHomePage
                     ? 'bg-color-white'
-                    : theme === 'dark' ? 'bg-color-white' : 'bg-color-navy-blue'}
+                    : theme === 'dark' ? 'bg-color-white' : 'bg-color-black'}
             ${mobileMenuOpen ? 'opacity-0 w-0' : 'opacity-100 w-6'}`}
             />
             <span
               className={`block h-0.5 w-6 transition-transform duration-300
             ${isScrolled
-                  ? theme === 'dark' ? 'bg-color-white' : 'bg-color-navy-blue'
+                  ? theme === 'dark' ? 'bg-color-white' : 'bg-color-black'
                   : isHomePage
                     ? 'bg-color-white'
-                    : theme === 'dark' ? 'bg-color-white' : 'bg-color-navy-blue'}
+                    : theme === 'dark' ? 'bg-color-white' : 'bg-color-black'}
             ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}
             />
           </button>
@@ -212,8 +213,8 @@ export default function Navbar() {
             <div
               ref={menuRef}
               className={`md:hidden py-5 opacity-0 rounded-b-lg ${isScrolled
-                ? theme === 'dark' ? 'bg-color-charcoal-gray' : 'bg-color-white'
-                : theme === 'dark' ? 'bg-color-charcoal-gray/95' : 'bg-color-white/95'} backdrop-blur-sm`}
+                ? theme === 'dark' ? 'bg-color-black' : 'bg-color-white'
+                : theme === 'dark' ? 'bg-color-black/95' : 'bg-color-white/95'} backdrop-blur-sm`}
               style={{ transform: 'translateY(-20px)' }}
             >
               <nav className="flex flex-col gap-4">

@@ -64,7 +64,7 @@ const StatItem = ({ value, suffix = '', label, index, inView }: StatItemProps) =
 
       {/* Decorative circle */}
       <div className="absolute -z-10 w-full h-full top-0 left-0 flex items-center justify-center">
-        <div className="w-54 h-42 rounded-2xl border border-safety-orange opacity-50"></div>
+        <div className="w-54 h-42 rounded-2xl border border-color-safety-orange opacity-50"></div>
       </div>
     </div>
   );
@@ -91,11 +91,11 @@ export default function StatisticsSection() {
   }, [inView]);
 
   return (
-    <section className="py-24 bg-color-navy-blue relative overflow-hidden">
+    <section className="py-24 bg-color-black relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-10 left-10 w-40 h-40 bg-color-safety-orange/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-60 h-60 bg-color-safety-orange/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-40 h-40 bg-color-safety-orange/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-60 h-60 bg-color-safety-orange/20 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

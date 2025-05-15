@@ -71,27 +71,27 @@ export default function BackgroundVideo({
     };
   }, [priority]);
 
-  // If video errors and we have a fallback image, render that instead
-  if (hasError && fallbackImage) {
-    return (
-      <div
-        className={`absolute inset-0 bg-cover bg-center ${className}`}
-        style={{ backgroundImage: `url(${fallbackImage})` }}
-      />
-    );
-  }
-
+// If video errors and we have a fallback image, render that instead
+if (hasError && fallbackImage) {
   return (
-    <video
-      ref={videoRef}
-      className={`absolute inset-0 object-cover w-full h-full transition-opacity duration-700 ${isLoaded ? 'opacity-40' : 'opacity-0'} ${className}`}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload={priority ? "auto" : "metadata"}
-      poster={poster}
-    >
+    <div
+      className={`absolute inset-0 bg-cover bg-center ${className}`}
+      style={{ backgroundImage: `url(${fallbackImage})` }}
+    />
+  );
+}
+
+return (
+  <video
+    ref={videoRef}
+    className={`absolute inset-0 object-cover w-full h-full transition-opacity duration-700 ${isLoaded ? 'opacity-30' : 'opacity-0'} ${className}`}
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload={priority ? "auto" : "metadata"}
+    poster={poster}
+  >
       {sources.map((source, index) => (
         <source
           key={index}

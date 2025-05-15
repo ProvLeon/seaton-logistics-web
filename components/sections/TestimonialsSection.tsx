@@ -97,7 +97,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-color-charcoal-gray/90 to-color-navy-blue">
+    <section className="py-24 bg-gradient-to-b from-color-charcoal-gray/90 to-color-black">
       <div ref={ref} className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-color-white mb-5">
@@ -132,11 +132,11 @@ export default function TestimonialsSection() {
 
                   <div className="md:w-3/4 flex flex-col justify-center">
                     <div className="text-color-safety-orange text-6xl opacity-60">&ldquo;</div>
-                    <p className="text-lg md:text-xl text-color-navy-blue italic mb-6">
+                    <p className="text-lg md:text-xl text-color-black italic mb-6">
                       {testimonial.quote}
                     </p>
                     <div>
-                      <h4 className="font-bold text-color-navy-blue">{testimonial.author}</h4>
+                      <h4 className="font-bold text-color-black">{testimonial.author}</h4>
                       <p className="text-color-white/70 text-sm">
                         {testimonial.position}, {testimonial.company}
                       </p>

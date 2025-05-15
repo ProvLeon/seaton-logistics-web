@@ -4,8 +4,8 @@
  * Brand color definitions for consistent usage across the application
  */
 export const COLORS = {
-  navyBlue: '#003366',
-  charcoalGray: '#333333',
+  black: '#000000',
+  charcoalGray: '#333333', // keeping as a secondary color
   safetyOrange: '#FF6600',
   white: '#FFFFFF',
   lightGray: '#f7f7f7',
@@ -31,7 +31,7 @@ export function withOpacity(color: string, opacity: number): string {
  * @param colorName Color variable name (without the --color- prefix)
  * @returns CSS variable reference
  */
-export function cssVar(colorName: 'navy-blue' | 'charcoal-gray' | 'safety-orange' | 'white' | 'light-gray'): string {
+export function cssVar(colorName: 'black' | 'charcoal-gray' | 'safety-orange' | 'white' | 'light-gray'): string {
   return `var(--color-${colorName})`;
 }
 
@@ -50,7 +50,7 @@ export function getContrastText(bgColor: string): string {
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
   
   // Return white for dark backgrounds, and dark for light backgrounds
-  return luminance > 0.5 ? COLORS.charcoalGray : COLORS.white;
+  return luminance > 0.5 ? COLORS.black : COLORS.white;
 }
 
 /**
@@ -67,16 +67,16 @@ export function getBrandClasses(options: {
       if (variant === 'primary') {
         return 'bg-color-safety-orange text-color-white hover:bg-opacity-90 font-medium transition-all';
       } else if (variant === 'secondary') {
-        return 'bg-color-navy-blue text-color-white hover:bg-opacity-90 font-medium transition-all';
+        return 'bg-color-black text-color-white hover:bg-opacity-90 font-medium transition-all';
       } else {
-        return 'bg-transparent border-2 border-color-white text-color-navy-blue hover:bg-color-light-gray font-medium transition-all';
+        return 'bg-transparent border-2 border-color-white text-color-black hover:bg-color-light-gray font-medium transition-all';
       }
     case 'card':
       return 'border border-color-light-gray rounded-lg shadow-sm overflow-hidden';
     case 'heading':
-      return 'text-color-navy-blue font-bold';
+      return 'text-color-black font-bold';
     case 'text':
-      return 'text-color-charcoal-gray';
+      return 'text-color-black';
     default:
       return '';
   }

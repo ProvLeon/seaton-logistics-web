@@ -22,9 +22,9 @@ interface LinkButtonProps extends Omit<ButtonProps, 'onClick'> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: 'bg-color-safety-orange hover:bg-opacity-90 text-color-white shadow-sm',
-  secondary: 'bg-color-navy-blue hover:bg-opacity-90 text-color-white shadow-sm',
-  outline: 'bg-transparent border-2 border-color-navy-blue text-color-navy-blue hover:bg-color-navy-blue/5',
-  ghost: 'bg-transparent text-color-navy-blue hover:bg-color-navy-blue/10'
+  secondary: 'bg-color-black hover:bg-opacity-90 text-color-white shadow-sm',
+  outline: 'bg-transparent border-2 border-color-black text-color-black hover:bg-color-black/5',
+  ghost: 'bg-transparent text-color-black hover:bg-color-black/10'
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -47,18 +47,18 @@ export function Button({
   type = 'button',
   ...props
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-color-navy-blue disabled:opacity-60 disabled:cursor-not-allowed';
+  const baseStyles = 'inline-flex items-center justify-center font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-color-black disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer';
   const width = fullWidth ? 'w-full' : '';
   const radius = rounded ? 'rounded-full' : 'rounded-md';
 
   return (
     <button
       className={`
-        ${baseStyles} 
-        ${variantStyles[variant]} 
-        ${sizeStyles[size]} 
-        ${width} 
-        ${radius} 
+        ${baseStyles}
+        ${variantStyles[variant]}
+        ${sizeStyles[size]}
+        ${width}
+        ${radius}
         ${className}
       `}
       disabled={disabled || loading}
@@ -71,13 +71,13 @@ export function Button({
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
       )}
-      
+
       {icon && iconPosition === 'left' && !loading && (
         <span className="mr-2">{icon}</span>
       )}
-      
+
       {children}
-      
+
       {icon && iconPosition === 'right' && (
         <span className="ml-2">{icon}</span>
       )}
@@ -99,7 +99,7 @@ export function LinkButton({
   rel,
   ...props
 }: LinkButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-color-navy-blue';
+  const baseStyles = 'inline-flex items-center justify-center font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-color-black';
   const width = fullWidth ? 'w-full' : '';
   const radius = rounded ? 'rounded-full' : 'rounded-md';
 
@@ -107,11 +107,11 @@ export function LinkButton({
     <Link
       href={href}
       className={`
-        ${baseStyles} 
-        ${variantStyles[variant]} 
-        ${sizeStyles[size]} 
-        ${width} 
-        ${radius} 
+        ${baseStyles}
+        ${variantStyles[variant]}
+        ${sizeStyles[size]}
+        ${width}
+        ${radius}
         ${className}
       `}
       target={target}
@@ -121,9 +121,9 @@ export function LinkButton({
       {icon && iconPosition === 'left' && (
         <span className="mr-2">{icon}</span>
       )}
-      
+
       {children}
-      
+
       {icon && iconPosition === 'right' && (
         <span className="ml-2">{icon}</span>
       )}

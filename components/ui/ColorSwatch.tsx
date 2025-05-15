@@ -20,15 +20,15 @@ export default function ColorSwatch({
   return (
     <div className={`flex flex-col ${className}`}>
       <div 
-        className="h-20 w-full rounded-t-lg shadow-inner border border-gray-200 dark:border-gray-700"
+        className="h-20 w-full rounded-t-lg shadow-inner border border-gray-200 dark:border-gray-800"
         style={{ backgroundColor: color }}
       />
       {showText && (
-        <div className="p-3 border border-t-0 rounded-b-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+        <div className="p-3 border border-t-0 rounded-b-lg border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
           <div className="font-medium text-sm">{name}</div>
-          <div className="text-xs mt-1 text-gray-600 dark:text-gray-300">{hex}</div>
+          <div className="text-xs mt-1 text-gray-700 dark:text-gray-300">{hex}</div>
           {cssVar && (
-            <div className="text-xs mt-1 font-mono text-gray-500 dark:text-gray-400">
+            <div className="text-xs mt-1 font-mono text-gray-600 dark:text-gray-400">
               {cssVar}
             </div>
           )}
