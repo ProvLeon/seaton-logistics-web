@@ -82,7 +82,7 @@ export default function Footer() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-color-safety-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </motion.div>
-              <div className="font-bold text-lg text-color-white flex flex-col tracking-wider">
+              <div className="font-bold text-lg text-color-black flex flex-col tracking-wider">
                 <motion.span
                   initial={{ opacity: 1 }}
                   whileHover={{ y: -2, x: 1 }}
@@ -100,7 +100,7 @@ export default function Footer() {
                 </motion.span>
               </div>
             </div>
-            <p className="text-white/70 text-sm mb-6 leading-relaxed">
+            <p className="text-color-black/70 text-sm mb-6 leading-relaxed">
               Premium equipment rentals, expert maintenance, and comprehensive training
               for construction, agriculture, mining, and security industries across Ghana.
             </p>
@@ -110,7 +110,7 @@ export default function Footer() {
                   key={index}
                   href={link.url}
                   aria-label={link.label}
-                  className="text-white/70 hover:text-color-safety-orange transition-colors duration-300 p-2 bg-white/5 hover:bg-white/10 rounded-lg"
+                  className="text-color-black/70 hover:text-color-safety-orange transition-colors duration-300 p-2 bg-white/5 hover:bg-white/10 rounded-lg"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ y: -3, scale: 1.1 }}
@@ -126,7 +126,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-color-white flex items-center">
+            <h3 className="text-lg font-semibold mb-6 text-color-black flex items-center">
               <span className="relative">
                 Quick Links
                 <span className="absolute -bottom-2 left-0 w-3/4 h-1 bg-gradient-to-r from-color-safety-orange to-transparent rounded-full"></span>
@@ -142,7 +142,7 @@ export default function Footer() {
                 >
                   <Link
                     href={link.url}
-                    className="text-white/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2 group"
+                    className="text-color-black/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2 group"
                   >
                     <span className="text-color-safety-orange transform group-hover:rotate-90 transition-transform duration-300">&raquo;</span>
                     <span className="group-hover:underline decoration-color-safety-orange/30 underline-offset-4">{link.label}</span>
@@ -154,7 +154,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-color-white flex items-center">
+            <h3 className="text-lg font-semibold mb-6 text-color-black flex items-center">
               <span className="relative">
                 Our Services
                 <span className="absolute -bottom-2 left-0 w-3/4 h-1 bg-gradient-to-r from-color-safety-orange to-transparent rounded-full"></span>
@@ -170,7 +170,7 @@ export default function Footer() {
                 >
                   <Link
                     href={service.url}
-                    className="text-white/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2 group"
+                    className="text-color-black/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2 group"
                   >
                     <span className="text-color-safety-orange transform group-hover:rotate-90 transition-transform duration-300">&raquo;</span>
                     <span className="group-hover:underline decoration-color-safety-orange/30 underline-offset-4">{service.label}</span>
@@ -182,13 +182,13 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-color-white flex items-center">
+            <h3 className="text-lg font-semibold mb-6 text-color-black flex items-center">
               <span className="relative">
                 Contact Us
                 <span className="absolute -bottom-2 left-0 w-3/4 h-1 bg-gradient-to-r from-color-safety-orange to-transparent rounded-full"></span>
               </span>
             </h3>
-            <address className="not-italic space-y-4 text-white/70">
+            <address className="not-italic space-y-2 text-color-black/70">
               {contactInfo.map((item, index) => (
                 <motion.div
                   key={index}
