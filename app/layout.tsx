@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +34,9 @@ export default function RootLayout({
         <ThemeProvider>
           {/* Main content wrapper - positioned above the video */}
           <div className="relative z-0">
+            <Navbar />
             {children}
+            <Footer />
           </div>
         </ThemeProvider>
       </body>

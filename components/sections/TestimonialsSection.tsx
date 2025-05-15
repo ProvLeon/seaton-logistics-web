@@ -12,7 +12,7 @@ const testimonials = [
     author: "Michael Acheampong",
     position: "Operations Director",
     company: "GreenBuild Construction Ltd",
-    image: "https://placehold.co/100x100?text=M.A",
+    image: "/images/testimonial-profile.png",
     rating: 5,
   },
   {
@@ -20,7 +20,7 @@ const testimonials = [
     author: "Abena Mensah",
     position: "Safety Manager",
     company: "Golden Minerals Ghana",
-    image: "https://placehold.co/100x100?text=A.M",
+    image: "/images/testimonial-profile.png",
     rating: 5,
   },
   {
@@ -28,7 +28,7 @@ const testimonials = [
     author: "Kwame Osei",
     position: "CEO",
     company: "Harvest Agro Solutions",
-    image: "https://placehold.co/100x100?text=K.O",
+    image: "/images/testimonial-profile.png",
     rating: 5,
   },
 ];
