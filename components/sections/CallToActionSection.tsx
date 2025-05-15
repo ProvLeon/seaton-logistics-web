@@ -20,7 +20,7 @@ export default function CallToActionSection() {
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
     const container = contentRef.current?.getBoundingClientRect();
-    
+
     if (container) {
       const x = (clientX - container.left - container.width / 2) / 30;
       const y = (clientY - container.top - container.height / 2) / 30;
@@ -36,7 +36,7 @@ export default function CallToActionSection() {
         y: 0,
         transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
       });
-      
+
       // Animate with anime.js for more complex animations
       if (contentRef.current) {
         anime({
@@ -54,46 +54,46 @@ export default function CallToActionSection() {
   return (
     <section className="py-32 relative overflow-hidden">
       {/* Background gradient with enhanced visuals */}
-      <div className="absolute inset-0 bg-gradient-to-br from-color-black via-color-charcoal-gray to-color-safety-orange/20 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-color-black/30 via-color-charcoal-gray to-color-safety-orange/20 z-0"></div>
 
       {/* Enhanced animated background elements */}
       <div className="absolute inset-0 z-0 opacity-30">
-        <motion.div 
+        <motion.div
           className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full border border-color-white/20"
-          animate={{ 
+          animate={{
             scale: [1, 1.2, 1],
             opacity: [0.2, 0.4, 0.2],
             rotate: [0, 15, 0]
           }}
-          transition={{ 
-            duration: 10, 
+          transition={{
+            duration: 10,
             repeat: Infinity,
-            repeatType: "reverse" 
+            repeatType: "reverse"
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-3/4 right-1/4 w-96 h-96 rounded-full border border-color-white/20"
-          animate={{ 
+          animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.3, 0.1, 0.3],
             rotate: [0, -15, 0]
           }}
-          transition={{ 
-            duration: 12, 
+          transition={{
+            duration: 12,
             repeat: Infinity,
             repeatType: "reverse",
             delay: 1
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute bottom-1/4 left-1/3 w-64 h-64 rounded-full border border-color-safety-orange/20"
-          animate={{ 
+          animate={{
             scale: [1, 0.8, 1],
             opacity: [0.2, 0.5, 0.2],
             x: [-20, 20, -20]
           }}
-          transition={{ 
-            duration: 15, 
+          transition={{
+            duration: 15,
             repeat: Infinity,
             repeatType: "reverse",
             delay: 2
@@ -127,45 +127,45 @@ export default function CallToActionSection() {
         ))}
       </div>
 
-      <motion.div 
+      <motion.div
         className="container mx-auto px-4 relative z-10"
         initial={{ opacity: 0, y: 50 }}
         animate={controls}
       >
         <motion.div
           ref={ref}
-          className="max-w-4xl mx-auto glass-effect-dark p-10 md:p-16 rounded-3xl border border-color-white/10 shadow-2xl relative overflow-hidden"
+          className="max-w-4xl mx-auto glass-effect-dark p-10 md:p-16 rounded-3xl border border-color-black/10 shadow-2xl relative overflow-hidden"
           whileHover={{ boxShadow: "0 25px 50px -12px rgba(255, 102, 0, 0.25)" }}
           onMouseMove={handleMouseMove}
-          style={{ 
-            perspective: "1000px", 
+          style={{
+            perspective: "1000px",
             transformStyle: "preserve-3d"
           }}
         >
           {/* Decorative geometric shapes */}
           <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-color-safety-orange/20 blur-xl"></div>
           <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-color-safety-orange/20 blur-xl"></div>
-          
-          <motion.div 
-            ref={contentRef} 
+
+          <motion.div
+            ref={contentRef}
             className="text-center relative z-10"
-            style={{ 
+            style={{
               rotateX: -mousePosition.y,
               rotateY: mousePosition.x,
               transformStyle: "preserve-3d"
             }}
           >
-            <motion.h2 
-              className="text-3xl md:text-5xl lg:text-6xl font-bold text-color-white mb-6 tracking-tight"
+            <motion.h2
+              className="text-3xl md:text-5xl lg:text-6xl font-bold text-color-black mb-6 tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
               Ready to <span className="text-gradient">Elevate</span> Your Operations?
             </motion.h2>
-            
-            <motion.p 
-              className="text-color-white/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed"
+
+            <motion.p
+              className="text-color-black/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
@@ -173,8 +173,8 @@ export default function CallToActionSection() {
               Partner with Seaton Logistics for premium equipment solutions that
               drive efficiency, safety, and growth across your business.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               className="flex flex-wrap justify-center gap-5"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
