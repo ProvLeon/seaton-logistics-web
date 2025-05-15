@@ -2,12 +2,18 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { animate, motion, useScroll, useTransform } from 'framer-motion';
+import { animate, motion, useScroll, useTransform, MotionStyle, MotionValue } from 'framer-motion';
 import Image from 'next/image';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import { usePathname } from 'next/navigation';
 import { useTheme } from '@/components/providers/ThemeProvider';
 import { LinkButton } from '../ui/Button';
+
+// Define a type for the navbar's custom CSS properties
+interface NavbarCustomCSS extends MotionStyle {
+  '--nav-opacity': MotionValue<number>;
+  '--nav-blur': MotionValue<number>;
+}
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -133,7 +139,7 @@ export default function Navbar() {
         WebkitBackdropFilter: `blur(var(--nav-blur)px)`,
         '--nav-opacity': navOpacity,
         '--nav-blur': navBlur
-      } as any}
+      } as NavbarCustomCSS}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
