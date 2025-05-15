@@ -6,7 +6,6 @@ import { useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import anime from 'animejs/lib/anime.es';
 import { motion } from 'framer-motion';
-import { useTheme } from '../providers/ThemeProvider';
 
 export default function Footer() {
   const { ref, inView } = useInView({
@@ -14,7 +13,6 @@ export default function Footer() {
     threshold: 0.1,
   });
 
-  const { theme } = useTheme()
 
   const columnsRef = useRef<HTMLDivElement>(null);
   const waveRef = useRef<SVGPathElement>(null);
@@ -57,7 +55,7 @@ export default function Footer() {
           <path ref={waveRef} d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-color-safety-orange/30"></path>
         </svg>
       </div>
-      
+
       {/* Background gradient elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-20 w-96 h-96 rounded-full bg-color-safety-orange/5 blur-3xl"></div>
@@ -70,7 +68,7 @@ export default function Footer() {
           {/* Logo and About */}
           <div>
             <div className="flex items-center gap-3 mb-6 group">
-              <motion.div 
+              <motion.div
                 whileHover={{ rotate: [0, -10, 0, -10, 0], scale: 1.05 }}
                 transition={{ duration: 0.6 }}
                 className="relative overflow-hidden rounded-xl"
@@ -85,14 +83,14 @@ export default function Footer() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-color-safety-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </motion.div>
               <div className="font-bold text-lg text-color-white flex flex-col tracking-wider">
-                <motion.span 
+                <motion.span
                   initial={{ opacity: 1 }}
                   whileHover={{ y: -2, x: 1 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   Seaton
                 </motion.span>
-                <motion.span 
+                <motion.span
                   className="-mt-2"
                   initial={{ opacity: 1 }}
                   whileHover={{ y: 2, x: 1 }}
@@ -136,7 +134,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
-                <motion.li 
+                <motion.li
                   key={index}
                   initial={{ x: 0 }}
                   whileHover={{ x: 5 }}
@@ -146,7 +144,7 @@ export default function Footer() {
                     href={link.url}
                     className="text-white/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2 group"
                   >
-                    <span className="text-color-safety-orange transform group-hover:rotate-90 transition-transform duration-300">&raquo;</span> 
+                    <span className="text-color-safety-orange transform group-hover:rotate-90 transition-transform duration-300">&raquo;</span>
                     <span className="group-hover:underline decoration-color-safety-orange/30 underline-offset-4">{link.label}</span>
                   </Link>
                 </motion.li>
@@ -164,7 +162,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {services.map((service, index) => (
-                <motion.li 
+                <motion.li
                   key={index}
                   initial={{ x: 0 }}
                   whileHover={{ x: 5 }}
@@ -174,7 +172,7 @@ export default function Footer() {
                     href={service.url}
                     className="text-white/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2 group"
                   >
-                    <span className="text-color-safety-orange transform group-hover:rotate-90 transition-transform duration-300">&raquo;</span> 
+                    <span className="text-color-safety-orange transform group-hover:rotate-90 transition-transform duration-300">&raquo;</span>
                     <span className="group-hover:underline decoration-color-safety-orange/30 underline-offset-4">{service.label}</span>
                   </Link>
                 </motion.li>
@@ -192,8 +190,8 @@ export default function Footer() {
             </h3>
             <address className="not-italic space-y-4 text-white/70">
               {contactInfo.map((item, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   className="flex items-start gap-3 group p-2 rounded-lg hover:bg-white/5 transition-colors duration-300"
                   whileHover={{ x: 4 }}
                   transition={{ type: "spring", stiffness: 300 }}
@@ -209,7 +207,7 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-color-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <motion.p 
+            <motion.p
               className="text-white/60 text-sm relative overflow-hidden group"
               whileHover={{ scale: 1.02 }}
             >
@@ -232,7 +230,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        
+
         {/* Bottom decoration */}
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-color-safety-orange/50 to-transparent"></div>
       </div>

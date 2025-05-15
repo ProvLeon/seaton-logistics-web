@@ -296,7 +296,7 @@ export default function StatisticsSection() {
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            We've built a strong track record of excellence in equipment rentals and logistics
+            We&apos;ve built a strong track record of excellence in equipment rentals and logistics
             support across Ghana and beyond.
           </motion.p>
         </motion.div>

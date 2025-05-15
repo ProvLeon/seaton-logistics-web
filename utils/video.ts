@@ -82,20 +82,31 @@ export function preloadVideo(
   });
 }
 
+// Extended HTMLVideoElement interface to include our custom properties
+interface ExtendedHTMLVideoElement extends HTMLVideoElement {
+  lastCurrentTime?: number;
+  cleanup?: () => void;
+  _eventHandlers?: {
+    handleStall: () => void;
+    handleVisibilityChange: () => void;
+  };
+}
+
 /**
  * Optimizes video element for performance with enhanced features
  * @param videoElement - The video element to optimize
  * @param options - Additional optimization options
  */
 export function optimizeVideoPerformance(
-  videoElement: HTMLVideoElement, 
+  videoElement: ExtendedHTMLVideoElement, 
   options?: {
     mobileOpacity?: number,
     desktopOpacity?: number,
     mobileScale?: number,
     desktopScale?: number,
     mobileSizePx?: number,
-    lowPowerMode?: boolean
+    lowPowerMode?: boolean,
+    preventStalling?: boolean
   }
 ): void {
   if (!videoElement) return;
@@ -106,14 +117,48 @@ export function optimizeVideoPerformance(
     mobileScale = 1.2,
     desktopScale = 1.0,
     mobileSizePx = 768,
-    lowPowerMode = false
+    lowPowerMode = false,
+    preventStalling = true
   } = options || {};
   
   // Set video attributes for performance
   videoElement.playsInline = true;
   videoElement.muted = true;
+  videoElement.loop = true; // Ensure video loops continuously
+  videoElement.autoplay = true; // Ensure video starts automatically
   videoElement.setAttribute('disablePictureInPicture', '');
   videoElement.setAttribute('disableRemotePlayback', '');
+  
+  // Initialize the last current time tracker
+  videoElement.lastCurrentTime = 0;
+  
+  // Add event listeners to handle potential stalling
+  if (preventStalling) {
+    // Event handlers for potential stalls
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible' && videoElement.paused) {
+        videoElement.play().catch(err => console.log('Video resume error:', err));
+      }
+    };
+    
+    const handleStall = () => {
+      console.log('Video stalled, attempting to restart');
+      videoElement.currentTime += 0.1; // Skip ahead slightly
+      videoElement.play().catch(err => console.log('Video restart error:', err));
+    };
+    
+    // Add event listeners to recover from stalls
+    videoElement.addEventListener('stalled', handleStall);
+    videoElement.addEventListener('suspend', handleStall);
+    videoElement.addEventListener('pause', handleStall); 
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    // Store original event listeners for cleanup
+    videoElement._eventHandlers = {
+      handleStall,
+      handleVisibilityChange
+    };
+  }
   
   // Set playback quality for better performance
   if (lowPowerMode) {
@@ -179,8 +224,11 @@ export function optimizeVideoPerformance(
     videoElement.addEventListener('loadedmetadata', () => {
       // Set initial time to skip blank intro if needed
       if (videoElement.duration > 0.5) {
-        videoElement.currentTime = 0.5;
+        videoElement.currentTime = 0.1; // Start closer to beginning to avoid initial stalling
       }
+      
+      // Force play after metadata is loaded
+      videoElement.play().catch(err => console.log('Auto-play failed:', err));
     }, { once: true });
   }
   
@@ -191,6 +239,15 @@ export function optimizeVideoPerformance(
   videoElement.cleanup = () => {
     resizeObserver.disconnect();
     cancelAnimationFrame(animationFrameId);
+    
+    // Remove event listeners to prevent memory leaks
+    if (preventStalling && videoElement._eventHandlers) {
+      videoElement.removeEventListener('stalled', videoElement._eventHandlers.handleStall);
+      videoElement.removeEventListener('suspend', videoElement._eventHandlers.handleStall);
+      videoElement.removeEventListener('pause', videoElement._eventHandlers.handleStall);
+      document.removeEventListener('visibilitychange', videoElement._eventHandlers.handleVisibilityChange);
+    }
+    
     videoElement.style.willChange = 'auto';
   };
 }

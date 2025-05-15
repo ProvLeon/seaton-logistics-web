@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { animate, motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import ThemeToggle from '@/components/ui/ThemeToggle';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useTheme } from '@/components/providers/ThemeProvider';
-import { Button, LinkButton } from '../ui/Button';
+import { LinkButton } from '../ui/Button';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -20,14 +20,13 @@ const navLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState('');
+  // const [activeItem, setActiveItem] = useState('');
   const menuRef = useRef<HTMLDivElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
   const { theme } = useTheme();
-  const router = useRouter();
   const { scrollY } = useScroll();
   const navOpacity = useTransform(scrollY, [0, 100], [isHomePage ? 0 : 0.8, 1]);
   const navBlur = useTransform(scrollY, [0, 100], [0, 8]);
@@ -53,11 +52,11 @@ export default function Navbar() {
   }, [theme]); // Re-run when theme changes
 
   // Set active item based on pathname
-  useEffect(() => {
-    const path = pathname === '/' ? '/' : `/${pathname.split('/')[1]}`;
-    const active = navLinks.find(link => link.path === path)?.name || '';
-    setActiveItem(active);
-  }, [pathname]);
+  // useEffect(() => {
+  //   const path = pathname === '/' ? '/' : `/${pathname.split('/')[1]}`;
+  //   const active = navLinks.find(link => link.path === path)?.name || '';
+  //   setActiveItem(active);
+  // }, [pathname]);
 
   // Handle hover indicator
   useEffect(() => {
@@ -316,7 +315,7 @@ export default function Navbar() {
 
               <LinkButton
                 href="/contact"
-                onClick={() => setMobileMenuOpen(false)}
+                // onClick={() => setMobileMenuOpen(false)}
                 variant="outline"
                 className="w-full justify-center py-4"
                 fullWidth
