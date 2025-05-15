@@ -72,11 +72,11 @@ export default function BackgroundVideo({
         transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] }
       });
 
-      // video.play().catch(err => {
-      //   console.log('Auto-play prevented:', err);
-      //   // Still mark as loaded even if autoplay fails
-      //   // setIsLoaded(true);
-      // });
+      video.play().catch(err => {
+        console.log('Auto-play prevented:', err);
+        // Still mark as loaded even if autoplay fails
+        setIsLoaded(true);
+      });
     };
 
     const handleError = () => {
@@ -166,7 +166,7 @@ export default function BackgroundVideo({
     <motion.video
       ref={videoRef}
       className={`absolute inset-0 object-cover w-full h-full ${className}`}
-      initial={{ opacity: 0, scale: 1.1 }}
+      initial={{ opacity: 0.4, scale: 1.1 }}
       animate={videoControls}
       autoPlay
       muted

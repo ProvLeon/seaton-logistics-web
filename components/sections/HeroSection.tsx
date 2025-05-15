@@ -206,9 +206,8 @@ export default function HeroSection() {
         style={{ y, opacity }}
       >
         <BackgroundVideo
-          sources={[
-            { src: "/videos/equipment-demo.webm", type: "video/webm", media: "(min-width: 768px)" }
-          ]}
+          sources={
+            [{src: "/videos/equipment-demo.webm", type: "video/webm", media: "(min-width: 768px)"}]}
           poster="/images/logistics-warehouse.jpg"
           priority={true}
           fallbackImage="/images/logistics-warehouse.jpg"

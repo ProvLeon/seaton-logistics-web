@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { animate, motion, useScroll, useTransform, MotionStyle, MotionValue } from 'framer-motion';
 import Image from 'next/image';
-import ThemeToggle from '@/components/ui/ThemeToggle';
+// import ThemeToggle from '@/components/ui/ThemeToggle';
 import { usePathname } from 'next/navigation';
 import { useTheme } from '@/components/providers/ThemeProvider';
 import { LinkButton } from '../ui/Button';
@@ -134,7 +134,7 @@ export default function Navbar() {
             ? 'py-5 bg-transparent'
             : 'py-5'}`}
       style={{
-        backgroundColor: theme === 'dark' ? 'rgba(0, 0, 0, var(--nav-opacity))' : 'rgba(255, 255, 255, var(--nav-opacity))',
+        backgroundColor: 'rgba(0, 0, 0, var(--nav-opacity))',
         backdropFilter: `blur(var(--nav-blur)px)`,
         WebkitBackdropFilter: `blur(var(--nav-blur)px)`,
         '--nav-opacity': navOpacity,
@@ -211,7 +211,7 @@ export default function Navbar() {
               />
 
               {/* Theme Toggle */}
-              <ThemeToggle className="mr-2" />
+              {/* <ThemeToggle className="mr-2" /> */}
 
               {/* CTA Button */}
               <LinkButton
@@ -316,7 +316,7 @@ export default function Navbar() {
                 <span className={`text-base font-medium ${theme === 'dark' ? 'text-color-white' : 'text-color-black'}`}>
                   Toggle Theme
                 </span>
-                <ThemeToggle />
+                {/* <ThemeToggle /> */}
               </div>
 
               <LinkButton

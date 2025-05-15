@@ -1,5 +1,5 @@
 @import "tailwindcss";
-/* @import "./animations.css"; */
+@import "./animations.css";
 
 @theme {
     /* Colors */
@@ -26,13 +26,15 @@
     /* Fonts */
     --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
+    --nav-opacity: 0.5;
+    --nav-blur: 30;
 }
+
+/* :root {
+    color-scheme: dark;
+} */
 
 :root {
-    color-scheme: light;
-}
-
-.dark {
     color-scheme: dark;
     --color-background: #0a0a0a;
     --color-foreground: #ededed;
@@ -47,6 +49,9 @@
     /* But override the text colors to use white for better contrast */
     --text-black: var(--color-white);
     --text-charcoal-gray: var(--color-white);
+
+    --nav-opacity: 0.5;
+    --nav-blur: 30;
 }
 
 body {
