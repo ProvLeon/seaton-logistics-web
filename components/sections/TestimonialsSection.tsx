@@ -296,10 +296,10 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Enhanced Navigation Controls */}
-          <div className="flex justify-between items-center mt-10">
+          <div className="flex justify-between items-center mt-10 ">
             <motion.button
               onClick={prevSlide}
-              className="glass-effect dark:glass-effect-dark rounded-full p-4 transition-all duration-300 hover:scale-110"
+              className="glass-effect dark:glass-effect-dark rounded-full p-4 transition-all duration-300 hover:scale-110 cursor-pointer"
               disabled={isAnimating}
               aria-label="Previous testimonial"
               whileHover={{ scale: 1.1 }}
@@ -336,7 +336,7 @@ export default function TestimonialsSection() {
 
             <motion.button
               onClick={nextSlide}
-              className="glass-effect dark:glass-effect-dark rounded-full p-4 transition-all duration-300 hover:scale-110"
+              className="glass-effect dark:glass-effect-dark rounded-full p-4 transition-all duration-300 hover:scale-110 cursor-pointer"
               disabled={isAnimating}
               aria-label="Next testimonial"
               whileHover={{ scale: 1.1 }}
