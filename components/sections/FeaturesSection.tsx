@@ -145,16 +145,16 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => {
             alt={title}
             width={32}
             height={32}
-            className="text-color-white drop-shadow-xl"
+            className="text-color-black drop-shadow-xl"
           />
 
           {/* Icon glow effect */}
           <div className="absolute inset-0 rounded-2xl bg-color-safety-orange opacity-60 blur-xl -z-10 animate-pulse-glow"></div>
         </motion.div>
 
-        <h3 className="text-xl md:text-2xl font-bold text-color-white mb-4 relative z-10 transition-transform duration-300 group-hover:translate-x-2">{title}</h3>
+        <h3 className="text-xl md:text-2xl font-bold text-color-black mb-4 relative z-10 transition-transform duration-300 group-hover:translate-x-2">{title}</h3>
 
-        <p className="text-color-white/70 relative z-10 transition-all duration-300 group-hover:text-color-white/90">
+        <p className="text-color-black/70 relative z-10 transition-all duration-300 group-hover:text-color-black/90">
           {description}
         </p>
 
