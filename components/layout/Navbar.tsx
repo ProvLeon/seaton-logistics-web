@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { animate } from 'framer-motion';
+import { animate, motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import { usePathname, useRouter } from 'next/navigation';
@@ -20,6 +20,7 @@ const navLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState('');
   const menuRef = useRef<HTMLDivElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
@@ -27,6 +28,9 @@ export default function Navbar() {
   const isHomePage = pathname === '/';
   const { theme } = useTheme();
   const router = useRouter();
+  const { scrollY } = useScroll();
+  const navOpacity = useTransform(scrollY, [0, 100], [isHomePage ? 0 : 0.8, 1]);
+  const navBlur = useTransform(scrollY, [0, 100], [0, 8]);
 
   const isLinkActive = (path: string) => {
     if (path === '/') {
@@ -47,6 +51,13 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [theme]); // Re-run when theme changes
+
+  // Set active item based on pathname
+  useEffect(() => {
+    const path = pathname === '/' ? '/' : `/${pathname.split('/')[1]}`;
+    const active = navLinks.find(link => link.path === path)?.name || '';
+    setActiveItem(active);
+  }, [pathname]);
 
   // Handle hover indicator
   useEffect(() => {
@@ -110,28 +121,57 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   return (
-    <header
+    <motion.header
       className={`fixed w-full top-0 left-0 z-50 transition-all duration-500
       ${isScrolled
-          ? 'py-3 bg-color-white/95 dark:bg-color-black/95 shadow-md backdrop-blur-sm'
+          ? 'py-3 shadow-lg'
           : isHomePage
             ? 'py-5 bg-transparent'
-            : 'py-5 bg-color-white/80 dark:bg-color-black/80 backdrop-blur-sm'}`}
+            : 'py-5'}`}
+      style={{
+        backgroundColor: theme === 'dark' ? 'rgba(0, 0, 0, var(--nav-opacity))' : 'rgba(255, 255, 255, var(--nav-opacity))',
+        backdropFilter: `blur(var(--nav-blur)px)`,
+        WebkitBackdropFilter: `blur(var(--nav-blur)px)`,
+        '--nav-opacity': navOpacity,
+        '--nav-blur': navBlur
+      } as any}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-11 h-11">
-              <Image
-                src="/seaton-logo.png"
-                alt="Seaton Logistics"
-                fill
-                className="object-contain"
-              />
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="relative w-11 h-11 overflow-hidden rounded-full">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <Image
+                  src="/seaton-logo.png"
+                  alt="Seaton Logistics"
+                  fill
+                  className="object-contain group-hover:filter group-hover:brightness-110 transition-all duration-300"
+                />
+              </motion.div>
             </div>
-            <div className={`font-bold text-xl flex flex-col text-color-black`}>
-              Seaton <span className="-mt-3">Logistics</span>
+            <div className={`font-bold text-xl flex flex-col text-color-black dark:text-color-white`}>
+              <motion.span
+                initial={{ y: 0 }}
+                whileHover={{ y: -2 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                Seaton
+              </motion.span>
+              <motion.span
+                className="-mt-3"
+                initial={{ y: 0 }}
+                whileHover={{ y: 2 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                Logistics
+              </motion.span>
             </div>
           </Link>
 
@@ -142,20 +182,26 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.path}
-                  className={`nav-item relative py-1 text-lg font-bold transition-colors
+                  className={`nav-item relative py-1 text-lg font-semibold transition-all duration-300
                   ${isLinkActive(link.path)
                       ? 'text-color-safety-orange' :
-
-                      'hover:text-color-safety-orange'}`}
+                      'text-color-black dark:text-color-white hover:text-color-safety-orange'}`}
                 >
                   {link.name}
+                  {isLinkActive(link.path) && (
+                    <motion.span
+                      className="absolute -bottom-1 left-0 w-full h-0.5 bg-color-safety-orange rounded-full"
+                      layoutId="navIndicator"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
                 </Link>
               ))}
 
               {/* Hover indicator */}
               <div
                 ref={indicatorRef}
-                className="absolute bottom-0 h-0.5 bg-color-safety-orange opacity-0 pointer-events-none"
+                className="absolute bottom-0 h-0.5 bg-color-safety-orange opacity-0 pointer-events-none rounded-full"
                 style={{ width: 0 }}
               />
 
@@ -165,6 +211,14 @@ export default function Navbar() {
               {/* CTA Button */}
               <LinkButton
                 href='/contact'
+                variant="glass"
+                withGlow
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                }
+                iconPosition="right"
               >
                 Get a Quote
               </LinkButton>
@@ -172,83 +226,114 @@ export default function Navbar() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden flex flex-col gap-1.5 p-2"
+          <motion.button
+            className="md:hidden flex flex-col gap-1.5 p-2 relative z-50"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            whileTap={{ scale: 0.95 }}
           >
-            <span
-              className={`block h-0.5 w-6 transition-transform duration-300
-              ${isScrolled
-                  ? theme === 'dark' ? 'bg-color-white' : 'bg-color-black'
-                  : isHomePage
-                    ? 'bg-color-white'
-                    : theme === 'dark' ? 'bg-color-white' : 'bg-color-black'}
-            ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
+            <motion.span
+              className={`block h-0.5 transition-all duration-300 rounded-full
+              ${theme === 'dark' ? 'bg-color-white' : 'bg-color-black'}`}
+              animate={{
+                width: mobileMenuOpen ? '6px' : '24px',
+                rotate: mobileMenuOpen ? '45deg' : '0deg',
+                translateY: mobileMenuOpen ? '8px' : '0px',
+                translateX: mobileMenuOpen ? '8px' : '0px'
+              }}
             />
-            <span
-              className={`block h-0.5 transition-opacity duration-300
-            ${isScrolled
-                  ? theme === 'dark' ? 'bg-color-white' : 'bg-color-black'
-                  : isHomePage
-                    ? 'bg-color-white'
-                    : theme === 'dark' ? 'bg-color-white' : 'bg-color-black'}
-            ${mobileMenuOpen ? 'opacity-0 w-0' : 'opacity-100 w-6'}`}
+            <motion.span
+              className={`block h-0.5 transition-all duration-300 rounded-full
+              ${theme === 'dark' ? 'bg-color-white' : 'bg-color-black'}`}
+              animate={{
+                width: mobileMenuOpen ? '0px' : '18px',
+                opacity: mobileMenuOpen ? 0 : 1
+              }}
             />
-            <span
-              className={`block h-0.5 w-6 transition-transform duration-300
-            ${isScrolled
-                  ? theme === 'dark' ? 'bg-color-white' : 'bg-color-black'
-                  : isHomePage
-                    ? 'bg-color-white'
-                    : theme === 'dark' ? 'bg-color-white' : 'bg-color-black'}
-            ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}
+            <motion.span
+              className={`block h-0.5 transition-all duration-300 rounded-full
+              ${theme === 'dark' ? 'bg-color-white' : 'bg-color-black'}`}
+              animate={{
+                width: mobileMenuOpen ? '6px' : '12px',
+                rotate: mobileMenuOpen ? '-45deg' : '0deg',
+                translateY: mobileMenuOpen ? '-8px' : '0px',
+                translateX: mobileMenuOpen ? '8px' : '0px'
+              }}
             />
-          </button>
+          </motion.button>
         </div>
 
         {/* Mobile Navigation */}
-        {
-          mobileMenuOpen && (
-            <div
-              ref={menuRef}
-              className={`md:hidden py-5 opacity-0 rounded-b-lg ${isScrolled
-                ? theme === 'dark' ? 'bg-color-black' : 'bg-color-white'
-                : theme === 'dark' ? 'bg-color-black/95' : 'bg-color-white/95'} backdrop-blur-sm`}
-              style={{ transform: 'translateY(-20px)' }}
-            >
-              <nav className="flex flex-col gap-4">
-                {navLinks.map((link) => (
+        <motion.div
+          ref={menuRef}
+          className={`fixed inset-0 md:hidden z-40 bg-gradient-to-b ${theme === 'dark' ? 'from-color-black to-color-black/95' : 'from-color-white to-color-white/95'} backdrop-blur-md p-6 pt-24 flex flex-col`}
+          initial={{ clipPath: 'circle(0% at calc(100% - 32px) 32px)', opacity: 0 }}
+          animate={{
+            clipPath: mobileMenuOpen ? 'circle(150% at calc(100% - 32px) 32px)' : 'circle(0% at calc(100% - 32px) 32px)',
+            opacity: mobileMenuOpen ? 1 : 0
+          }}
+          transition={{
+            type: "spring",
+            damping: 40,
+            stiffness: 300,
+            duration: 0.5
+          }}
+        >
+          <nav className="flex flex-col gap-4 h-full">
+            <motion.div className="space-y-1">
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: mobileMenuOpen ? 1 : 0, x: mobileMenuOpen ? 0 : -20 }}
+                  transition={{ delay: 0.1 + index * 0.1, duration: 0.3 }}
+                >
                   <Link
-                    key={link.name}
                     href={link.path}
-                    className={`text-lg font-medium hover:text-color-safety-orange transition-colors py-2 border-b ${theme === 'dark' ? 'border-color-white/10' : 'border-color-charcoal-gray/10'}
-                    ${isLinkActive(link.path)
-                        ? 'text-color-safety-orange'
-                        : theme === 'dark' ? 'text-color-white' : 'text-color-charcoal-gray'}`}
+                    className={`block text-xl font-medium transition-all duration-300 py-3 px-2 rounded-lg ${isLinkActive(link.path)
+                      ? 'text-color-safety-orange bg-color-safety-orange/10'
+                      : theme === 'dark' ? 'text-color-white hover:bg-color-white/5' : 'text-color-black hover:bg-color-black/5'}`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.name}
                   </Link>
-                ))}
-                <div className="flex items-center justify-between mt-4 mb-2">
-                  <ThemeToggle />
-                  <span className={`text-sm ${theme === 'dark' ? 'text-color-white/60' : 'text-color-charcoal-gray/60'}`}>
-                    Toggle Theme
-                  </span>
-                </div>
-                <a
-                  href="/contact"
-                  className="mt-2 text-center px-6 py-3 bg-color-safety-orange text-color-white rounded-full hover:bg-opacity-90 transition-all font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Get a Quote
-                </a>
-              </nav>
-            </div>
-          )
-        }
-      </div >
-    </header >
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              className="mt-auto border-t border-gray-200 dark:border-gray-700 pt-5 flex flex-col gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: mobileMenuOpen ? 1 : 0, y: mobileMenuOpen ? 0 : 20 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+            >
+              <div className="flex items-center justify-between py-2">
+                <span className={`text-base font-medium ${theme === 'dark' ? 'text-color-white' : 'text-color-black'}`}>
+                  Toggle Theme
+                </span>
+                <ThemeToggle />
+              </div>
+
+              <LinkButton
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                variant="outline"
+                className="w-full justify-center py-4"
+                fullWidth
+                withGlow
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                }
+                iconPosition="right"
+              >
+                Get a Quote
+              </LinkButton>
+            </motion.div>
+          </nav>
+        </motion.div>
+      </div>
+    </motion.header>
   );
 }
