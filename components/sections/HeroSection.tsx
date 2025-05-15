@@ -129,7 +129,7 @@ export default function HeroSection() {
         <div className="flex flex-col items-center text-center">
           <h1
             ref={headingRef}
-            className="text-4xl md:text-5xl lg:text-7xl font-bold text-color-white mb-6 tracking-tight"
+            className="text-4xl md:text-5xl lg:text-7xl font-bold text-color-black mb-6 tracking-tight"
           >
             Empowering Your
             <span className="text-color-safety-orange mx-4">Success</span>
