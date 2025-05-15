@@ -2,6 +2,18 @@
  * Utility functions for video handling in the Seaton Logistics website
  */
 
+// Type definitions for browser APIs
+interface NavigatorWithBattery extends Navigator {
+  getBattery(): Promise<{ level: number }>;
+}
+
+interface NavigatorWithConnection extends Navigator {
+  connection?: {
+    saveData?: boolean;
+    effectiveType?: string;
+  };
+}
+
 /**
  * Checks if the browser supports a specific video format
  * @param format - Video format to check (e.g., 'webm', 'mp4', 'ogg')
@@ -90,6 +102,9 @@ interface ExtendedHTMLVideoElement extends HTMLVideoElement {
     handleStall: () => void;
     handleVisibilityChange: () => void;
   };
+  mediaSettings?: {
+    preferredVideoQuality: string;
+  };
 }
 
 /**
@@ -137,14 +152,14 @@ export function optimizeVideoPerformance(
     // Event handlers for potential stalls
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible' && videoElement.paused) {
-        videoElement.play().catch(err => console.log('Video resume error:', err));
+        videoElement.play().catch((err: Error) => console.log('Video resume error:', err.message));
       }
     };
     
     const handleStall = () => {
       console.log('Video stalled, attempting to restart');
       videoElement.currentTime += 0.1; // Skip ahead slightly
-      videoElement.play().catch(err => console.log('Video restart error:', err));
+      videoElement.play().catch((err: Error) => console.log('Video restart error:', err.message));
     };
     
     // Add event listeners to recover from stalls
@@ -164,7 +179,7 @@ export function optimizeVideoPerformance(
   if (lowPowerMode) {
     // Reduce quality on mobile or when low power mode is enabled
     if ('mediaSettings' in videoElement) {
-      (videoElement as any).mediaSettings = { 
+      videoElement.mediaSettings = { 
         preferredVideoQuality: 'standard' 
       };
     }
@@ -228,7 +243,7 @@ export function optimizeVideoPerformance(
       }
       
       // Force play after metadata is loaded
-      videoElement.play().catch(err => console.log('Auto-play failed:', err));
+      videoElement.play().catch((err: Error) => console.log('Auto-play failed:', err.message));
     }, { once: true });
   }
   
@@ -282,19 +297,22 @@ export function getOptimalVideoSource(
   
   // Check for battery status if available
   const isBatteryLow = 'getBattery' in navigator &&
-    (navigator as any).getBattery && 
-    (navigator as any).getBattery().then((battery: any) => battery.level < 0.15);
+    (navigator as NavigatorWithBattery).getBattery && 
+    (navigator as NavigatorWithBattery).getBattery().then((battery) => battery.level < 0.15).catch((err: Error) => {
+      console.log('Battery API error:', err.message);
+      return false;
+    });
     
   // Device and connection checks
   const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   const isSlowConnection = 
-    navigator.connection?.saveData || 
-    (navigator.connection?.effectiveType === '2g') ||
-    (navigator.connection?.effectiveType === 'slow-2g') || 
-    (navigator.connection?.effectiveType === '3g' && isMobile);
+    (navigator as NavigatorWithConnection).connection?.saveData || 
+    ((navigator as NavigatorWithConnection).connection?.effectiveType === '2g') ||
+    ((navigator as NavigatorWithConnection).connection?.effectiveType === 'slow-2g') || 
+    ((navigator as NavigatorWithConnection).connection?.effectiveType === '3g' && isMobile);
   
   // Check for data saver mode
-  const isDataSaver = navigator.connection?.saveData === true;
+  const isDataSaver = (navigator as NavigatorWithConnection).connection?.saveData === true;
   
   // Screen size/resolution check for optimal quality
   const screenWidth = window.innerWidth || document.documentElement.clientWidth;

@@ -64,7 +64,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const [ripples, setRipples] = useState<RippleEffect[]>([]);
-  const [isHovered, setIsHovered] = useState(false);
+  // const [isHovered, setIsHovered] = useState(false);
 
   const baseStyles = 'group inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-color-safety-orange disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer overflow-hidden relative';
   const width = fullWidth ? 'w-full' : '';
@@ -105,8 +105,8 @@ export function Button({
       disabled={disabled || loading}
       type={type}
       onClick={handleRipple}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      // onMouseEnter={() => setIsHovered(true)}
+      // onMouseLeave={() => setIsHovered(false)}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       whileTap={{ scale: 0.98 }}

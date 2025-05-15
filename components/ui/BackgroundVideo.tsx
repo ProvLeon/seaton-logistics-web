@@ -100,11 +100,11 @@ export default function BackgroundVideo({
     };
 
     // Handle video pause or stall
-    const handleStall = () => {
-      if (video.paused && !video.ended) {
-        video.play().catch(err => console.log('Failed to resume video:', err));
-      }
-    };
+        const handleStall = () => {
+          if (video.paused && !video.ended) {
+            video.play().catch((err: Error) => console.log('Failed to resume video:', err.message));
+          }
+        };
 
     // Apply optimizations
     optimizeVideoPerformance(video);
@@ -124,7 +124,7 @@ export default function BackgroundVideo({
           console.log('Video playback stalled, restarting');
           // Try to recover by seeking slightly forward and restarting playback
           video.currentTime += 0.1;
-          video.play().catch(err => console.log('Failed to restart video:', err));
+          video.play().catch((err: Error) => console.log('Failed to restart video:', err.message));
         }
         video.lastCurrentTime = video.currentTime;
       }
