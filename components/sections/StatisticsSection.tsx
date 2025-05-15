@@ -154,7 +154,7 @@ const StatItem = ({ value, suffix = '', label, index, inView, color = '#FF6600',
         </motion.div>
 
         <motion.h3
-          className="text-xl text-white/80 font-medium"
+          className="text-xl text-color-black/80 font-medium"
           animate={{ y: hovered ? 5 : 0 }}
           transition={{ type: "spring", stiffness: 300, delay: 0.05 }}
         >
@@ -278,7 +278,7 @@ export default function StatisticsSection() {
 
           <h2
             ref={headingRef}
-            className="text-3xl md:text-5xl font-bold text-center text-color-white mb-4 opacity-0 tracking-tight"
+            className="text-3xl md:text-5xl font-bold text-center text-color-black mb-4 opacity-0 tracking-tight"
           >
             Our Impact in <span className="text-gradient">Numbers</span>
           </h2>
