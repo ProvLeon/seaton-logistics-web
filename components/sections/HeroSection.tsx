@@ -207,7 +207,7 @@ export default function HeroSection() {
       >
         <BackgroundVideo
           sources={
-            [{src: "/videos/equipment-demo.webm", type: "video/webm", media: "(min-width: 768px)"}]}
+            [{ src: "/videos/equipment-demo.webm", type: "video/webm", media: "(min-width: 768px)" }]}
           poster="/images/logistics-warehouse.jpg"
           priority={true}
           fallbackImage="/images/logistics-warehouse.jpg"
@@ -219,13 +219,13 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Enhanced gradient overlay with depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-color-black/50 via-color-black/60 to-color-black/95 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-color-black/70 via-color-black/80 to-color-black/95 z-10 noise-bg"></div>
 
       {/* Geometric shape decorations */}
-      <div className="absolute inset-0 z-15 opacity-20 pointer-events-none overflow-hidden">
-        <div className="absolute -top-20 -left-20 w-80 h-80 border border-color-safety-orange/30 rounded-full"></div>
-        <div className="absolute top-1/3 -right-40 w-96 h-96 border border-color-white/20 rounded-full"></div>
-        <div className="absolute -bottom-20 left-1/4 w-64 h-64 border border-color-white/10 rounded-full"></div>
+      <div className="absolute inset-0 z-15 opacity-30 pointer-events-none overflow-hidden">
+        <div className="absolute -top-20 -left-20 w-80 h-80 border border-color-safety-orange/40 rounded-full animate-glow-pulse"></div>
+        <div className="absolute top-1/3 -right-40 w-96 h-96 border-2 border-color-safety-orange/20 rounded-full animate-border-glow"></div>
+        <div className="absolute -bottom-20 left-1/4 w-64 h-64 border border-color-safety-orange/30 rounded-full animate-glow-pulse" style={{ animationDelay: '1.5s' }}></div>
       </div>
 
       {/* Enhanced floating particles with depth */}
@@ -244,18 +244,18 @@ export default function HeroSection() {
         <div className="flex flex-col items-center text-center">
           <h1
             ref={headingRef}
-            className="text-4xl md:text-5xl lg:text-7xl font-bold text-color-black mb-6 tracking-tight leading-tight"
+            className="text-4xl md:text-5xl lg:text-7xl font-bold text-color-white mb-6 tracking-tight leading-tight drop-shadow-lg"
           >
             Empowering Your
             <span className="text-color-safety-orange mx-2 md:mx-4 relative">
               Success
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-color-safety-orange/50 rounded-full"></span>
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-color-safety-orange/50 rounded-full animate-pulse-glow"></span>
             </span>
             Every Step of the Way
           </h1>
           <p
             ref={subHeadingRef}
-            className="text-lg md:text-xl text-color-black/90 mb-12 max-w-3xl backdrop-blur-sm bg-color-black/10 p-4 rounded-lg"
+            className="text-lg md:text-xl text-color-white/90 mb-12 max-w-3xl backdrop-blur-md bg-color-black/30 p-4 rounded-lg border border-color-safety-orange/10 shadow-lg"
           >
             Premium equipment rentals, expert maintenance, and comprehensive training
             for construction, agriculture, mining, and security industries across Ghana.
@@ -302,10 +302,10 @@ export default function HeroSection() {
       {/* Enhanced animated scroll indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-100 cursor-pointer hidden md:block">
         <div className="flex flex-col items-center gap-2">
-          <span className="text-color-white/70 text-sm font-medium tracking-wide">Scroll to explore</span>
-          <div className="w-8 h-12 border-2 border-color-white/50 rounded-full flex justify-center pt-2 relative overflow-hidden">
+          <span className="text-color-white/80 text-sm font-medium tracking-wide">Scroll to explore</span>
+          <div className="w-8 h-12 border-2 border-color-safety-orange/50 rounded-full flex justify-center pt-2 relative overflow-hidden animate-glow-pulse">
             <div className="w-1.5 h-1.5 bg-color-safety-orange rounded-full animate-bounce"></div>
-            <span className="absolute inset-0 bg-gradient-to-t from-color-safety-orange/20 to-transparent opacity-50"></span>
+            <span className="absolute inset-0 bg-gradient-to-t from-color-safety-orange/30 to-transparent opacity-70"></span>
           </div>
         </div>
       </div>

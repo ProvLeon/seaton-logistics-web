@@ -25,11 +25,11 @@ interface LinkButtonProps extends Omit<ButtonProps, 'onClick'> {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-color-safety-orange hover:bg-opacity-90 text-color-white shadow-md hover:shadow-lg hover:shadow-color-safety-orange/20 border border-color-safety-orange/20',
-  secondary: 'bg-color-black hover:bg-opacity-90 text-color-white shadow-md hover:shadow-lg hover:shadow-color-black/20 border border-color-black/20',
-  outline: 'bg-transparent border-2 border-color-black text-color-black hover:bg-color-white/10 backdrop-blur-sm',
-  ghost: 'bg-transparent text-color-black hover:bg-color-black/10 dark:text-color-white dark:hover:bg-color-white/10',
-  glass: 'bg-color-white/10 backdrop-blur-md text-color-black border border-color-white/20 hover:bg-color-white/20 shadow-lg'
+  primary: 'bg-color-safety-orange hover:bg-opacity-90 text-color-white shadow-md hover:shadow-lg hover:shadow-color-safety-orange/30 border border-color-safety-orange/20 backdrop-blur-sm',
+  secondary: 'bg-gradient-subtle hover:bg-opacity-90 text-color-white shadow-md hover:shadow-lg hover:shadow-color-black/40 border border-color-black/20',
+  outline: 'bg-transparent border-2 border-color-safety-orange text-color-safety-orange hover:bg-color-safety-orange/10 backdrop-blur-sm',
+  ghost: 'bg-transparent text-color-white hover:bg-color-white/5 hover:text-color-safety-orange transition-colors',
+  glass: 'glass-effect-dark text-color-white border border-color-safety-orange/20 hover:border-color-safety-orange/40 hover:bg-color-black/50 shadow-lg'
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -66,11 +66,11 @@ export function Button({
   const [ripples, setRipples] = useState<RippleEffect[]>([]);
   // const [isHovered, setIsHovered] = useState(false);
 
-  const baseStyles = 'group inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-color-safety-orange disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer overflow-hidden relative';
+  const baseStyles = 'group inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-color-safety-orange focus:ring-offset-color-black disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer overflow-hidden relative';
   const width = fullWidth ? 'w-full' : '';
   const radius = rounded ? 'rounded-full' : 'rounded-md';
   const scale = withHoverScale ? 'hover:scale-105' : '';
-  const glow = withGlow ? 'hover:after:opacity-100 after:absolute after:inset-0 after:rounded-full after:bg-gradient-to-r after:from-color-safety-orange/50 after:to-color-white/30 after:opacity-0 after:blur-xl after:transition-opacity after:duration-500 after:-z-10' : '';
+  const glow = withGlow ? 'hover:after:opacity-100 after:absolute after:inset-0 after:rounded-full after:bg-gradient-to-r after:from-color-safety-orange/40 after:to-color-safety-orange-dark/20 after:opacity-0 after:blur-xl after:transition-opacity after:duration-500 after:-z-10 animate-glow-pulse' : '';
 
   const handleRipple = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!withRipple || disabled || loading) return;
@@ -117,7 +117,7 @@ export function Button({
       {ripples.map(ripple => (
         <span
           key={ripple.id}
-          className="absolute bg-white/30 rounded-full pointer-events-none animate-ripple"
+          className="absolute bg-color-safety-orange/20 rounded-full pointer-events-none animate-ripple"
           style={{
             left: ripple.x - ripple.size / 2,
             top: ripple.y - ripple.size / 2,
@@ -130,7 +130,7 @@ export function Button({
       {loading && (
         <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          <path className="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
       )}
 
@@ -163,7 +163,7 @@ export function LinkButton({
   withGlow = variant === 'primary',
   ...props
 }: LinkButtonProps) {
-  const baseStyles = 'group inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-color-safety-orange relative overflow-hidden';
+  const baseStyles = 'group inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-color-safety-orange focus:ring-offset-color-black relative overflow-hidden';
   const width = fullWidth ? 'w-full' : '';
   const radius = rounded ? 'rounded-full' : 'rounded-md';
   const scale = withHoverScale ? 'hover:scale-105' : '';

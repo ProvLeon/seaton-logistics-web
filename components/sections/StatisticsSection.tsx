@@ -101,7 +101,7 @@ const StatItem = ({ value, suffix = '', label, index, inView, color = '#FF6600',
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
     >
-      <div className="p-8 text-center relative z-10 backdrop-blur-sm bg-color-white/5 rounded-2xl border border-color-white/10 hover:border-color-safety-orange/30 transition-all duration-300 shadow-lg">
+      <div className="p-8 text-center relative z-10 glass-effect-dark rounded-2xl border border-color-white/5 hover:border-color-safety-orange/30 transition-all duration-300 shadow-lg">
         {/* Icon at the top */}
         {icon && (
           <motion.div
@@ -138,7 +138,7 @@ const StatItem = ({ value, suffix = '', label, index, inView, color = '#FF6600',
           animate={{ y: hovered ? -5 : 0 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <div className="text-5xl md:text-7xl font-bold text-color-black/30 flex items-end drop-shadow-lg">
+          <div className="text-5xl md:text-7xl font-bold text-color-white/30 flex items-end drop-shadow-lg">
             <span ref={counterRef} className="tracking-tight">0</span>
             <motion.span
               className="text-color-safety-orange"
@@ -154,7 +154,7 @@ const StatItem = ({ value, suffix = '', label, index, inView, color = '#FF6600',
         </motion.div>
 
         <motion.h3
-          className="text-xl text-color-black/80 font-medium"
+          className="text-xl text-color-white/80 font-medium"
           animate={{ y: hovered ? 5 : 0 }}
           transition={{ type: "spring", stiffness: 300, delay: 0.05 }}
         >
@@ -166,8 +166,8 @@ const StatItem = ({ value, suffix = '', label, index, inView, color = '#FF6600',
           className="absolute inset-0 rounded-2xl"
           animate={{
             boxShadow: hovered
-              ? `0 0 20px 2px ${color}30, inset 0 0 10px 1px ${color}20`
-              : 'none'
+            ? `0 0 25px 4px ${color}40, inset 0 0 15px 2px ${color}30`
+            : 'none'
           }}
           transition={{ duration: 0.3 }}
         />
@@ -182,7 +182,7 @@ const StatItem = ({ value, suffix = '', label, index, inView, color = '#FF6600',
             rotate: hovered ? 5 : 0,
             scale: hovered ? 1.05 : 1,
             borderWidth: hovered ? '2px' : '1px',
-            opacity: hovered ? 0.6 : 0.3
+            opacity: hovered ? 0.8 : 0.4
           }}
           transition={{ duration: 0.4 }}
         />
@@ -221,11 +221,11 @@ export default function StatisticsSection() {
   }, [inView, controls]);
 
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-b from-color-black via-color-charcoal-gray/90 to-color-black relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-gradient-subtle relative overflow-hidden noise-bg">
       {/* Enhanced Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full">
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-mesh">
         <motion.div
-          className="absolute top-10 left-10 w-64 h-64 bg-color-safety-orange/15 rounded-full blur-3xl"
+          className="absolute top-10 left-10 w-64 h-64 bg-color-safety-orange/20 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.2, 0.3, 0.2]
@@ -237,7 +237,7 @@ export default function StatisticsSection() {
           }}
         />
         <motion.div
-          className="absolute bottom-10 right-10 w-80 h-80 bg-color-safety-orange/15 rounded-full blur-3xl"
+          className="absolute bottom-10 right-10 w-80 h-80 bg-color-safety-orange/20 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.3, 0.2, 0.3]
@@ -252,7 +252,7 @@ export default function StatisticsSection() {
       </div>
 
       {/* Grid pattern for texture */}
-      <div className="absolute inset-0 opacity-5"
+      <div className="absolute inset-0 opacity-10"
         style={{
           backgroundImage: 'radial-gradient(circle, #FF6600 1px, transparent 1px)',
           backgroundSize: '30px 30px'
@@ -270,7 +270,7 @@ export default function StatisticsSection() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="mx-auto mb-4 opacity-70">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="mx-auto mb-4 opacity-90 animate-glow-pulse">
               <circle cx="30" cy="30" r="29" stroke="#FF6600" strokeWidth="2" />
               <path d="M20 30 L26 36 L40 22" stroke="#FF6600" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -278,7 +278,7 @@ export default function StatisticsSection() {
 
           <h2
             ref={headingRef}
-            className="text-3xl md:text-5xl font-bold text-center text-color-black mb-4 opacity-0 tracking-tight"
+            className="text-3xl md:text-5xl font-bold text-center text-color-white mb-4 opacity-0 tracking-tight"
           >
             Our Impact in <span className="text-gradient">Numbers</span>
           </h2>
@@ -291,7 +291,7 @@ export default function StatisticsSection() {
           />
 
           <motion.p
-            className="text-color-white/70 text-lg max-w-2xl mx-auto"
+            className="text-color-white/80 text-lg max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
             transition={{ delay: 0.4, duration: 0.6 }}

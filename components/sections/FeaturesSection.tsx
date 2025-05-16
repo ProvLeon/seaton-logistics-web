@@ -89,20 +89,20 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => {
       anime({
         targets: cardRef.current,
         boxShadow: [
-          '0 10px 30px rgba(255, 102, 0, 0.1)',
-          '0 20px 40px rgba(255, 102, 0, 0.2)'
+          '0 4px 15px rgba(0, 0, 0, 0.2)',
+          '0 15px 25px rgba(0, 0, 0, 0.3)'
         ],
-        translateY: -10,
-        duration: 600,
-        easing: 'easeOutExpo'
+        translateY: -6,
+        duration: 400,
+        easing: 'easeOutQuad'
       });
     } else {
       anime({
         targets: cardRef.current,
-        boxShadow: '0 10px 30px rgba(255, 102, 0, 0.1)',
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
         translateY: 0,
-        duration: 600,
-        easing: 'easeOutExpo'
+        duration: 400,
+        easing: 'easeOutQuad'
       });
     }
   }, [isHovered]);
@@ -116,27 +116,23 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => {
     >
       <div
         ref={cardRef}
-        className="bg-gradient-to-br from-color-black/30 to-color-black/50 backdrop-blur-lg p-6 md:p-8 rounded-2xl h-full border border-color-white/10 transition-all duration-500 group overflow-hidden relative"
+        className="feature-card p-6 md:p-8 h-full transition-all duration-300 group overflow-hidden relative"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Background glow effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-color-safety-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        {/* Subtle highlight on hover */}
+        <div className="absolute inset-0 bg-gradient-to-br from-color-safety-orange/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-        {/* Top right corner accent */}
-        <div className="absolute -top-10 -right-10 w-20 h-20 rounded-full bg-color-safety-orange/20 blur-xl transform group-hover:scale-150 transition-transform duration-700"></div>
-
-        {/* Bottom left corner accent */}
-        <div className="absolute -bottom-10 -left-10 w-20 h-20 rounded-full bg-color-safety-orange/10 blur-xl transform group-hover:scale-150 transition-transform duration-700"></div>
+        {/* Corner accent */}
+        <div className="absolute top-0 right-0 w-24 h-24 translate-x-12 -translate-y-12 bg-color-safety-orange/5 blur-2xl rounded-full"></div>
 
         <motion.div
           ref={iconRef}
-          className="w-16 h-16 rounded-2xl bg-color-safety-orange flex items-center justify-center mb-6 shadow-lg shadow-color-safety-orange/20 relative z-10"
-          initial={{ scale: 0.5, rotate: -20, opacity: 0 }}
+          className="feature-icon relative z-10"
+          initial={{ scale: 0.5, rotate: -5, opacity: 0 }}
           animate={iconControls}
           whileHover={{
-            scale: 1.1,
-            rotate: 5,
+            scale: 1.05,
             transition: { duration: 0.3, type: "spring", stiffness: 300 }
           }}
         >
@@ -145,24 +141,21 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => {
             alt={title}
             width={32}
             height={32}
-            className="text-color-black drop-shadow-xl"
+            className="text-color-white drop-shadow-sm"
           />
-
-          {/* Icon glow effect */}
-          <div className="absolute inset-0 rounded-2xl bg-color-safety-orange opacity-60 blur-xl -z-10 animate-pulse-glow"></div>
         </motion.div>
 
-        <h3 className="text-xl md:text-2xl font-bold text-color-black mb-4 relative z-10 transition-transform duration-300 group-hover:translate-x-2">{title}</h3>
+        <h3 className="text-xl md:text-2xl font-bold text-color-white mb-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1">{title}</h3>
 
-        <p className="text-color-black/70 relative z-10 transition-all duration-300 group-hover:text-color-black/90">
+        <p className="text-color-white/70 relative z-10 transition-all duration-300 group-hover:text-color-white/90">
           {description}
         </p>
 
         {/* Bottom learn more link with arrow */}
-        <div className="mt-6 pt-4 border-t border-color-white/10 flex items-center">
-          <span className="text-color-safety-orange font-medium text-sm transition-all duration-300 flex items-center gap-2 group-hover:gap-3">
+        <div className="mt-6 pt-4 border-t border-color-charcoal-gray/15 flex items-center">
+          <span className="text-color-safety-orange font-medium text-sm transition-all duration-300 flex items-center gap-2 group-hover:translate-x-1">
             Learn more
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-2">
               <path d="M5 12h14"></path>
               <path d="M12 5l7 7-7 7"></path>
             </svg>
@@ -210,18 +203,17 @@ export default function FeaturesSection() {
   }, [inView, headerControls]);
 
   return (
-    <section className="py-32 bg-gradient-to-b from-color-black to-color-charcoal-gray relative overflow-hidden">
+    <section className="py-32 bg-gradient-to-b from-color-charcoal-gray-dark to-color-black relative overflow-hidden noise-bg">
       {/* Enhanced background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-40 right-10 w-96 h-96 rounded-full bg-color-safety-orange/10 blur-3xl animate-float"></div>
-        <div className="absolute -bottom-20 left-1/4 w-96 h-96 rounded-full bg-color-safety-orange/5 blur-3xl animate-float" style={{ animationDelay: "2s" }}></div>
-        <div className="absolute top-1/3 -left-20 w-80 h-80 rounded-full bg-color-white/5 blur-3xl animate-float" style={{ animationDelay: "1s" }}></div>
-
-        {/* Grid pattern overlay */}
+        <div className="absolute top-40 right-10 w-96 h-96 rounded-full bg-color-safety-orange/8 blur-3xl"></div>
+        <div className="absolute -bottom-20 left-1/4 w-80 h-80 rounded-full bg-color-safety-orange/5 blur-3xl opacity-50"></div>
+        
+        {/* Professional grid pattern overlay */}
         <div className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)',
-            backgroundSize: '30px 30px'
+            backgroundImage: 'radial-gradient(circle, rgba(255,102,0,0.08) 1px, transparent 1px)',
+            backgroundSize: '40px 40px'
           }}>
         </div>
       </div>
@@ -246,7 +238,7 @@ export default function FeaturesSection() {
             }}
           >
             <motion.h2
-              className="text-3xl md:text-5xl lg:text-6xl font-bold text-color-black mb-6 tracking-tight"
+              className="text-3xl md:text-5xl lg:text-6xl font-bold text-color-white mb-6 tracking-tight drop-shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.8 }}
@@ -255,14 +247,14 @@ export default function FeaturesSection() {
             </motion.h2>
 
             <motion.div
-              className="h-1 w-32 bg-gradient-to-r from-color-safety-orange to-transparent mx-auto rounded-full mb-8"
+              className="h-0.5 w-24 bg-gradient-to-r from-color-safety-orange to-transparent mx-auto rounded-full mb-8"
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             />
 
             <motion.p
-              className="text-color-black/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+              className="text-color-white/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
@@ -275,7 +267,7 @@ export default function FeaturesSection() {
 
         <motion.div
           ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}

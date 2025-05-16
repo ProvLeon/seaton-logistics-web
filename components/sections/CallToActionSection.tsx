@@ -52,17 +52,17 @@ export default function CallToActionSection() {
   }, [inView, controls]);
 
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section className="py-32 relative overflow-hidden noise-bg">
       {/* Background gradient with enhanced visuals */}
-      <div className="absolute inset-0 bg-gradient-to-br from-color-black/30 via-color-charcoal-gray to-color-safety-orange/20 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-subtle z-0 bg-gradient-glow"></div>
 
       {/* Enhanced animated background elements */}
-      <div className="absolute inset-0 z-0 opacity-30">
+      <div className="absolute inset-0 z-0 opacity-40 bg-gradient-mesh">
         <motion.div
-          className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full border border-color-white/20"
+          className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full border-2 border-color-safety-orange/20"
           animate={{
             scale: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2],
+            opacity: [0.3, 0.5, 0.3],
             rotate: [0, 15, 0]
           }}
           transition={{
@@ -72,10 +72,10 @@ export default function CallToActionSection() {
           }}
         />
         <motion.div
-          className="absolute top-3/4 right-1/4 w-96 h-96 rounded-full border border-color-white/20"
+          className="absolute top-3/4 right-1/4 w-96 h-96 rounded-full border border-color-safety-orange/15"
           animate={{
             scale: [1.2, 1, 1.2],
-            opacity: [0.3, 0.1, 0.3],
+            opacity: [0.3, 0.15, 0.3],
             rotate: [0, -15, 0]
           }}
           transition={{
@@ -86,10 +86,10 @@ export default function CallToActionSection() {
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 left-1/3 w-64 h-64 rounded-full border border-color-safety-orange/20"
+          className="absolute bottom-1/4 left-1/3 w-64 h-64 rounded-full border-2 border-color-safety-orange/25 animate-border-glow"
           animate={{
             scale: [1, 0.8, 1],
-            opacity: [0.2, 0.5, 0.2],
+            opacity: [0.4, 0.6, 0.4],
             x: [-20, 20, -20]
           }}
           transition={{
@@ -103,25 +103,26 @@ export default function CallToActionSection() {
 
       {/* Floating particles */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        {[...Array(8)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 rounded-full bg-color-safety-orange"
+            className="absolute w-2 h-2 rounded-full bg-color-safety-orange shadow-glow"
             style={{
-              left: `${10 + (i * 10)}%`,
-              top: `${20 + ((i % 4) * 15)}%`,
-              opacity: 0.2 + (i % 5) * 0.1
+              left: `${10 + (i * 8)}%`,
+              top: `${15 + ((i % 5) * 15)}%`,
+              opacity: 0.3 + (i % 5) * 0.15,
+              filter: `blur(${i % 3}px)`
             }}
             animate={{
-              y: [0, -40, 0],
-              x: [0, i % 2 === 0 ? 20 : -20, 0],
-              scale: [1, 1.5, 1]
+              y: [0, -60, 0],
+              x: [0, i % 2 === 0 ? 30 : -30, 0],
+              scale: [1, 1.8, 1]
             }}
             transition={{
-              duration: 4 + i,
+              duration: 5 + i,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: i * 0.5
+              delay: i * 0.4
             }}
           />
         ))}
@@ -134,7 +135,7 @@ export default function CallToActionSection() {
       >
         <motion.div
           ref={ref}
-          className="max-w-4xl mx-auto glass-effect-dark p-10 md:p-16 rounded-3xl border border-color-black/10 shadow-2xl relative overflow-hidden"
+          className="max-w-4xl mx-auto glass-effect-dark p-10 md:p-16 rounded-3xl border border-color-safety-orange/10 shadow-2xl animate-glow-pulse relative overflow-hidden neo-card"
           whileHover={{ boxShadow: "0 25px 50px -12px rgba(255, 102, 0, 0.25)" }}
           onMouseMove={handleMouseMove}
           style={{
@@ -143,8 +144,8 @@ export default function CallToActionSection() {
           }}
         >
           {/* Decorative geometric shapes */}
-          <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-color-safety-orange/20 blur-xl"></div>
-          <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-color-safety-orange/20 blur-xl"></div>
+          <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-color-safety-orange/30 blur-xl animate-pulse-glow"></div>
+          <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-color-safety-orange/30 blur-xl animate-pulse-glow" style={{ animationDelay: "1.5s" }}></div>
 
           <motion.div
             ref={contentRef}
@@ -156,7 +157,7 @@ export default function CallToActionSection() {
             }}
           >
             <motion.h2
-              className="text-3xl md:text-5xl lg:text-6xl font-bold text-color-black mb-6 tracking-tight"
+              className="text-3xl md:text-5xl lg:text-6xl font-bold text-color-white mb-6 tracking-tight drop-shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
@@ -165,7 +166,7 @@ export default function CallToActionSection() {
             </motion.h2>
 
             <motion.p
-              className="text-color-black/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed"
+              className="text-color-white/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
@@ -175,7 +176,7 @@ export default function CallToActionSection() {
             </motion.p>
 
             <motion.div
-              className="flex flex-wrap justify-center gap-5"
+              className="flex flex-wrap justify-center gap-5 relative z-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}

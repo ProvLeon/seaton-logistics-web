@@ -18,6 +18,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Seaton Logistics | Empowering Your Success",
   description: "Premium equipment rentals, expert maintenance, and comprehensive training for construction, agriculture, mining, and security industries.",
+  // themeColor: "#FF6600",
+  manifest: "/favicon/site.webmanifest",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon/favicon-16x16.png",
+    apple: "/favicon/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -26,16 +33,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <meta name="theme-color" content="#FF6600" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-color-black text-color-white noise-bg`}
         suppressHydrationWarning
       >
-        <ThemeProvider>
+        <ThemeProvider defaultTheme="dark">
+          {/* Background gradient glow */}
+          <div className="fixed inset-0 bg-gradient-radial opacity-40 pointer-events-none z-[-1]"></div>
+
           {/* Main content wrapper - positioned above the video */}
-          <div className="relative z-0">
+          <div className="relative z-0 min-h-screen flex flex-col">
             <Navbar />
-            {children}
+            <main className="flex-grow">
+              {children}
+            </main>
             <Footer />
           </div>
         </ThemeProvider>

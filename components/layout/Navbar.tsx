@@ -34,8 +34,8 @@ export default function Navbar() {
   const isHomePage = pathname === '/';
   const { theme } = useTheme();
   const { scrollY } = useScroll();
-  const navOpacity = useTransform(scrollY, [0, 100], [isHomePage ? 0 : 0.8, 1]);
-  const navBlur = useTransform(scrollY, [0, 100], [0, 8]);
+  const navOpacity = useTransform(scrollY, [0, 100], [isHomePage ? 0.2 : 0.85, 0.95]);
+  const navBlur = useTransform(scrollY, [0, 100], [4, 16]);
 
   const isLinkActive = (path: string) => {
     if (path === '/') {
@@ -129,16 +129,17 @@ export default function Navbar() {
     <motion.header
       className={`fixed w-full top-0 left-0 z-50 transition-all duration-500
       ${isScrolled
-          ? 'py-3 shadow-lg'
+          ? 'py-3 shadow-lg border-b border-color-charcoal-gray'
           : isHomePage
             ? 'py-5 bg-transparent'
             : 'py-5'}`}
       style={{
-        backgroundColor: 'rgba(0, 0, 0, var(--nav-opacity))',
+        backgroundColor: 'rgba(10, 10, 10, var(--nav-opacity))',
         backdropFilter: `blur(var(--nav-blur)px)`,
         WebkitBackdropFilter: `blur(var(--nav-blur)px)`,
         '--nav-opacity': navOpacity,
-        '--nav-blur': navBlur
+        '--nav-blur': navBlur,
+        boxShadow: isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.3)' : 'none'
       } as NavbarCustomCSS}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -148,16 +149,17 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative w-11 h-11 overflow-hidden rounded-full">
+            <div className="relative w-11 h-11 overflow-hidden rounded-full shadow-md shadow-color-safety-orange/20">
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="animate-glow-pulse"
               >
                 <Image
                   src="/seaton-logo.png"
                   alt="Seaton Logistics"
                   fill
-                  className="object-contain group-hover:filter group-hover:brightness-110 transition-all duration-300"
+                  className="object-contain group-hover:filter group-hover:brightness-125 transition-all duration-300"
                 />
               </motion.div>
             </div>
@@ -190,12 +192,12 @@ export default function Navbar() {
                   className={`nav-item relative py-1 text-lg font-semibold transition-all duration-300
                   ${isLinkActive(link.path)
                       ? 'text-color-safety-orange' :
-                      'text-color-black dark:text-color-white hover:text-color-safety-orange'}`}
+                      'text-color-white hover:text-color-safety-orange hover-text-glow'}`}
                 >
                   {link.name}
                   {isLinkActive(link.path) && (
                     <motion.span
-                      className="absolute -bottom-1 left-0 w-full h-0.5 bg-color-safety-orange rounded-full"
+                      className="absolute -bottom-1 left-0 w-full h-0.5 bg-color-safety-orange rounded-full shadow-glow animate-glow-pulse"
                       layoutId="navIndicator"
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
@@ -206,7 +208,7 @@ export default function Navbar() {
               {/* Hover indicator */}
               <div
                 ref={indicatorRef}
-                className="absolute bottom-0 h-0.5 bg-color-safety-orange opacity-0 pointer-events-none rounded-full"
+                className="absolute bottom-1 h-0.5 bg-color-safety-orange opacity-0 pointer-events-none rounded-full shadow-glow"
                 style={{ width: 0 }}
               />
 
@@ -232,7 +234,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden flex flex-col gap-1.5 p-2 relative z-50"
+            className="md:hidden flex flex-col gap-1.5 p-2 relative z-50 hover:bg-color-safety-orange/10 rounded-full"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             whileTap={{ scale: 0.95 }}
@@ -271,7 +273,7 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         <motion.div
           ref={menuRef}
-          className={`fixed inset-0 md:hidden z-40 bg-gradient-to-b ${theme === 'dark' ? 'from-color-black to-color-black/95' : 'from-color-white to-color-white/95'} backdrop-blur-md p-6 pt-24 flex flex-col`}
+          className={`fixed inset-0 md:hidden z-40 bg-gradient-to-b from-color-black to-color-charcoal-gray-dark/95 backdrop-blur-lg p-6 pt-24 flex flex-col border-t border-color-safety-orange/10`}
           initial={{ clipPath: 'circle(0% at calc(100% - 32px) 32px)', opacity: 0 }}
           animate={{
             clipPath: mobileMenuOpen ? 'circle(150% at calc(100% - 32px) 32px)' : 'circle(0% at calc(100% - 32px) 32px)',
@@ -296,8 +298,8 @@ export default function Navbar() {
                   <Link
                     href={link.path}
                     className={`block text-xl font-medium transition-all duration-300 py-3 px-2 rounded-lg ${isLinkActive(link.path)
-                      ? 'text-color-safety-orange bg-color-safety-orange/10'
-                      : theme === 'dark' ? 'text-color-white hover:bg-color-white/5' : 'text-color-black hover:bg-color-black/5'}`}
+                      ? 'text-color-safety-orange bg-color-safety-orange/10 shadow-glow'
+                      : 'text-color-white hover:bg-color-safety-orange/5 hover:text-color-safety-orange'}`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -307,13 +309,13 @@ export default function Navbar() {
             </motion.div>
 
             <motion.div
-              className="mt-auto border-t border-gray-200 dark:border-gray-700 pt-5 flex flex-col gap-4"
+              className="mt-auto border-t border-color-safety-orange/10 pt-5 flex flex-col gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: mobileMenuOpen ? 1 : 0, y: mobileMenuOpen ? 0 : 20 }}
               transition={{ delay: 0.3, duration: 0.4 }}
             >
               <div className="flex items-center justify-between py-2">
-                <span className={`text-base font-medium ${theme === 'dark' ? 'text-color-white' : 'text-color-black'}`}>
+                <span className="text-base font-medium text-color-white">
                   Toggle Theme
                 </span>
                 {/* <ThemeToggle /> */}

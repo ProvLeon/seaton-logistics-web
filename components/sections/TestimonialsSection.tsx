@@ -131,14 +131,14 @@ export default function TestimonialsSection() {
   );
 
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-b from-color-charcoal-gray/90 to-color-black relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-gradient-subtle relative overflow-hidden noise-bg">
       {/* Decorative elements */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none bg-gradient-mesh">
         <motion.div
-          className="absolute top-10 right-10 w-80 h-80 rounded-full bg-color-safety-orange/5 blur-3xl"
+          className="absolute top-10 right-10 w-80 h-80 rounded-full bg-color-safety-orange/15 blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1]
+            opacity: [0.2, 0.3, 0.2]
           }}
           transition={{
             duration: 10,
@@ -147,10 +147,10 @@ export default function TestimonialsSection() {
           }}
         />
         <motion.div
-          className="absolute -left-20 bottom-40 w-64 h-64 rounded-full bg-color-safety-orange/10 blur-3xl"
+          className="absolute -left-20 bottom-40 w-64 h-64 rounded-full bg-color-safety-orange/15 blur-3xl"
           animate={{
             scale: [1.2, 0.8, 1.2],
-            opacity: [0.2, 0.1, 0.2]
+            opacity: [0.3, 0.2, 0.3]
           }}
           transition={{
             duration: 12,
@@ -159,7 +159,7 @@ export default function TestimonialsSection() {
           }}
         />
         {/* Quote mark decorative element */}
-        <div className="absolute right-10 md:right-20 top-40 opacity-5">
+        <div className="absolute right-10 md:right-20 top-40 opacity-10">
           <svg width="200" height="200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 11H6C5.46957 11 4.96086 10.7893 4.58579 10.4142C4.21071 10.0391 4 9.53043 4 9V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H8C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7V15C10 16.0609 9.57857 17.0783 8.82843 17.8284C8.07828 18.5786 7.06087 19 6 19H5"
               stroke="#FF6600" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
@@ -181,7 +181,7 @@ export default function TestimonialsSection() {
           animate={controls}
         >
           <motion.span
-            className="inline-block text-color-safety-orange/60 font-medium mb-3 tracking-wider"
+            className="inline-block text-color-safety-orange/80 font-medium mb-3 tracking-wider"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
             transition={{ duration: 0.6 }}
@@ -190,7 +190,7 @@ export default function TestimonialsSection() {
           </motion.span>
 
           <motion.h2
-            className="text-3xl md:text-5xl lg:text-6xl font-bold text-color-black mb-5 tracking-tight"
+            className="text-3xl md:text-5xl lg:text-6xl font-bold text-color-white mb-5 tracking-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
             transition={{ duration: 0.7, delay: 0.1 }}
@@ -198,7 +198,7 @@ export default function TestimonialsSection() {
             What Our <span className="text-gradient relative">
               Clients
               <motion.span
-                className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-color-safety-orange to-transparent"
+                className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-color-safety-orange to-transparent animate-pulse-glow"
                 initial={{ scaleX: 0, originX: 0 }}
                 animate={{ scaleX: inView ? 1 : 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
@@ -207,7 +207,7 @@ export default function TestimonialsSection() {
           </motion.h2>
 
           <motion.p
-            className="text-color-black/70 text-lg max-w-2xl mx-auto"
+            className="text-color-white/70 text-lg max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -254,7 +254,7 @@ export default function TestimonialsSection() {
                     }}
                     className="absolute inset-0 p-8 md:p-12 rounded-3xl"
                   >
-                    <div className="glass-effect dark:glass-effect-dark rounded-3xl p-8 border border-color-white/10 shadow-xl h-full">
+                    <div className="glass-effect-dark rounded-3xl p-8 border border-color-safety-orange/10 shadow-xl h-full backdrop-blur-xl">
                       <div className="flex flex-col md:flex-row gap-8 h-full">
                         <div className="md:w-1/4 flex flex-col items-center md:items-start">
                           <motion.div
@@ -273,16 +273,16 @@ export default function TestimonialsSection() {
                         </div>
 
                         <div className="md:w-3/4 flex flex-col justify-center">
-                          <div className="text-color-safety-orange text-7xl opacity-70 absolute -top-2 -left-2">&ldquo;</div>
-                          <p className="text-lg md:text-xl text-color-black italic mb-6 relative z-10">
+                          <div className="text-color-safety-orange text-7xl opacity-80 absolute -top-2 -left-2">&ldquo;</div>
+                          <p className="text-lg md:text-xl text-color-white italic mb-6 relative z-10">
                             {testimonial.quote}
                           </p>
-                          <div className="border-t border-color-white/10 pt-4">
-                            <h4 className="font-bold text-color-black text-lg">{testimonial.author}</h4>
-                            <p className="text-color-safety-orange/80 text-sm font-medium">
+                          <div className="border-t border-color-safety-orange/10 pt-4">
+                            <h4 className="font-bold text-color-white text-lg">{testimonial.author}</h4>
+                            <p className="text-color-safety-orange/90 text-sm font-medium">
                               {testimonial.position}
                             </p>
-                            <p className="text-color-black/60 text-sm">
+                            <p className="text-color-white/60 text-sm">
                               {testimonial.company}
                             </p>
                           </div>
@@ -299,7 +299,7 @@ export default function TestimonialsSection() {
           <div className="flex justify-between items-center mt-10 ">
             <motion.button
               onClick={prevSlide}
-              className="glass-effect dark:glass-effect-dark rounded-full p-4 transition-all duration-300 hover:scale-110 cursor-pointer"
+              className="glass-effect-dark rounded-full p-4 transition-all duration-300 hover:scale-110 cursor-pointer hover-glow"
               disabled={isAnimating}
               aria-label="Previous testimonial"
               whileHover={{ scale: 1.1 }}
@@ -315,8 +315,8 @@ export default function TestimonialsSection() {
                 <motion.button
                   key={index}
                   className={`relative h-3 rounded-full transition-all ${index === currentIndex
-                    ? "bg-color-safety-orange w-10"
-                    : "bg-color-white/30 w-3 hover:bg-color-white/50"
+                    ? "bg-color-safety-orange w-10 shadow-glow"
+                    : "bg-color-white/20 w-3 hover:bg-color-safety-orange/40"
                     }`}
                   onClick={() => goToSlide(index)}
                   aria-label={`Go to testimonial ${index + 1}`}
@@ -325,7 +325,7 @@ export default function TestimonialsSection() {
                 >
                   {index === currentIndex && (
                     <motion.span
-                      className="absolute inset-0 bg-color-safety-orange rounded-full opacity-50"
+                      className="absolute inset-0 bg-color-safety-orange rounded-full opacity-70"
                       animate={{ scale: [1, 1.5, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />
@@ -336,7 +336,7 @@ export default function TestimonialsSection() {
 
             <motion.button
               onClick={nextSlide}
-              className="glass-effect dark:glass-effect-dark rounded-full p-4 transition-all duration-300 hover:scale-110 cursor-pointer"
+              className="glass-effect-dark rounded-full p-4 transition-all duration-300 hover:scale-110 cursor-pointer hover-glow"
               disabled={isAnimating}
               aria-label="Next testimonial"
               whileHover={{ scale: 1.1 }}

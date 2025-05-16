@@ -21,13 +21,13 @@ const ThemeProviderContext = createContext<ThemeProviderState | undefined>(undef
 
 // Helper function (run outside component for stability)
 const getSystemTheme = (): ResolvedTheme => {
-  if (typeof window === 'undefined') return 'light'; // Default on server
+  if (typeof window === 'undefined') return 'dark'; // Default on server
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'system',
+  defaultTheme = 'dark',
   storageKey = 'seaton-web',
 }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(() => {

@@ -48,18 +48,18 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer ref={ref} className="bg-gradient-to-b from-color-black to-color-charcoal-gray/90 relative z-10">
+    <footer ref={ref} className="bg-gradient-subtle relative z-10 noise-bg ">
       {/* Top wave decoration with animation */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-0">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-12 text-color-safety-orange">
-          <path ref={waveRef} d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-color-safety-orange/30"></path>
+          <path ref={waveRef} d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-color-safety-orange/20"></path>
         </svg>
       </div>
 
       {/* Background gradient elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-20 w-96 h-96 rounded-full bg-color-safety-orange/5 blur-3xl"></div>
-        <div className="absolute bottom-40 right-20 w-80 h-80 rounded-full bg-color-safety-orange/5 blur-3xl"></div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none bg-gradient-mesh">
+        <div className="absolute top-20 left-20 w-96 h-96 rounded-full bg-color-safety-orange/8 blur-3xl animate-pulse-glow"></div>
+        <div className="absolute bottom-40 right-20 w-80 h-80 rounded-full bg-color-safety-orange/8 blur-3xl animate-pulse-glow" style={{ animationDelay: '1.5s' }}></div>
       </div>
 
       <div className="container mx-auto px-4 pt-24 pb-12 relative z-10">
@@ -78,9 +78,9 @@ export default function Footer() {
                   alt="Seaton Logistics"
                   width={50}
                   height={50}
-                  className="h-12 w-auto drop-shadow-lg group-hover:brightness-110"
+                  className="h-12 w-auto drop-shadow-lg group-hover:brightness-125 transition-all duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-color-safety-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-color-safety-orange/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </motion.div>
               <div className="font-bold text-lg text-color-black flex flex-col tracking-wider">
                 <motion.span
@@ -100,7 +100,7 @@ export default function Footer() {
                 </motion.span>
               </div>
             </div>
-            <p className="text-color-black/70 text-sm mb-6 leading-relaxed">
+            <p className="text-color-white/70 text-sm mb-6 leading-relaxed">
               Premium equipment rentals, expert maintenance, and comprehensive training
               for construction, agriculture, mining, and security industries across Ghana.
             </p>
@@ -110,7 +110,7 @@ export default function Footer() {
                   key={index}
                   href={link.url}
                   aria-label={link.label}
-                  className="text-color-black/70 hover:text-color-safety-orange transition-colors duration-300 p-2 bg-white/5 hover:bg-white/10 rounded-lg"
+                  className="text-color-white/70 hover:text-color-safety-orange transition-colors duration-300 p-2 bg-color-black/30 hover:bg-color-safety-orange/10 rounded-lg hover-glow"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ y: -3, scale: 1.1 }}
@@ -126,10 +126,10 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-color-black flex items-center">
+            <h3 className="text-lg font-semibold mb-6 text-color-white flex items-center">
               <span className="relative">
                 Quick Links
-                <span className="absolute -bottom-2 left-0 w-3/4 h-1 bg-gradient-to-r from-color-safety-orange to-transparent rounded-full"></span>
+                <span className="absolute -bottom-2 left-0 w-3/4 h-1 bg-gradient-to-r from-color-safety-orange to-transparent rounded-full animate-pulse-glow"></span>
               </span>
             </h3>
             <ul className="space-y-3">
@@ -142,7 +142,7 @@ export default function Footer() {
                 >
                   <Link
                     href={link.url}
-                    className="text-color-black/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2 group"
+                    className="text-color-white/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2 group hover-text-glow"
                   >
                     <span className="text-color-safety-orange transform group-hover:rotate-90 transition-transform duration-300">&raquo;</span>
                     <span className="group-hover:underline decoration-color-safety-orange/30 underline-offset-4">{link.label}</span>
@@ -154,10 +154,10 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-color-black flex items-center">
+            <h3 className="text-lg font-semibold mb-6 text-color-white flex items-center">
               <span className="relative">
                 Our Services
-                <span className="absolute -bottom-2 left-0 w-3/4 h-1 bg-gradient-to-r from-color-safety-orange to-transparent rounded-full"></span>
+                <span className="absolute -bottom-2 left-0 w-3/4 h-1 bg-gradient-to-r from-color-safety-orange to-transparent rounded-full animate-pulse-glow"></span>
               </span>
             </h3>
             <ul className="space-y-3">
@@ -170,7 +170,7 @@ export default function Footer() {
                 >
                   <Link
                     href={service.url}
-                    className="text-color-black/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2 group"
+                    className="text-color-white/70 hover:text-color-safety-orange transition-colors duration-300 flex items-center gap-2 group hover-text-glow"
                   >
                     <span className="text-color-safety-orange transform group-hover:rotate-90 transition-transform duration-300">&raquo;</span>
                     <span className="group-hover:underline decoration-color-safety-orange/30 underline-offset-4">{service.label}</span>
@@ -182,17 +182,17 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-color-black flex items-center">
+            <h3 className="text-lg font-semibold mb-6 text-color-white flex items-center">
               <span className="relative">
                 Contact Us
-                <span className="absolute -bottom-2 left-0 w-3/4 h-1 bg-gradient-to-r from-color-safety-orange to-transparent rounded-full"></span>
+                <span className="absolute -bottom-2 left-0 w-3/4 h-1 bg-gradient-to-r from-color-safety-orange to-transparent rounded-full animate-pulse-glow"></span>
               </span>
             </h3>
-            <address className="not-italic space-y-2 text-color-black/70">
+            <address className="not-italic space-y-2 text-color-white/70">
               {contactInfo.map((item, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-start gap-3 group p-2 rounded-lg hover:bg-white/5 transition-colors duration-300"
+                  className="flex items-start gap-3 group p-2 rounded-lg hover:bg-color-safety-orange/10 transition-colors duration-300 hover-glow"
                   whileHover={{ x: 4 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -205,7 +205,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-color-white/10 pt-8">
+        <div className="border-t border-color-safety-orange/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <motion.p
               className="text-white/60 text-sm relative overflow-hidden group"
@@ -216,13 +216,13 @@ export default function Footer() {
             </motion.p>
             <div className="flex gap-5 mt-4 md:mt-0">
               <motion.div whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300 }}>
-                <Link href="/privacy-policy" className="text-white/60 text-sm hover:text-color-safety-orange transition-colors relative group">
+                <Link href="/privacy-policy" className="text-white/60 text-sm hover:text-color-safety-orange hover-text-glow transition-colors relative group">
                   Privacy Policy
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-color-safety-orange group-hover:w-full transition-all duration-300"></span>
                 </Link>
               </motion.div>
               <motion.div whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300 }}>
-                <Link href="/terms" className="text-white/60 text-sm hover:text-color-safety-orange transition-colors relative group">
+                <Link href="/terms" className="text-white/60 text-sm hover:text-color-safety-orange hover-text-glow transition-colors relative group">
                   Terms & Conditions
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-color-safety-orange group-hover:w-full transition-all duration-300"></span>
                 </Link>
@@ -232,7 +232,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom decoration */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-color-safety-orange/50 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-color-safety-orange/50 to-transparent animate-pulse-glow"></div>
       </div>
     </footer>
   );
