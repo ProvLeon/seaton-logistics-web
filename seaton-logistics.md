@@ -93,11 +93,10 @@ Seaton Logistics was founded with a simple yet powerful vision: to empower indus
 
 Implementation of Brand Strategy
 Visual Identity
-Logo: A modern, clean design incorporating the Industrial Strength Palette (Deep Navy Blue, Charcoal Gray, Safety Orange, White).
+Logo: A modern, clean design incorporating the Industrial Strength Palette ( Safety Orange, black, White).
 Colour Palette representing Industrial Strength
-Deep Navy Blue (#003366): Represents trust, professionalism, and reliability.
-Charcoal Gray (#333333): Symbolizes strength, durability, and sophistication.
 Safety Orange (#FF6600): Evokes energy, visibility, and safety (key for construction and mining).
+Black (#000000): Represents trust, professionalism, and reliability.
 White (#FFFFFF): Adds clarity and simplicity.
 This colour palette we believe reflects the industrial nature of Seaton Logistics’ services while emphasizing safety and reliability. The orange adds a pop of energy, making the brand memorable.
 Typography: Use bold, professional fonts for headings and clean, readable fonts for body text.
