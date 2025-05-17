@@ -1,11 +1,12 @@
 "use client";
 
+import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRef, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import anime from 'animejs/lib/anime.es';
 import { motion } from 'framer-motion';
+import Icon from '@/components/ui/icons/IconProvider';
 
 export default function Footer() {
   const { ref, inView } = useInView({
@@ -101,8 +102,9 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-color-white/70 text-sm mb-6 leading-relaxed">
-              Premium equipment rentals, expert maintenance, and comprehensive training
-              for construction, agriculture, mining, and security industries across Ghana.
+              Your trusted partner for premium equipment rentals, expert maintenance, and
+              comprehensive training, empowering your business to operate efficiently, safely,
+              and sustainably across Ghana and beyond.
             </p>
             <div className="flex space-x-5">
               {socialLinks.map((link, index) => (
@@ -118,7 +120,7 @@ export default function Footer() {
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
                   <span className="sr-only">{link.label}</span>
-                  <span dangerouslySetInnerHTML={{ __html: link.icon }} />
+                  <Icon name={link.icon} size="sm" strokeWidth="regular" />
                 </motion.a>
               ))}
             </div>
@@ -196,7 +198,7 @@ export default function Footer() {
                   whileHover={{ x: 4 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="text-color-safety-orange mt-1 group-hover:scale-110 transition-transform duration-300" dangerouslySetInnerHTML={{ __html: item.icon }} />
+                  <Icon name={item.icon} size="sm" strokeWidth="regular" className="text-color-safety-orange mt-1 group-hover:scale-110 transition-transform duration-300" />
                   <span>{item.text}</span>
                 </motion.div>
               ))}
@@ -241,24 +243,24 @@ export default function Footer() {
 // Data
 const socialLinks = [
   {
-    label: "Twitter",
+    label: "X",
     url: "#",
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>'
+    icon: "X"
   },
   {
     label: "LinkedIn",
     url: "#",
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>'
+    icon: "Linkedin"
   },
   {
     label: "Facebook",
     url: "#",
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>'
+    icon: "Facebook"
   },
   {
     label: "Instagram",
     url: "#",
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>'
+    icon: "Instagram"
   }
 ];
 
@@ -272,27 +274,27 @@ const quickLinks = [
 
 const services = [
   { label: "Equipment Rentals", url: "/services#equipment-rentals" },
-  { label: "Maintenance", url: "/services#maintenance" },
-  { label: "Training", url: "/services#training" },
-  { label: "Logistics Solutions", url: "/services#logistics-solutions" },
-  { label: "Consulting", url: "/services#consulting" }
+  { label: "Expert Maintenance", url: "/services#maintenance" },
+  { label: "Safety Training", url: "/services#training" },
+  { label: "Sustainable Solutions", url: "/sustainability" },
+  { label: "Industry Consulting", url: "/services#consulting" }
 ];
 
 const contactInfo = [
   {
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>',
+    icon: "MapPin",
     text: "123 Business Avenue, Accra, Ghana"
   },
   {
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>',
+    icon: "Phone",
     text: "+233 (0) 30 123 4567"
   },
   {
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>',
+    icon: "Mail",
     text: "info@seatonlogistics.com"
   },
   {
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>',
-    text: "Mon-Fri: 8:00 AM - 6:00 PM"
+    icon: "Clock",
+    text: "Mon-Fri: 8:00 AM - 6:00 PM, 24/7 Emergency Support"
   }
 ];

@@ -8,6 +8,7 @@ import anime from 'animejs/lib/anime.es';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import BackgroundVideo from '@/components/ui/BackgroundVideo';
 import { Button } from '../ui/Button';
+import Icon from '@/components/ui/icons/IconProvider';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -219,7 +220,9 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Enhanced gradient overlay with depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-color-black/70 via-color-black/80 to-color-black/95 z-10 noise-bg"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-color-black/70 via-color-black/80 to-color-black/95 z-10 noise-bg">
+        <div className="absolute inset-0 bg-gradient-to-tr from-color-safety-orange/5 via-transparent to-color-safety-orange/10"></div>
+      </div>
 
       {/* Geometric shape decorations */}
       <div className="absolute inset-0 z-15 opacity-30 pointer-events-none overflow-hidden">
@@ -246,19 +249,19 @@ export default function HeroSection() {
             ref={headingRef}
             className="text-4xl md:text-5xl lg:text-7xl font-bold text-color-white mb-6 tracking-tight leading-tight drop-shadow-lg"
           >
-            Empowering Your
+            Driving 
             <span className="text-color-safety-orange mx-2 md:mx-4 relative">
-              Success
+              Efficiency
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-color-safety-orange/50 rounded-full animate-pulse-glow"></span>
             </span>
-            Every Step of the Way
+            Safety, and Growth
           </h1>
           <p
             ref={subHeadingRef}
             className="text-lg md:text-xl text-color-white/90 mb-12 max-w-3xl backdrop-blur-md bg-color-black/30 p-4 rounded-lg border border-color-safety-orange/10 shadow-lg"
           >
-            Premium equipment rentals, expert maintenance, and comprehensive training
-            for construction, agriculture, mining, and security industries across Ghana.
+            Your trusted partner for premium equipment rentals, expert maintenance, and comprehensive training, 
+            empowering your business to operate efficiently, safely, and sustainably across Ghana and beyond.
           </p>
           <div
             ref={ctaRef}
@@ -273,9 +276,12 @@ export default function HeroSection() {
                 className="flex gap-2 items-center"
               >
                 <span>Explore Services</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1 transition-transform duration-300">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+                <Icon 
+                  name="ArrowRight"
+                  size="sm"
+                  strokeWidth="regular" 
+                  className="transform group-hover:translate-x-1 transition-transform duration-300" 
+                />
               </a>
             </Button>
 
@@ -288,11 +294,12 @@ export default function HeroSection() {
                 className="flex items-center gap-2"
               >
                 <span>Get a Quote</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-y-1 transition-transform duration-300">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="17 8 12 3 7 8" />
-                  <line x1="12" y1="3" x2="12" y2="15" />
-                </svg>
+                <Icon 
+                  name="User"
+                  size="sm"
+                  strokeWidth="regular" 
+                  className="transform group-hover:translate-x-1 transition-transform duration-300" 
+                />
               </a>
             </Button>
           </div>

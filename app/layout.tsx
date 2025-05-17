@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Seaton Logistics | Empowering Your Success",
-  description: "Premium equipment rentals, expert maintenance, and comprehensive training for construction, agriculture, mining, and security industries.",
-  // themeColor: "#FF6600",
+  title: "Seaton Logistics | Driving Efficiency, Safety, and Growth",
+  description: "Your trusted partner for premium equipment rentals, expert maintenance, and comprehensive training, empowering businesses across Ghana and beyond.",
+  keywords: "equipment rentals, logistics solutions, maintenance services, training, Ghana, Africa, construction equipment, mining equipment, agriculture, sustainability",
   manifest: "/favicon/site.webmanifest",
   icons: {
     icon: "/favicon.ico",
@@ -40,6 +40,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <meta name="theme-color" content="#FF6600" />
+        <meta property="og:title" content="Seaton Logistics | Driving Efficiency, Safety, and Growth" />
+        <meta property="og:description" content="Your trusted partner for premium equipment rentals, expert maintenance, and comprehensive training." />
+        <meta property="og:image" content="/images/seaton-og-image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-color-black text-color-white noise-bg`}
@@ -47,7 +52,9 @@ export default function RootLayout({
       >
         <ThemeProvider defaultTheme="dark">
           {/* Background gradient glow */}
-          <div className="fixed inset-0 bg-gradient-radial opacity-40 pointer-events-none z-[-1]"></div>
+          <div className="fixed inset-0 bg-gradient-radial opacity-40 pointer-events-none z-[-1]">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-color-safety-orange/5 via-transparent to-color-safety-orange/10"></div>
+          </div>
 
           {/* Main content wrapper - positioned above the video */}
           <div className="relative z-0 min-h-screen flex flex-col">

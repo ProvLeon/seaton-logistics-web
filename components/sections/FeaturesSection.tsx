@@ -5,9 +5,10 @@ import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import anime from 'animejs/lib/anime.es';
 import { motion, useAnimation } from 'framer-motion';
+import Icon from '@/components/ui/icons/IconProvider';
 
 interface FeatureCardProps {
-  icon: string;
+  icon: keyof typeof import('lucide-react');
   title: string;
   description: string;
   index: number;
@@ -15,27 +16,27 @@ interface FeatureCardProps {
 
 const features = [
   {
-    icon: "/truck-icon.svg",
+    icon: "Truck",
     title: "Premium Equipment",
-    description: "Access to a wide range of high-quality equipment for construction, mining, agriculture, and security industries.",
+    description: "Count on us for high-quality equipment that performs consistently, even in the toughest conditions across construction, mining, and agriculture.",
     color: "#FF6600", // safety-orange
   },
   {
-    icon: "/icons/tools.svg",
+    icon: "Wrench",
     title: "Expert Maintenance",
-    description: "Professional maintenance services to keep your equipment in optimal working condition at all times.",
+    description: "Our skilled technicians deliver dependable maintenance services that ensure your equipment operates reliably when you need it most.",
     color: "#FF8533", // safety-orange-light
   },
   {
-    icon: "/file.svg",
+    icon: "FileText",
     title: "Comprehensive Training",
-    description: "Specialized training programs to ensure safe and efficient operation of all equipment.",
+    description: "Your safety is our priority. Our specialized training programs empower your team with the skills needed for safe and efficient equipment operation.",
     color: "#CC5200", // safety-orange-dark
   },
   {
-    icon: "/globe.svg",
+    icon: "Globe",
     title: "Logistics Solutions",
-    description: "End-to-end logistics services tailored to your specific needs across Ghana and beyond.",
+    description: "We listen, understand, and deliver tailored logistics services that meet your unique needs, driving efficiency and growth across Ghana and beyond.",
     color: "#FF6600", // safety-orange
   }
 ];
@@ -136,11 +137,10 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => {
             transition: { duration: 0.3, type: "spring", stiffness: 300 }
           }}
         >
-          <Image
-            src={icon}
-            alt={title}
-            width={32}
-            height={32}
+          <Icon
+            name={icon}
+            size="xl"
+            strokeWidth="regular"
             className="text-color-white drop-shadow-sm"
           />
         </motion.div>
@@ -155,10 +155,12 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => {
         <div className="mt-6 pt-4 border-t border-color-charcoal-gray/15 flex items-center">
           <span className="text-color-safety-orange font-medium text-sm transition-all duration-300 flex items-center gap-2 group-hover:translate-x-1">
             Learn more
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-2">
-              <path d="M5 12h14"></path>
-              <path d="M12 5l7 7-7 7"></path>
-            </svg>
+            <Icon
+              name="ArrowRight"
+              size="sm"
+              strokeWidth="medium"
+              className="transition-transform duration-300 group-hover:translate-x-2"
+            />
           </span>
         </div>
       </div>
@@ -243,7 +245,7 @@ export default function FeaturesSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.8 }}
             >
-              Premium <span className="text-gradient">Logistics</span> Solutions
+              Reliable <span className="text-gradient">Industry</span> Solutions
             </motion.h2>
 
             <motion.div
@@ -259,8 +261,8 @@ export default function FeaturesSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              We provide a full spectrum of services designed to empower your business operations with reliability,
-              innovation, and expert support across Ghana and beyond.
+              Seaton Logistics empowers industries with reliable equipment, tailored solutions, and unparalleled support,
+              ensuring seamless operations and long-term success for your business.
             </motion.p>
           </motion.div>
         </motion.div>

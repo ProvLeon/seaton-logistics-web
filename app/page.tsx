@@ -2,6 +2,7 @@
 
 import HeroSection from '@/components/sections/HeroSection';
 import FeaturesSection from '@/components/sections/FeaturesSection';
+import ValuesSection from '@/components/sections/ValuesSection';
 import StatisticsSection from '@/components/sections/StatisticsSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import CallToActionSection from '@/components/sections/CallToActionSection';
@@ -18,6 +19,9 @@ export default function Home() {
 
         {/* Features Section */}
         <FeaturesSection />
+        
+        {/* Values Section */}
+        <ValuesSection />
 
         {/* Statistics Section */}
         <StatisticsSection />

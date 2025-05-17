@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import anime from 'animejs/lib/anime.es';
 import { motion, useAnimation } from 'framer-motion';
 import { Button } from '../ui/Button';
+import Icon from '@/components/ui/icons/IconProvider';
 
 export default function CallToActionSection() {
   const { ref, inView } = useInView({
@@ -162,7 +163,7 @@ export default function CallToActionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              Ready to <span className="text-gradient">Elevate</span> Your Operations?
+              Empowering Your <span className="text-gradient">Success</span>, Every Step of the Way
             </motion.h2>
 
             <motion.p
@@ -171,8 +172,8 @@ export default function CallToActionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              Partner with Seaton Logistics for premium equipment solutions that
-              drive efficiency, safety, and growth across your business.
+              Partner with Seaton Logistics for premium equipment solutions, expert maintenance,
+              and comprehensive training that ensures your long-term success.
             </motion.p>
 
             <motion.div
@@ -185,30 +186,28 @@ export default function CallToActionSection() {
                 variant='primary'
                 size="xl"
                 withGlow
-                icon={
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                }
+                icon={{
+                  name: "ArrowRight",
+                  size: "md",
+                  strokeWidth: "medium"
+                }}
                 iconPosition="right"
               >
                 <a
                   href="/contact"
                 >
-                  Get Started Today
+                  Start Your Journey
                 </a>
               </Button>
 
               <Button
                 variant='glass'
                 size="xl"
-                icon={
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                  </svg>
-                }
+                icon={{
+                  name: "Package",
+                  size: "md",
+                  strokeWidth: "medium"
+                }}
                 iconPosition="left"
               >
                 <a

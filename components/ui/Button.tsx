@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Icon, { IconProps } from './icons/IconProvider';
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'glass';
 type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
@@ -9,7 +10,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   fullWidth?: boolean;
-  icon?: React.ReactNode;
+  icon?: React.ReactNode | IconProps;
   iconPosition?: 'left' | 'right';
   rounded?: boolean;
   loading?: boolean;
@@ -135,13 +136,21 @@ export function Button({
       )}
 
       {icon && iconPosition === 'left' && !loading && (
-        <span className="mr-2 group-hover:translate-x-[-2px] transition-transform duration-300">{icon}</span>
+        <span className="mr-2 group-hover:translate-x-[-2px] transition-transform duration-300">
+          {React.isValidElement(icon) ? icon : (
+            <Icon {...(icon as IconProps)} className="text-current" />
+          )}
+        </span>
       )}
 
       <span className="relative z-10">{children}</span>
 
       {icon && iconPosition === 'right' && (
-        <span className="ml-2 group-hover:translate-x-[2px] transition-transform duration-300">{icon}</span>
+        <span className="ml-2 group-hover:translate-x-[2px] transition-transform duration-300">
+          {React.isValidElement(icon) ? icon : (
+            <Icon {...(icon as IconProps)} className="text-current" />
+          )}
+        </span>
       )}
     </motion.button>
   );
@@ -194,13 +203,21 @@ export function LinkButton({
         {...props}
       >
         {icon && iconPosition === 'left' && (
-          <span className="mr-2 group-hover:translate-x-[-2px] transition-transform duration-300">{icon}</span>
+          <span className="mr-2 group-hover:translate-x-[-2px] transition-transform duration-300">
+            {React.isValidElement(icon) ? icon : (
+              <Icon {...(icon as IconProps)} className="text-current" />
+            )}
+          </span>
         )}
 
         <span className="relative z-10">{children}</span>
 
         {icon && iconPosition === 'right' && (
-          <span className="ml-2 group-hover:translate-x-[2px] transition-transform duration-300">{icon}</span>
+          <span className="ml-2 group-hover:translate-x-[2px] transition-transform duration-300">
+            {React.isValidElement(icon) ? icon : (
+              <Icon {...(icon as IconProps)} className="text-current" />
+            )}
+          </span>
         )}
       </Link>
     </motion.div>

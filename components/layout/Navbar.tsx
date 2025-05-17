@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTheme } from '@/components/providers/ThemeProvider';
 import { LinkButton } from '../ui/Button';
+import Icon from '@/components/ui/icons/IconProvider';
 
 // Define a type for the navbar's custom CSS properties
 interface NavbarCustomCSS extends MotionStyle {
@@ -20,6 +21,7 @@ const navLinks = [
   { name: 'Services', path: '/services' },
   { name: 'Equipment', path: '/equipment' },
   { name: 'About', path: '/about' },
+  { name: 'Sustainability', path: '/sustainability' },
   { name: 'Contact', path: '/contact' },
 ];
 
@@ -170,6 +172,7 @@ export default function Navbar() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 Seaton
+                {/* <span className="text-color-safety-orange text-xs">Reliability</span> */}
               </motion.span>
               <motion.span
                 className="-mt-3"
@@ -178,6 +181,7 @@ export default function Navbar() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 Logistics
+                {/* <span className="text-color-safety-orange text-xs">Excellence</span> */}
               </motion.span>
             </div>
           </Link>
@@ -221,51 +225,31 @@ export default function Navbar() {
                 variant="glass"
                 withGlow
                 icon={
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                  </svg>
+                  <Icon 
+                    name="MessageSquare" 
+                    size="sm" 
+                    strokeWidth="medium"
+                  />
                 }
                 iconPosition="right"
               >
-                Get a Quote
+                Empower Your Business
               </LinkButton>
             </div>
           </nav>
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden flex flex-col gap-1.5 p-2 relative z-50 hover:bg-color-safety-orange/10 rounded-full"
+            className="md:hidden flex items-center justify-center p-2 relative z-50 hover:bg-color-safety-orange/10 rounded-full"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             whileTap={{ scale: 0.95 }}
           >
-            <motion.span
-              className={`block h-0.5 transition-all duration-300 rounded-full
-              ${theme === 'dark' ? 'bg-color-white' : 'bg-color-black'}`}
-              animate={{
-                width: mobileMenuOpen ? '6px' : '24px',
-                rotate: mobileMenuOpen ? '45deg' : '0deg',
-                translateY: mobileMenuOpen ? '8px' : '0px',
-                translateX: mobileMenuOpen ? '8px' : '0px'
-              }}
-            />
-            <motion.span
-              className={`block h-0.5 transition-all duration-300 rounded-full
-              ${theme === 'dark' ? 'bg-color-white' : 'bg-color-black'}`}
-              animate={{
-                width: mobileMenuOpen ? '0px' : '18px',
-                opacity: mobileMenuOpen ? 0 : 1
-              }}
-            />
-            <motion.span
-              className={`block h-0.5 transition-all duration-300 rounded-full
-              ${theme === 'dark' ? 'bg-color-white' : 'bg-color-black'}`}
-              animate={{
-                width: mobileMenuOpen ? '6px' : '12px',
-                rotate: mobileMenuOpen ? '-45deg' : '0deg',
-                translateY: mobileMenuOpen ? '-8px' : '0px',
-                translateX: mobileMenuOpen ? '8px' : '0px'
-              }}
+            <Icon 
+              name={mobileMenuOpen ? "X" : "Menu"} 
+              size="lg" 
+              strokeWidth="regular"
+              className="text-color-white"
             />
           </motion.button>
         </div>
@@ -329,13 +313,15 @@ export default function Navbar() {
                 fullWidth
                 withGlow
                 icon={
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                  </svg>
+                  <Icon 
+                    name="MessageSquare" 
+                    size="sm" 
+                    strokeWidth="medium"
+                  />
                 }
                 iconPosition="right"
               >
-                Get a Quote
+                Empower Your Business
               </LinkButton>
             </motion.div>
           </nav>

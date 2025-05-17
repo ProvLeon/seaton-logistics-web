@@ -17,28 +17,28 @@ interface StatItemProps {
 
 const stats = [
   {
-    value: 500,
+    value: 600,
     suffix: '+',
     label: 'Equipment Units',
     color: '#FF6600',
     icon: 'M16 3h4a1 1 0 0 1 1 1v14h-2 M10 17h6m-2-14v14 M7 17h1 M3 5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v12h-1'
   },
   {
-    value: 95,
+    value: 98,
     suffix: '%',
     label: 'Client Satisfaction',
     color: '#FF8533',
     icon: 'M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3'
   },
   {
-    value: 12,
+    value: 15,
     suffix: '',
     label: 'Years of Experience',
     color: '#CC5200',
     icon: 'M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z'
   },
   {
-    value: 1500,
+    value: 2000,
     suffix: '+',
     label: 'Trained Professionals',
     color: '#FF6600',
@@ -280,7 +280,7 @@ export default function StatisticsSection() {
             ref={headingRef}
             className="text-3xl md:text-5xl font-bold text-center text-color-white mb-4 opacity-0 tracking-tight"
           >
-            Our Impact in <span className="text-gradient">Numbers</span>
+            Our <span className="text-gradient">Reliability</span> in Numbers
           </h2>
 
           <motion.div
@@ -296,8 +296,8 @@ export default function StatisticsSection() {
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            We&apos;ve built a strong track record of excellence in equipment rentals and logistics
-            support across Ghana and beyond.
+            We deliver dependable equipment and services that our customers can trust to perform consistently,
+            even in the most demanding conditions across Ghana and beyond.
           </motion.p>
         </motion.div>
 
