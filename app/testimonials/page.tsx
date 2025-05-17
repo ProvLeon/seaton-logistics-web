@@ -311,7 +311,7 @@ function SuccessStoryCard({
 }
 
 export default function TestimonialsPage() {
-  const controls = useAnimation();
+  // const controls = useAnimation();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const headerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
