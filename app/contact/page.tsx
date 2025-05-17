@@ -40,7 +40,7 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('submitting');
-    
+
     // Simulate form submission
     setTimeout(() => {
       // In a real app, you'd handle the form submission here
@@ -54,7 +54,7 @@ export default function ContactPage() {
         message: '',
         service: 'equipment-rental'
       });
-      
+
       // Reset the form status after 3 seconds
       setTimeout(() => {
         setFormStatus('idle');
@@ -93,7 +93,7 @@ export default function ContactPage() {
             }}
           />
         </div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <motion.span
@@ -104,7 +104,7 @@ export default function ContactPage() {
             >
               GET IN TOUCH
             </motion.span>
-            
+
             <motion.h1
               className="text-4xl md:text-6xl font-bold text-color-white mb-6"
               initial={{ opacity: 0, y: 20 }}
@@ -113,27 +113,27 @@ export default function ContactPage() {
             >
               Let&apos;s <span className="text-gradient">Empower</span> Your Business
             </motion.h1>
-            
+
             <motion.div
               className="h-1 w-40 bg-gradient-to-r from-color-safety-orange to-transparent mx-auto rounded-full mb-8"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
             />
-            
+
             <motion.p
               className="text-lg text-color-white/80 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              We're committed to understanding and exceeding your expectations. Contact us today 
+              We&apos;re committed to understanding and exceeding your expectations. Contact us today
               to discuss how we can provide tailored solutions for your business needs.
             </motion.p>
           </div>
         </div>
       </section>
-      
+
       {/* Contact Information & Form Section */}
       <section className="py-20 bg-color-black relative">
         <div className="absolute inset-0 opacity-10"
@@ -142,7 +142,7 @@ export default function ContactPage() {
             backgroundSize: '30px 30px'
           }}>
         </div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Information */}
@@ -158,7 +158,7 @@ export default function ContactPage() {
                   Our team is ready to assist you with any questions about our equipment, maintenance services, or training programs. Reach out to us through any of the following channels.
                 </p>
               </div>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start gap-6 group">
                   <div className="p-4 rounded-lg bg-color-safety-orange/10 text-color-safety-orange">
@@ -173,7 +173,7 @@ export default function ContactPage() {
                     <p className="text-color-white/70">Operating across Ghana with regional offices in Kumasi and Takoradi</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-6 group">
                   <div className="p-4 rounded-lg bg-color-safety-orange/10 text-color-safety-orange">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -187,7 +187,7 @@ export default function ContactPage() {
                     <p className="text-color-white/70">Emergency Support: +233 (0) 30 123 4569</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-6 group">
                   <div className="p-4 rounded-lg bg-color-safety-orange/10 text-color-safety-orange">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -202,7 +202,7 @@ export default function ContactPage() {
                     <p className="text-color-white/70">Training Programs: training@seatonlogistics.com</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-6 group">
                   <div className="p-4 rounded-lg bg-color-safety-orange/10 text-color-safety-orange">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -219,7 +219,7 @@ export default function ContactPage() {
                 </div>
               </div>
             </motion.div>
-            
+
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
@@ -228,7 +228,7 @@ export default function ContactPage() {
             >
               <div className="neo-card p-8 md:p-12 border border-color-safety-orange/10">
                 <h2 className="text-2xl md:text-3xl font-bold text-color-white mb-8">Send Us a Message</h2>
-                
+
                 {formStatus === 'success' ? (
                   <div className="bg-color-safety-orange/20 p-6 rounded-lg text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-color-safety-orange mx-auto mb-4">
@@ -256,7 +256,7 @@ export default function ContactPage() {
                           placeholder="John Doe"
                         />
                       </div>
-                      
+
                       <div>
                         <label htmlFor="email" className="block text-color-white/90 mb-2">Your Email *</label>
                         <input
@@ -271,7 +271,7 @@ export default function ContactPage() {
                         />
                       </div>
                     </div>
-                    
+
                     <div>
                       <label htmlFor="company" className="block text-color-white/90 mb-2">Company Name</label>
                       <input
@@ -284,7 +284,7 @@ export default function ContactPage() {
                         placeholder="Your Company Ltd."
                       />
                     </div>
-                    
+
                     <div>
                       <label htmlFor="service" className="block text-color-white/90 mb-2">Service of Interest</label>
                       <select
@@ -301,7 +301,7 @@ export default function ContactPage() {
                         <option value="other">Other</option>
                       </select>
                     </div>
-                    
+
                     <div>
                       <label htmlFor="message" className="block text-color-white/90 mb-2">Your Message *</label>
                       <textarea
@@ -315,12 +315,12 @@ export default function ContactPage() {
                         placeholder="Tell us about your requirements..."
                       ></textarea>
                     </div>
-                    
-                    <Button 
-                      type="submit" 
-                      variant="primary" 
+
+                    <Button
+                      type="submit"
+                      variant="primary"
                       size="lg"
-                      fullWidth 
+                      fullWidth
                       loading={formStatus === 'submitting'}
                       withGlow
                     >
@@ -333,7 +333,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      
+
       {/* Map Section */}
       <section className="py-20 bg-gradient-subtle noise-bg">
         <div className="container mx-auto px-6">
@@ -343,7 +343,7 @@ export default function ContactPage() {
               Our headquarters is located in the heart of Accra, with easy access to major transportation routes.
             </p>
           </div>
-          
+
           <div className="rounded-xl overflow-hidden h-[400px] relative glass-effect-dark p-2 neo-card">
             <div className="absolute inset-0 flex items-center justify-center">
               <p className="text-color-white/70 text-lg">Interactive map would be displayed here</p>

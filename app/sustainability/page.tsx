@@ -43,7 +43,7 @@ const sustainabilityInitiatives = [
 export default function SustainabilityPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  
+
   // GSAP animations for scrolling effects
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -81,7 +81,7 @@ export default function SustainabilityPage() {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section 
+      <section
         ref={heroRef}
         className="relative h-[60vh] overflow-hidden flex items-center justify-center"
       >
@@ -96,10 +96,10 @@ export default function SustainabilityPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-color-black/70 to-color-black/90 z-10"></div>
         </div>
-        
+
         <div className="container mx-auto px-6 relative z-20">
           <div className="max-w-3xl mx-auto text-center">
-            <motion.span 
+            <motion.span
               className="inline-block text-color-safety-orange font-medium mb-3 tracking-wider"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ export default function SustainabilityPage() {
             >
               COMMITTED TO A GREENER FUTURE
             </motion.span>
-            
+
             <motion.h1
               className="text-4xl md:text-6xl font-bold text-color-white mb-6"
               initial={{ opacity: 0, y: 20 }}
@@ -116,7 +116,7 @@ export default function SustainabilityPage() {
             >
               Our <span className="text-gradient">Sustainability</span> Commitment
             </motion.h1>
-            
+
             <motion.p
               className="text-lg md:text-xl text-color-white/90 mb-8"
               initial={{ opacity: 0, y: 20 }}
@@ -128,11 +128,11 @@ export default function SustainabilityPage() {
             </motion.p>
           </div>
         </div>
-        
+
         {/* Decorative elements */}
         <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-color-black to-transparent"></div>
       </section>
-      
+
       {/* Mission Statement */}
       <section className="py-20 bg-gradient-subtle noise-bg">
         <div className="container mx-auto px-6">
@@ -145,21 +145,21 @@ export default function SustainabilityPage() {
                 className="text-color-safety-orange"
               />
             </div>
-            
+
             <h2 className="text-3xl md:text-4xl font-bold text-color-white mb-8">
-              "We believe sustainability is not just a responsibility but a business opportunity.
-              By embracing eco-friendly practices, we help our clients achieve sustainable growth."
+              &ldquo;We believe sustainability is not just a responsibility but a business opportunity.
+              By embracing eco-friendly practices, we help our clients achieve sustainable growth.&rdquo;
             </h2>
-            
+
             <p className="text-color-white/70 text-lg mb-10">
               — James Seaton, Founder & CEO
             </p>
-            
+
             <div className="h-0.5 w-40 bg-gradient-to-r from-color-safety-orange to-transparent mx-auto rounded-full mb-8"></div>
           </div>
         </div>
       </section>
-      
+
       {/* Initiatives Section */}
       <section className="py-24 bg-color-black relative overflow-hidden" ref={contentRef}>
         <div className="absolute inset-0 opacity-10"
@@ -168,28 +168,28 @@ export default function SustainabilityPage() {
             backgroundSize: '30px 30px'
           }}>
         </div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 content-section">
             <span className="inline-block text-color-safety-orange font-medium mb-3 tracking-wider">
               OUR INITIATIVES
             </span>
-            
+
             <h2 className="text-3xl md:text-5xl font-bold text-color-white mb-6">
               Sustainable <span className="text-gradient">Practices</span>
             </h2>
-            
+
             <div className="h-1 w-40 bg-gradient-to-r from-color-safety-orange to-transparent mx-auto rounded-full mb-8"></div>
-            
+
             <p className="text-color-white/80 text-lg max-w-3xl mx-auto">
-              We're committed to eco-friendly practices that support your business and the environment,
+              We&apos;re committed to eco-friendly practices that support your business and the environment,
               implementing sustainable solutions across all our operations.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {sustainabilityInitiatives.map((initiative, index) => (
-              <InitiativeCard 
+              <InitiativeCard
                 key={index}
                 title={initiative.title}
                 description={initiative.description}
@@ -200,24 +200,24 @@ export default function SustainabilityPage() {
           </div>
         </div>
       </section>
-      
+
       {/* Goals Section */}
       <section className="py-24 bg-gradient-radial relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="content-section">
               <span className="inline-block text-color-safety-orange font-medium mb-3 tracking-wider">
                 OUR GOALS
               </span>
-              
+
               <h2 className="text-3xl md:text-5xl font-bold text-color-white mb-6">
                 2030 Sustainability <span className="text-gradient">Targets</span>
               </h2>
-              
+
               <div className="h-1 w-40 bg-gradient-to-r from-color-safety-orange to-transparent rounded-full mb-8"></div>
-              
+
               <div className="space-y-8">
                 <div className="flex items-start gap-4">
                   <div className="bg-color-safety-orange/20 p-3 rounded-lg">
@@ -233,7 +233,7 @@ export default function SustainabilityPage() {
                     <p className="text-color-white/70">Reducing our carbon emissions by 40% through equipment modernization and operational efficiency.</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="bg-color-safety-orange/20 p-3 rounded-lg">
                     <Icon
@@ -248,7 +248,7 @@ export default function SustainabilityPage() {
                     <p className="text-color-white/70">Transitioning 75% of our light equipment fleet to electric or hybrid alternatives.</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="bg-color-safety-orange/20 p-3 rounded-lg">
                     <Icon
@@ -263,7 +263,7 @@ export default function SustainabilityPage() {
                     <p className="text-color-white/70">Achieving zero waste to landfill across all our maintenance facilities.</p>
                   </div>
                 </div>
-                
+
                 <Button variant="outline" withGlow className="mt-6">
                   <a href="/contact" className="flex items-center gap-2">
                     <span>Partner with us on sustainability</span>
@@ -277,7 +277,7 @@ export default function SustainabilityPage() {
                 </Button>
               </div>
             </div>
-            
+
             <div className="content-section relative">
               <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl">
                 <Image
@@ -288,10 +288,10 @@ export default function SustainabilityPage() {
                   className="transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                
+
                 <div className="absolute bottom-8 left-8 right-8 z-20">
                   <p className="text-color-white text-xl font-bold">
-                    "Committed to sustainable practices and a greener future."
+                    &ldquo;Committed to sustainable practices and a greener future.&rdquo;
                   </p>
                 </div>
               </div>
@@ -299,28 +299,28 @@ export default function SustainabilityPage() {
           </div>
         </div>
       </section>
-      
+
       {/* CTA Section */}
       <section className="py-20 bg-color-black relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="neo-card p-12 text-center max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-color-white mb-6">
               Ready to make your operations more <span className="text-gradient">sustainable</span>?
             </h2>
-            
+
             <p className="text-color-white/70 text-lg mb-8 max-w-2xl mx-auto">
               Partner with Seaton Logistics for eco-friendly equipment solutions that reduce environmental impact while maximizing operational efficiency.
             </p>
-            
+
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="primary" withGlow>
                 <a href="/contact">
                   Request Eco-Friendly Equipment
                 </a>
               </Button>
-              
+
               <Button variant="glass">
                 <a href="/services">
                   Explore Green Solutions
@@ -339,13 +339,13 @@ function InitiativeCard({ title, description, icon, index }: { title: string; de
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const controls = useAnimation();
-  
+
   useEffect(() => {
     if (isInView) {
       controls.start("visible");
     }
   }, [isInView, controls]);
-  
+
   return (
     <motion.div
       ref={ref}
@@ -369,9 +369,9 @@ function InitiativeCard({ title, description, icon, index }: { title: string; de
         </div>
         <h3 className="text-xl font-bold text-color-white">{title}</h3>
       </div>
-      
+
       <p className="text-color-white/70">{description}</p>
-      
+
       <div className="absolute bottom-0 right-0 h-40 w-40 opacity-5">
         <div className="relative h-full w-full">
           <Icon

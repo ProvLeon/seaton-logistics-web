@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
@@ -111,7 +111,6 @@ const successStories = [
 ];
 
 function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; index: number }) {
-  const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const { ref: inViewRef, inView } = useInView({
     triggerOnce: true,
@@ -143,16 +142,18 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
           transition: { duration: 0.6, delay: index * 0.2 }
         }
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      whileHover={{
+        y: -5,
+        boxShadow: "0 15px 25px rgba(0, 0, 0, 0.3), 0 0 5px rgba(255, 102, 0, 0.2)"
+      }}
     >
       <div className="p-8">
         {/* Quote and Rating */}
         <div className="relative mb-8">
-          <Icon 
-            name="Quote" 
-            size="xl" 
-            className="absolute -top-4 -left-2 text-color-safety-orange/20" 
+          <Icon
+            name="Quote"
+            size="xl"
+            className="absolute -top-4 -left-2 text-color-safety-orange/20"
           />
           <p className="text-color-white/90 text-lg italic relative z-10 mb-4">
             {testimonial.quote}
@@ -223,15 +224,15 @@ function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; ind
   );
 }
 
-function SuccessStoryCard({ 
-  title, 
-  description, 
-  image, 
-  category, 
-  results, 
-  index 
+function SuccessStoryCard({
+  title,
+  description,
+  image,
+  category,
+  results,
+  index
 }: typeof successStories[0] & { index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
+  // const cardRef = useRef<HTMLDivElement>(null);
   const { ref: inViewRef, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -266,7 +267,7 @@ function SuccessStoryCard({
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-color-black to-transparent opacity-60"></div>
-        
+
         {/* Category Badge */}
         <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-color-safety-orange/90 backdrop-blur-sm text-color-white text-sm font-medium">
           {category}
@@ -319,7 +320,7 @@ export default function TestimonialsPage() {
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
     const container = headerRef.current?.getBoundingClientRect();
-    
+
     if (container) {
       const x = (clientX - container.left - container.width / 2) / 20;
       const y = (clientY - container.top - container.height / 2) / 20;
@@ -332,7 +333,7 @@ export default function TestimonialsPage() {
       {/* Hero Section */}
       <section className="py-24 bg-gradient-subtle relative overflow-hidden noise-bg">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             ref={headerRef}
@@ -358,7 +359,7 @@ export default function TestimonialsPage() {
               >
                 CLIENT SUCCESS
               </motion.span>
-              
+
               <motion.h1
                 className="text-4xl md:text-6xl font-bold text-color-white mb-6"
                 initial={{ opacity: 0, y: 20 }}
@@ -368,15 +369,15 @@ export default function TestimonialsPage() {
                 Real Results from <br />
                 <span className="text-gradient">Real Clients</span>
               </motion.h1>
-              
+
               <motion.div
                 className="h-1 w-40 bg-gradient-to-r from-color-safety-orange to-transparent mx-auto rounded-full mb-8"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 0.3 }}
               />
-              
-              <motion.p 
+
+              <motion.p
                 className="text-lg md:text-xl text-color-white/90 mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -388,9 +389,9 @@ export default function TestimonialsPage() {
             </motion.div>
           </motion.div>
         </div>
-        
+
         {/* Scrolling indicator */}
-        <motion.div 
+        <motion.div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           style={{ opacity }}
         >
@@ -404,7 +405,7 @@ export default function TestimonialsPage() {
       {/* Client Testimonials */}
       <section className="py-24 bg-gradient-radial relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-color-white mb-6">
@@ -431,7 +432,7 @@ export default function TestimonialsPage() {
       {/* Success Stories */}
       <section className="py-24 bg-gradient-subtle relative overflow-hidden noise-bg">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-color-white mb-6">
@@ -458,7 +459,7 @@ export default function TestimonialsPage() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-radial relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="neo-card p-12 text-center max-w-4xl mx-auto">
             <motion.h2
@@ -469,7 +470,7 @@ export default function TestimonialsPage() {
             >
               Ready to Write Your <span className="text-gradient">Success Story</span>?
             </motion.h2>
-            
+
             <motion.p
               className="text-color-white/70 text-lg mb-8 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
@@ -479,7 +480,7 @@ export default function TestimonialsPage() {
               Join our growing list of satisfied clients and experience the Seaton difference
               in equipment solutions and expert services.
             </motion.p>
-            
+
             <motion.div
               className="flex flex-wrap justify-center gap-4"
               initial={{ opacity: 0, y: 20 }}
@@ -495,7 +496,7 @@ export default function TestimonialsPage() {
               >
                 Start Your Journey
               </LinkButton>
-              
+
               <LinkButton
                 href="/equipment"
                 variant="glass"

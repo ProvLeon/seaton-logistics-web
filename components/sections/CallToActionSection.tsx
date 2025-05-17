@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import anime from 'animejs/lib/anime.es';
 import { motion, useAnimation } from 'framer-motion';
 import { Button } from '../ui/Button';
-import Icon from '@/components/ui/icons/IconProvider';
+// import Icon from '@/components/ui/icons/IconProvider';
 
 export default function CallToActionSection() {
   const { ref, inView } = useInView({

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import anime from 'animejs/lib/anime.es';
 import { motion, useAnimation } from 'framer-motion';
@@ -210,7 +210,7 @@ export default function FeaturesSection() {
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-40 right-10 w-96 h-96 rounded-full bg-color-safety-orange/8 blur-3xl"></div>
         <div className="absolute -bottom-20 left-1/4 w-80 h-80 rounded-full bg-color-safety-orange/5 blur-3xl opacity-50"></div>
-        
+
         {/* Professional grid pattern overlay */}
         <div className="absolute inset-0 opacity-10"
           style={{

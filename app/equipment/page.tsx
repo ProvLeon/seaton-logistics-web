@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Icon from '@/components/ui/icons/IconProvider';
 import { Button, LinkButton } from '@/components/ui/Button';
@@ -111,18 +111,18 @@ const equipment: Equipment[] = [
   // Add more equipment items...
 ];
 
-function EquipmentCard({ 
-  name, 
-  category, 
-  description, 
-  image, 
-  specs, 
-  dailyRate, 
-  weeklyRate, 
+function EquipmentCard({
+  name,
+  category,
+  description,
+  image,
+  specs,
+  dailyRate,
+  weeklyRate,
   monthlyRate,
   availability,
   features,
-  index 
+  index
 }: Equipment & { index: number }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -165,7 +165,7 @@ function EquipmentCard({
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-color-black to-transparent opacity-60"></div>
-        
+
         {/* Category Badge */}
         <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-color-safety-orange/90 backdrop-blur-sm text-color-white text-sm font-medium flex items-center gap-2">
           <Icon name="Tag" size="sm" strokeWidth="regular" />
@@ -173,15 +173,15 @@ function EquipmentCard({
         </div>
 
         {/* Availability Badge */}
-        <div className={`absolute top-4 right-4 px-3 py-1 rounded-full backdrop-blur-sm text-sm font-medium flex items-center gap-2 
-          ${availability === 'available' ? 'bg-green-500/90 text-white' : 
-            availability === 'limited' ? 'bg-yellow-500/90 text-white' : 
-            'bg-red-500/90 text-white'}`}>
-          <Icon 
-            name={availability === 'available' ? 'Check' : 
-              availability === 'limited' ? 'Clock' : 'X'} 
-            size="sm" 
-            strokeWidth="regular" 
+        <div className={`absolute top-4 right-4 px-3 py-1 rounded-full backdrop-blur-sm text-sm font-medium flex items-center gap-2
+          ${availability === 'available' ? 'bg-green-500/90 text-white' :
+            availability === 'limited' ? 'bg-yellow-500/90 text-white' :
+              'bg-red-500/90 text-white'}`}>
+          <Icon
+            name={availability === 'available' ? 'Check' :
+              availability === 'limited' ? 'Clock' : 'X'}
+            size="sm"
+            strokeWidth="regular"
           />
           {availability.charAt(0).toUpperCase() + availability.slice(1)}
         </div>
@@ -222,7 +222,7 @@ function EquipmentCard({
         {/* Features */}
         <motion.div
           initial={{ height: 0, opacity: 0 }}
-          animate={{ 
+          animate={{
             height: isExpanded ? 'auto' : 0,
             opacity: isExpanded ? 1 : 0
           }}
@@ -246,7 +246,7 @@ function EquipmentCard({
           <Button
             variant="glass"
             onClick={() => setIsExpanded(!isExpanded)}
-            icon={{ 
+            icon={{
               name: isExpanded ? "ChevronUp" : "ChevronDown",
               size: "sm"
             }}
@@ -254,7 +254,7 @@ function EquipmentCard({
           >
             {isExpanded ? "Show Less" : "Show More"}
           </Button>
-          
+
           <LinkButton
             href={`/contact?equipment=${encodeURIComponent(name)}`}
             variant="primary"
@@ -273,21 +273,21 @@ function EquipmentCard({
 export default function EquipmentPage() {
   const [activeCategory, setActiveCategory] = useState('All Equipment');
   const [searchQuery, setSearchQuery] = useState('');
-  const controls = useAnimation();
+  // const controls = useAnimation();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const headerRef = useRef<HTMLDivElement>(null);
 
   const filteredEquipment = equipment.filter(item => {
     const matchesCategory = activeCategory === 'All Equipment' || item.category === activeCategory;
     const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         item.description.toLowerCase().includes(searchQuery.toLowerCase());
+      item.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
     const container = headerRef.current?.getBoundingClientRect();
-    
+
     if (container) {
       const x = (clientX - container.left - container.width / 2) / 20;
       const y = (clientY - container.top - container.height / 2) / 20;
@@ -300,7 +300,7 @@ export default function EquipmentPage() {
       {/* Hero Section */}
       <section className="py-24 bg-gradient-subtle relative overflow-hidden noise-bg">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             ref={headerRef}
@@ -326,7 +326,7 @@ export default function EquipmentPage() {
               >
                 OUR EQUIPMENT
               </motion.span>
-              
+
               <motion.h1
                 className="text-4xl md:text-6xl font-bold text-color-white mb-6"
                 initial={{ opacity: 0, y: 20 }}
@@ -336,15 +336,15 @@ export default function EquipmentPage() {
                 Premium <span className="text-gradient">Equipment</span><br />
                 For Every Project
               </motion.h1>
-              
+
               <motion.div
                 className="h-1 w-40 bg-gradient-to-r from-color-safety-orange to-transparent mx-auto rounded-full mb-8"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 0.3 }}
               />
-              
-              <motion.p 
+
+              <motion.p
                 className="text-lg md:text-xl text-color-white/90 mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -389,7 +389,7 @@ export default function EquipmentPage() {
                 key={index}
                 onClick={() => setActiveCategory(category.name)}
                 className={`px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300
-                  ${activeCategory === category.name 
+                  ${activeCategory === category.name
                     ? 'bg-color-safety-orange text-color-white shadow-lg'
                     : 'bg-color-black/50 text-color-white/70 hover:bg-color-safety-orange/10'}`}
                 whileHover={{ scale: 1.05 }}
@@ -409,7 +409,7 @@ export default function EquipmentPage() {
       {/* Equipment Grid */}
       <section className="py-24 bg-gradient-radial relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {filteredEquipment.map((item, index) => (
@@ -432,7 +432,7 @@ export default function EquipmentPage() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-subtle relative overflow-hidden noise-bg">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="neo-card p-12 text-center max-w-4xl mx-auto">
             <motion.h2
@@ -443,7 +443,7 @@ export default function EquipmentPage() {
             >
               Need Help Finding the Right <span className="text-gradient">Equipment</span>?
             </motion.h2>
-            
+
             <motion.p
               className="text-color-white/70 text-lg mb-8 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
@@ -453,7 +453,7 @@ export default function EquipmentPage() {
               Our equipment specialists are here to help you choose the perfect equipment
               for your project needs and budget.
             </motion.p>
-            
+
             <motion.div
               className="flex flex-wrap justify-center gap-4"
               initial={{ opacity: 0, y: 20 }}
@@ -469,7 +469,7 @@ export default function EquipmentPage() {
               >
                 Contact an Expert
               </LinkButton>
-              
+
               <LinkButton
                 href="/services"
                 variant="glass"
