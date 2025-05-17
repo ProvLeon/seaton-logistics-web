@@ -23,7 +23,7 @@ const teamMembers = [
     name: 'Jane Doe',
     role: 'Chief Executive Officer',
     bio: 'Visionary leader with 15+ years in the logistics industry',
-    image: '/images/team/jane-doe.jpg',
+    image: '/images/testimonial-profile.png',
     socials: {
       linkedin: '#',
       twitter: '#'
@@ -33,7 +33,7 @@ const teamMembers = [
     name: 'John Smith',
     role: 'Operations Director',
     bio: 'Expert in optimizing logistics workflows and safety protocols',
-    image: '/images/team/john-smith.jpg',
+    image: '/images/testimonial-profile.png',
     socials: {
       linkedin: '#',
       twitter: '#'
@@ -43,7 +43,7 @@ const teamMembers = [
     name: 'Sarah Johnson',
     role: 'Fleet Manager',
     bio: 'Specializes in fleet optimization and maintenance strategies',
-    image: '/images/team/sarah-johnson.jpg',
+    image: '/images/testimonial-profile.png',
     socials: {
       linkedin: '#',
       twitter: '#'
@@ -53,7 +53,7 @@ const teamMembers = [
     name: 'Michael Addo',
     role: 'Finance Director',
     bio: 'Financial strategist with deep knowledge of the African market',
-    image: '/images/team/michael-addo.jpg',
+    image: '/images/testimonial-profile.png',
     socials: {
       linkedin: '#',
       twitter: '#'
@@ -62,7 +62,7 @@ const teamMembers = [
 ];
 
 // Company values
-const values: {icon: ExtendedIconName; title: string; description: string}[] = [
+const values: { icon: ExtendedIconName; title: string; description: string }[] = [
   {
     icon: "ShieldCheck",
     title: 'Safety First',
@@ -86,7 +86,7 @@ const values: {icon: ExtendedIconName; title: string; description: string}[] = [
 ];
 
 // Company milestones
-const milestones: {year: string; title: string; description: string; icon: ExtendedIconName}[] = [
+const milestones: { year: string; title: string; description: string; icon: ExtendedIconName }[] = [
   {
     year: '2005',
     title: 'Foundation of Excellence',
@@ -194,11 +194,11 @@ export default function AboutPage() {
           70% { box-shadow: 0 0 0 10px rgba(255, 102, 0, 0); transform: scale(1.05); }
           100% { box-shadow: 0 0 0 0 rgba(255, 102, 0, 0); transform: scale(1); }
         }
-        
+
         .pulse-animation {
           animation: pulse 2s infinite;
         }
-        
+
         .shadow-glow-sm:hover {
           box-shadow: 0 0 15px 1px rgba(255, 102, 0, 0.3);
         }
@@ -207,7 +207,7 @@ export default function AboutPage() {
       <section className="relative h-[60vh] overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
-            src="/images/about-hero.jpg"
+            src="/images/logistics-warehouse.jpg"
             alt="About Seaton Logistics"
             fill
             sizes="100vw"
@@ -257,7 +257,7 @@ export default function AboutPage() {
             <div className="h-1 w-40 bg-gradient-to-r from-color-safety-orange to-transparent mx-auto rounded-full mb-8"></div>
           </div>
 
-            {/* Styles are now defined at the page level */}
+          {/* Styles are now defined at the page level */}
 
           <motion.div
             ref={valuesRef}
@@ -292,7 +292,7 @@ export default function AboutPage() {
       {/* Timeline Section */}
       <section className="py-24 bg-gradient-subtle relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <span className="inline-block text-color-safety-orange font-medium mb-3 tracking-wider">
@@ -344,8 +344,8 @@ export default function AboutPage() {
                   <div className={`neo-card p-8 group border-l-4 border-color-safety-orange hover:shadow-glow-sm transition-all duration-300 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                     <div className="flex items-center justify-between mb-4">
                       <div className={`text-color-safety-orange font-bold text-3xl ${index % 2 === 0 ? 'ml-auto' : ''}`}>{milestone.year}</div>
-                      {index % 2 === 0 ? 
-                        <div className="h-px w-16 bg-gradient-to-l from-color-safety-orange to-transparent mr-2"></div> : 
+                      {index % 2 === 0 ?
+                        <div className="h-px w-16 bg-gradient-to-l from-color-safety-orange to-transparent mr-2"></div> :
                         <div className="h-px w-16 bg-gradient-to-r from-color-safety-orange to-transparent ml-2"></div>
                       }
                     </div>
@@ -355,9 +355,9 @@ export default function AboutPage() {
                 </motion.div>
               </motion.div>
             ))}
-            
+
             {/* Future indicator */}
-            <motion.div 
+            <motion.div
               className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex items-center justify-center"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}

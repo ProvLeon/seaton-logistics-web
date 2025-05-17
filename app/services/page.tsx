@@ -22,7 +22,7 @@ const services = [
     title: "Equipment Rental",
     description: "Access our premium fleet of well-maintained construction, mining, and agricultural equipment to power your operations.",
     icon: "Truck",
-    image: "/images/services/equipment-rental.jpg",
+    image: "/images/sustainability-hero.jpg",
     features: [
       "Extensive fleet of modern equipment",
       "Flexible rental terms",
@@ -42,7 +42,7 @@ const services = [
     title: "Expert Maintenance",
     description: "Keep your equipment running at peak performance with our comprehensive maintenance services and technical expertise.",
     icon: "Wrench",
-    image: "/images/services/maintenance.jpg",
+    image: "/images/maintenance.jpg",
     features: [
       "Preventive maintenance programs",
       "Emergency repairs",
@@ -62,7 +62,7 @@ const services = [
     title: "Safety Training",
     description: "Empower your team with comprehensive safety training and certification programs for optimal equipment operation.",
     icon: "GraduationCap",
-    image: "/images/services/training.jpg",
+    image: "/images/maintenance.jpg",
     features: [
       "Certified instructors",
       "Hands-on training",
@@ -82,7 +82,7 @@ const services = [
     title: "Industry Consulting",
     description: "Optimize your operations with our expert consulting services tailored to your industry needs and challenges.",
     icon: "LightbulbIcon",
-    image: "/images/services/consulting.jpg",
+    image: "/images/consulting.jpg",
     features: [
       "Equipment fleet planning",
       "Operational efficiency audits",
@@ -144,7 +144,7 @@ function ServiceCard({ title, description, icon, image, features, benefits, inde
           className="object-cover transition-transform duration-700 hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-color-black to-transparent opacity-60"></div>
-        
+
         <motion.div
           className="absolute bottom-0 left-0 w-full p-6 flex items-center gap-4"
           animate={{
@@ -250,7 +250,7 @@ export default function ServicesPage() {
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
     const container = headerRef.current?.getBoundingClientRect();
-    
+
     if (container) {
       const x = (clientX - container.left - container.width / 2) / 20;
       const y = (clientY - container.top - container.height / 2) / 20;
@@ -263,7 +263,7 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <section className="py-24 bg-gradient-subtle relative overflow-hidden noise-bg">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             ref={headerRef}
@@ -289,7 +289,7 @@ export default function ServicesPage() {
               >
                 OUR SERVICES
               </motion.span>
-              
+
               <motion.h1
                 className="text-4xl md:text-6xl font-bold text-color-white mb-6"
                 initial={{ opacity: 0, y: 20 }}
@@ -299,15 +299,15 @@ export default function ServicesPage() {
                 Comprehensive <span className="text-gradient">Solutions</span><br />
                 for Your Success
               </motion.h1>
-              
+
               <motion.div
                 className="h-1 w-40 bg-gradient-to-r from-color-safety-orange to-transparent mx-auto rounded-full mb-8"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 0.3 }}
               />
-              
-              <motion.p 
+
+              <motion.p
                 className="text-lg md:text-xl text-color-white/90 mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -325,7 +325,7 @@ export default function ServicesPage() {
       {/* Services Grid Section */}
       <section className="py-24 bg-gradient-radial relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div
             ref={ref}
@@ -345,7 +345,7 @@ export default function ServicesPage() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-subtle relative overflow-hidden noise-bg">
         <div className="absolute inset-0 bg-gradient-mesh"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="neo-card p-12 text-center max-w-4xl mx-auto">
             <motion.h2
@@ -356,7 +356,7 @@ export default function ServicesPage() {
             >
               Ready to Transform Your <span className="text-gradient">Operations</span>?
             </motion.h2>
-            
+
             <motion.p
               className="text-color-white/70 text-lg mb-8 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
@@ -366,7 +366,7 @@ export default function ServicesPage() {
               Contact us today to discuss how our comprehensive services can help you achieve
               your business goals with enhanced efficiency and safety.
             </motion.p>
-            
+
             <motion.div
               className="flex flex-wrap justify-center gap-4"
               initial={{ opacity: 0, y: 20 }}
@@ -382,7 +382,7 @@ export default function ServicesPage() {
               >
                 Get Started Today
               </LinkButton>
-              
+
               <LinkButton
                 href="/equipment"
                 variant="glass"

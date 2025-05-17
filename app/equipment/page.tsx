@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useMemo } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
@@ -29,13 +29,14 @@ interface CategoryFilter {
   count: number;
 }
 
-const categories: CategoryFilter[] = [
-  { name: 'All Equipment', icon: 'Package', count: 24 },
-  { name: 'Construction', icon: 'Truck', count: 8 },
-  { name: 'Mining', icon: 'Hammer', count: 6 },
-  { name: 'Agriculture', icon: 'Tractor', count: 5 },
-  { name: 'Material Handling', icon: 'Container', count: 3 },
-  { name: 'Utility Vehicles', icon: 'Car', count: 2 },
+// Category definitions without hardcoded counts
+const categoryDefinitions: Omit<CategoryFilter, 'count'>[] = [
+  { name: 'All Equipment', icon: 'Package' },
+  { name: 'Construction', icon: 'Truck' },
+  { name: 'Mining', icon: 'Hammer' },
+  { name: 'Agriculture', icon: 'Tractor' },
+  { name: 'Material Handling', icon: 'Container' },
+  { name: 'Utility Vehicles', icon: 'Car' },
 ];
 
 const equipment: Equipment[] = [
@@ -164,7 +165,7 @@ function EquipmentCard({
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-color-black to-transparent opacity-60"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-color-black to-transparent opacity-90"></div>
 
         {/* Category Badge */}
         <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-color-safety-orange/90 backdrop-blur-sm text-color-white text-sm font-medium flex items-center gap-2">
@@ -270,12 +271,34 @@ function EquipmentCard({
   );
 }
 
+
+
 export default function EquipmentPage() {
   const [activeCategory, setActiveCategory] = useState('All Equipment');
   const [searchQuery, setSearchQuery] = useState('');
   // const controls = useAnimation();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const headerRef = useRef<HTMLDivElement>(null);
+
+  // Calculate category counts from actual equipment data
+  const categories = useMemo(() => {
+    const counts = new Map<string, number>();
+    
+    // Count items in each category
+    equipment.forEach(item => {
+      if (counts.has(item.category)) {
+        counts.set(item.category, counts.get(item.category)! + 1);
+      } else {
+        counts.set(item.category, 1);
+      }
+    });
+    
+    // Create categories with counts
+    return categoryDefinitions.map(cat => ({
+      ...cat,
+      count: cat.name === 'All Equipment' ? equipment.length : (counts.get(cat.name) || 0)
+    }));
+  }, []);
 
   const filteredEquipment = equipment.filter(item => {
     const matchesCategory = activeCategory === 'All Equipment' || item.category === activeCategory;
@@ -317,6 +340,7 @@ export default function EquipmentPage() {
                 rotateY: mousePosition.x,
                 transformStyle: "preserve-3d"
               }}
+              className="relative"
             >
               <motion.span
                 className="inline-block text-color-safety-orange font-medium mb-3 tracking-wider"
@@ -355,26 +379,27 @@ export default function EquipmentPage() {
                 support and maintenance services.
               </motion.p>
 
-              {/* Search Bar */}
-              <motion.div
-                className="max-w-2xl mx-auto relative"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.6 }}
-              >
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Search equipment..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full px-6 py-4 rounded-full bg-color-black/50 border border-color-safety-orange/20 text-color-white placeholder-color-white/50 focus:outline-none focus:border-color-safety-orange/50 backdrop-blur-lg"
-                  />
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2">
-                    <Icon name="Search" size="md" className="text-color-safety-orange" />
-                  </div>
+            </motion.div>
+
+            {/* Search Bar - Moved outside the 3D transformed container */}
+            <motion.div
+              className="max-w-2xl mx-auto relative z-20 mt-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.6 }}
+            >
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search equipment..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full px-6 py-4 rounded-full bg-color-black/50 border border-color-safety-orange/20 text-color-white placeholder-color-white/50 focus:outline-none focus:border-color-safety-orange/50 backdrop-blur-lg"
+                />
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <Icon name="Search" size="md" className="text-color-safety-orange" />
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </motion.div>
         </div>

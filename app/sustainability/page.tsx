@@ -281,7 +281,7 @@ export default function SustainabilityPage() {
             <div className="content-section relative">
               <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/sustainability-goals.jpg"
+                  src="/images/logistics-warehouse.jpg"
                   alt="Seaton Logistics Sustainability Goals"
                   fill
                   style={{ objectFit: 'cover' }}
