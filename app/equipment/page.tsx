@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import Icon from '@/components/ui/icons/IconProvider';
 import { Button, LinkButton } from '@/components/ui/Button';
