@@ -58,7 +58,7 @@ export default function NotFound() {
           delay: 300,
         })
         .add({
-          targets: buttonContainerRef?.current?.children!,
+          targets: buttonContainerRef?.current?.children,
           opacity: [0, 1],
           translateY: [15, 0],
           duration: 600,
