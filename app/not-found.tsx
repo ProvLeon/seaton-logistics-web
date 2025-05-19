@@ -30,7 +30,7 @@ export default function NotFound() {
       anime({
         targets: loaderRef.current,
         opacity: [0.6, 1],
-        scale: [0.95, 1.05],
+        scale: [0.95, 1.00],
         duration: 1500,
         loop: true,
         direction: 'alternate',
@@ -58,7 +58,7 @@ export default function NotFound() {
           delay: 300,
         })
         .add({
-          targets: buttonContainerRef.current.children,
+          targets: buttonContainerRef?.current?.children!,
           opacity: [0, 1],
           translateY: [15, 0],
           duration: 600,
@@ -76,7 +76,7 @@ export default function NotFound() {
   };
 
   return (
-    <div className="min-h-[90vh] flex flex-col items-center justify-center px-4" ref={containerRef} style={hwStyles}>
+    <div className="min-h-screen flex flex-col items-center justify-center px-4" ref={containerRef} style={hwStyles}>
       {isLoading ? (
         <div className="flex flex-col items-center justify-center space-y-4">
           <div ref={loaderRef} className="relative" style={hwStyles}>
