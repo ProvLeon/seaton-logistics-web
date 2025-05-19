@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, CSSProperties } from "react";
 import Link from "next/link";
 import anime from "animejs";
-import { ArrowLeft, Loader, Home, PhoneCall } from "lucide-react";
+import { Home, PhoneCall } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import NotFoundAnimation from "@/components/ui/NotFoundAnimation";
 import "./not-found.css";
