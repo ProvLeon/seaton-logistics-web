@@ -6,7 +6,7 @@
     /* Core Brand Colors */
     --color-black: #000000;
     --color-charcoal-gray: #242424;
-    --color-safety-orange: #FF6600;
+    --color-safety-orange: #E2342b;
     --color-white: #FFFFFF;
 
     /* Dark Theme Defaults */
@@ -16,7 +16,7 @@
 
     /* Enhanced Brand Colors with Accent Variations */
     --color-safety-orange-light: #FF8533;
-    --color-safety-orange-dark: #CC5200;
+    --color-safety-orange-dark: #e02920;
     --color-charcoal-gray-light: #3d3d3d;
     --color-charcoal-gray-dark: #171717;
 
@@ -57,7 +57,7 @@
     /* Brand colors */
     --color-black: #000000;
     --color-charcoal-gray: #242424;
-    --color-safety-orange: #FF6600;
+    --color-safety-orange: #e2342b;
     --color-white: #FFFFFF;
 
     /* Text colors */
@@ -154,18 +154,24 @@ body {
 }
 
 @keyframes glow-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 3px 0 rgba(255, 102, 0, 0.1);
     }
+
     50% {
         box-shadow: 0 0 10px 2px rgba(255, 102, 0, 0.2);
     }
 }
 
 @keyframes border-glow {
-    0%, 100% {
+
+    0%,
+    100% {
         border-color: rgba(255, 102, 0, 0.3);
     }
+
     50% {
         border-color: rgba(255, 102, 0, 0.7);
     }
@@ -471,7 +477,8 @@ body {
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .highlight-border:hover, .highlight-border:focus {
+    .highlight-border:hover,
+    .highlight-border:focus {
         border-color: var(--color-safety-orange);
         box-shadow: 0 0 0 1px rgba(255, 102, 0, 0.2);
     }
@@ -499,15 +506,15 @@ body {
         border-radius: 1rem;
         background-color: var(--color-card-bg);
         box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5),
-                    -4px -4px 12px rgba(30, 30, 30, 0.08);
+            -4px -4px 12px rgba(30, 30, 30, 0.08);
         border: 1px solid rgba(35, 35, 35, 0.3);
         transition: all 0.3s ease;
     }
 
     .neo-card:hover {
         box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.6),
-                    -6px -6px 16px rgba(30, 30, 30, 0.12),
-                    0 0 5px rgba(255, 102, 0, 0.15);
+            -6px -6px 16px rgba(30, 30, 30, 0.12),
+            0 0 5px rgba(255, 102, 0, 0.15);
     }
 
     /* Frosted card effect */
@@ -518,7 +525,7 @@ body {
         border: 1px solid rgba(255, 255, 255, 0.05);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
-    
+
     /* Professional feature card */
     .feature-card {
         background-color: rgba(25, 25, 28, 0.8);
@@ -528,13 +535,13 @@ body {
         transition: all 0.3s ease;
         overflow: hidden;
     }
-    
+
     .feature-card:hover {
         transform: translateY(-6px);
         box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
         border-color: rgba(255, 102, 0, 0.2);
     }
-    
+
     .feature-icon {
         width: 3.5rem;
         height: 3.5rem;

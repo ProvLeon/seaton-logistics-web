@@ -1,0 +1,157 @@
+/* 404 Page Specific Animations */
+
+@keyframes equipment-float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-10px) rotate(0deg); 
+  }
+}
+
+@keyframes wheel-scale {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.05) rotate(0deg); }
+}
+
+@keyframes arm-move {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(0deg); }
+}
+
+@keyframes error-pulse {
+  0%, 100% { 
+    transform: scale(1);
+    color: var(--color-safety-orange);
+  }
+  50% { 
+    transform: scale(1.05);
+    color: var(--color-safety-orange-light);
+  }
+}
+
+@keyframes dust-float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0;
+  }
+}
+
+@keyframes gear-pulse {
+  0%, 100% { opacity: 0.5; transform: rotate(0deg); }
+  50% { opacity: 0.8; transform: rotate(0deg); }
+}
+
+@keyframes loader-error {
+  0%, 100% {
+    border-color: var(--color-safety-orange);
+    border-width: 4px;
+  }
+  50% {
+    border-color: var(--color-white);
+    border-width: 2px;
+  }
+}
+
+/* Industrial backgrounds */
+.industrial-pattern {
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 102, 0, 0.05) 0px,
+      rgba(255, 102, 0, 0.05) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+}
+
+.industrial-grid {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* 404 Utility classes */
+.animate-equipment-float {
+  animation: equipment-float 6s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.animate-wheel-scale {
+  animation: wheel-scale 3s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.animate-arm-move {
+  animation: arm-move 4s ease-in-out infinite;
+  transform-origin: center left;
+}
+
+.animate-error-pulse {
+  animation: error-pulse 2s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.animate-dust-float {
+  animation: dust-float 3s ease-out infinite;
+}
+
+.animate-gear-pulse {
+  animation: gear-pulse 3s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.animate-loader-error {
+  animation: loader-error 1.5s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.error-shadow {
+  text-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+}
+
+.error-button {
+  transition: all 0.3s ease;
+  transform-origin: center center;
+}
+
+.error-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 102, 0, 0.2);
+}
+
+/* Fixed animation overrides to prevent unwanted rotation */
+.equipment-part {
+  transform-origin: center !important;
+  transform: rotate(0deg) !important;
+}
+
+.equipment-part[data-type='wheel'] {
+  transform-origin: center center !important;
+  transform: rotate(0deg) !important;
+}
+
+.equipment-part[data-type='arm'] {
+  transform-origin: center left !important;
+  transform: rotate(0deg) !important;
+}
+
+/* Ensure animations don't overlap with transforms */
+svg {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+  transform: rotate(0deg) !important;
+}
